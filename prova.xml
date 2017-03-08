@@ -1,0 +1,32 @@
+<world name="prova" start="Buio">
+   <places>
+      <entry>
+         <string>Buio</string>
+         <Place name="Buio" description="Luogo deprimente" goal="false" level="0">
+            <passages>
+               <entry>
+                  <string>west</string>
+                  <passage class="tosatto.fancyworld.passages.OpenPassage" name="P1" next="Luce"/>
+               </entry>
+            </passages>
+         </Place>
+      </entry>
+      <entry>
+         <string>Luce</string>
+         <Place name="Luce" description="Luogo felice" goal="true" level="0">
+            <passages>
+               <entry>
+                  <string>est</string>
+                  <passage class="tosatto.fancyworld.passages.OpenPassage" name="P1" next="Buio"/>
+               </entry>
+            </passages>
+         </Place>
+      </entry>
+   </places>
+   <levels>
+      <entry>
+         <integer>0</integer>
+         <Level id="0" name="In principio" description=""/>
+      </entry>
+   </levels>
+</world>
