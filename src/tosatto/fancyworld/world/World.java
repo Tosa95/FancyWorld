@@ -9,6 +9,7 @@ import java.util.HashMap;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.ElementMap;
 import org.simpleframework.xml.Root;
+import tosatto.fancyworld.game.Game;
 import tosatto.fancyworld.levels.Level;
 import tosatto.fancyworld.places.Place;
 
@@ -31,12 +32,25 @@ public class World {
     @Attribute (name = "start")
     private String startPlace;
     
+    protected Game gm;
+    
     public World (@Attribute (name = "name") String name, 
                   @Attribute (name = "start") String startPlace)
     {
         this.name = name;
         this.startPlace = startPlace;
     }
+
+    public void setGm(Game gm) {
+        this.gm = gm;
+        
+        for (Place p: places.values())
+            p.setGm(gm);
+        
+        for (Level l: levels.values())
+            l.setGm(gm);
+    }
+    
     
     public String getName ()
     {
@@ -47,7 +61,9 @@ public class World {
     {
         if (!levels.containsKey(p.getLevel()))
             throw new IllegalArgumentException("Level " + p.getLevel() + " does not exist");
-            
+        
+        p.setGm(gm);
+        
         places.put(p.getName(), p);
     }
     
@@ -58,6 +74,7 @@ public class World {
     
     public void addLevel (Level l)
     {
+        l.setGm(gm);
         levels.put(l.getId(), l);
     }
     
@@ -77,7 +94,7 @@ public class World {
                 return p.getLevel();
         }
         
-        
+        throw new IllegalStateException("No goal place defined");
     }
     
     @Override

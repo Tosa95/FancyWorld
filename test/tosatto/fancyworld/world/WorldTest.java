@@ -78,6 +78,10 @@ public class WorldTest {
         p.write(instance, new File(instance.getName() + ".xml"));
         
         System.out.println(instance.toString());
+        
+        World w = p.read(World.class, new File(instance.getName() + ".xml"));
+        
+        System.out.println(w.toString());
     }
     
 }
