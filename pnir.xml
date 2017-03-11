@@ -1,0 +1,138 @@
+<world name="pnir" start="start">
+   <places>
+      <entry>
+         <string>rill</string>
+         <Place name="rill" description="" goal="false" level="5">
+            <passages/>
+         </Place>
+      </entry>
+      <entry>
+         <string>reito</string>
+         <Place name="reito" description="" goal="false" level="3">
+            <passages/>
+         </Place>
+      </entry>
+      <entry>
+         <string>rlafovc</string>
+         <Place name="rlafovc" description="" goal="false" level="1">
+            <passages/>
+         </Place>
+      </entry>
+      <entry>
+         <string>avditla</string>
+         <Place name="avditla" description="" goal="false" level="4">
+            <passages/>
+         </Place>
+      </entry>
+      <entry>
+         <string>hmeraga</string>
+         <Place name="hmeraga" description="" goal="true" level="5">
+            <passages/>
+         </Place>
+      </entry>
+      <entry>
+         <string>tell</string>
+         <Place name="tell" description="" goal="false" level="2">
+            <passages/>
+         </Place>
+      </entry>
+      <entry>
+         <string>aorsab</string>
+         <Place name="aorsab" description="" goal="false" level="1">
+            <passages/>
+         </Place>
+      </entry>
+      <entry>
+         <string>oezai</string>
+         <Place name="oezai" description="" goal="false" level="4">
+            <passages/>
+         </Place>
+      </entry>
+      <entry>
+         <string>start</string>
+         <Place name="start" description="" goal="false" level="0">
+            <passages/>
+         </Place>
+      </entry>
+      <entry>
+         <string>aomles</string>
+         <Place name="aomles" description="" goal="false" level="3">
+            <passages/>
+         </Place>
+      </entry>
+      <entry>
+         <string>bnisd</string>
+         <Place name="bnisd" description="" goal="false" level="1">
+            <passages/>
+         </Place>
+      </entry>
+      <entry>
+         <string>uror</string>
+         <Place name="uror" description="" goal="false" level="2">
+            <passages/>
+         </Place>
+      </entry>
+      <entry>
+         <string>eshad</string>
+         <Place name="eshad" description="" goal="false" level="1">
+            <passages/>
+         </Place>
+      </entry>
+      <entry>
+         <string>atlo</string>
+         <Place name="atlo" description="" goal="false" level="3">
+            <passages/>
+         </Place>
+      </entry>
+      <entry>
+         <string>osit</string>
+         <Place name="osit" description="" goal="false" level="1">
+            <passages/>
+         </Place>
+      </entry>
+      <entry>
+         <string>tceri</string>
+         <Place name="tceri" description="" goal="false" level="3">
+            <passages/>
+         </Place>
+      </entry>
+      <entry>
+         <string>odne</string>
+         <Place name="odne" description="" goal="false" level="1">
+            <passages/>
+         </Place>
+      </entry>
+      <entry>
+         <string>zilc</string>
+         <Place name="zilc" description="" goal="false" level="2">
+            <passages/>
+         </Place>
+      </entry>
+   </places>
+   <levels>
+      <entry>
+         <integer>0</integer>
+         <Level id="0" name="lvl0" description=""/>
+      </entry>
+      <entry>
+         <integer>1</integer>
+         <Level id="1" name="lvl1" description=""/>
+      </entry>
+      <entry>
+         <integer>2</integer>
+         <Level id="2" name="lvl2" description=""/>
+      </entry>
+      <entry>
+         <integer>3</integer>
+         <Level id="3" name="lvl3" description=""/>
+      </entry>
+      <entry>
+         <integer>4</integer>
+         <Level id="4" name="lvl4" description=""/>
+      </entry>
+      <entry>
+         <integer>5</integer>
+         <Level id="5" name="lvl5" description=""/>
+      </entry>
+   </levels>
+</world>

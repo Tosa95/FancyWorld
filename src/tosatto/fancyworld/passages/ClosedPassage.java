@@ -7,6 +7,7 @@ package tosatto.fancyworld.passages;
 
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Root;
+import tosatto.fancyworld.game.GameInfo;
 import tosatto.fancyworld.passages.exceptions.ClosedPassageException;
 import tosatto.fancyworld.passages.exceptions.PassageException;
 import tosatto.fancyworld.places.Place;
@@ -24,11 +25,11 @@ public class ClosedPassage extends Passage{
     }
 
     public ClosedPassage() {
-        super("Closed passage");
+        super("Passaggio chiuso");
     }
     
     @Override
-    public String pass() throws PassageException {
+    public String next() throws PassageException {
         throw new ClosedPassageException();
     }
     

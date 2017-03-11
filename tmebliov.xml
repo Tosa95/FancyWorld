@@ -1,0 +1,190 @@
+<world name="tmebliov" start="start">
+   <places>
+      <entry>
+         <string>aedrasp</string>
+         <Place name="aedrasp" description="" goal="false" level="4">
+            <passages/>
+         </Place>
+      </entry>
+      <entry>
+         <string>tpios</string>
+         <Place name="tpios" description="" goal="false" level="3">
+            <passages/>
+         </Place>
+      </entry>
+      <entry>
+         <string>enainig</string>
+         <Place name="enainig" description="" goal="true" level="6">
+            <passages/>
+         </Place>
+      </entry>
+      <entry>
+         <string>rlaltu</string>
+         <Place name="rlaltu" description="" goal="false" level="5">
+            <passages/>
+         </Place>
+      </entry>
+      <entry>
+         <string>ibaive</string>
+         <Place name="ibaive" description="" goal="false" level="2">
+            <passages/>
+         </Place>
+      </entry>
+      <entry>
+         <string>thobnu</string>
+         <Place name="thobnu" description="" goal="false" level="4">
+            <passages/>
+         </Place>
+      </entry>
+      <entry>
+         <string>tgiv</string>
+         <Place name="tgiv" description="" goal="false" level="5">
+            <passages/>
+         </Place>
+      </entry>
+      <entry>
+         <string>udpeidm</string>
+         <Place name="udpeidm" description="" goal="false" level="3">
+            <passages/>
+         </Place>
+      </entry>
+      <entry>
+         <string>cnodoni</string>
+         <Place name="cnodoni" description="" goal="false" level="4">
+            <passages/>
+         </Place>
+      </entry>
+      <entry>
+         <string>ancese</string>
+         <Place name="ancese" description="" goal="false" level="4">
+            <passages/>
+         </Place>
+      </entry>
+      <entry>
+         <string>ocfaics</string>
+         <Place name="ocfaics" description="" goal="false" level="0">
+            <passages/>
+         </Place>
+      </entry>
+      <entry>
+         <string>hvoat</string>
+         <Place name="hvoat" description="" goal="false" level="2">
+            <passages/>
+         </Place>
+      </entry>
+      <entry>
+         <string>feudsiu</string>
+         <Place name="feudsiu" description="" goal="false" level="2">
+            <passages/>
+         </Place>
+      </entry>
+      <entry>
+         <string>start</string>
+         <Place name="start" description="" goal="false" level="0">
+            <passages/>
+         </Place>
+      </entry>
+      <entry>
+         <string>tnae</string>
+         <Place name="tnae" description="" goal="false" level="5">
+            <passages/>
+         </Place>
+      </entry>
+      <entry>
+         <string>daonfor</string>
+         <Place name="daonfor" description="" goal="false" level="0">
+            <passages/>
+         </Place>
+      </entry>
+      <entry>
+         <string>ptaifeh</string>
+         <Place name="ptaifeh" description="" goal="false" level="3">
+            <passages/>
+         </Place>
+      </entry>
+      <entry>
+         <string>rotro</string>
+         <Place name="rotro" description="" goal="false" level="0">
+            <passages/>
+         </Place>
+      </entry>
+      <entry>
+         <string>omli</string>
+         <Place name="omli" description="" goal="false" level="1">
+            <passages/>
+         </Place>
+      </entry>
+      <entry>
+         <string>nraezni</string>
+         <Place name="nraezni" description="" goal="false" level="1">
+            <passages/>
+         </Place>
+      </entry>
+      <entry>
+         <string>eoris</string>
+         <Place name="eoris" description="" goal="false" level="3">
+            <passages/>
+         </Place>
+      </entry>
+      <entry>
+         <string>rialan</string>
+         <Place name="rialan" description="" goal="false" level="2">
+            <passages/>
+         </Place>
+      </entry>
+      <entry>
+         <string>ninna</string>
+         <Place name="ninna" description="" goal="false" level="0">
+            <passages/>
+         </Place>
+      </entry>
+      <entry>
+         <string>itecp</string>
+         <Place name="itecp" description="" goal="false" level="4">
+            <passages/>
+         </Place>
+      </entry>
+      <entry>
+         <string>nevaula</string>
+         <Place name="nevaula" description="" goal="false" level="4">
+            <passages/>
+         </Place>
+      </entry>
+      <entry>
+         <string>poniand</string>
+         <Place name="poniand" description="" goal="false" level="3">
+            <passages/>
+         </Place>
+      </entry>
+   </places>
+   <levels>
+      <entry>
+         <integer>0</integer>
+         <Level id="0" name="lvl0" description=""/>
+      </entry>
+      <entry>
+         <integer>1</integer>
+         <Level id="1" name="lvl1" description=""/>
+      </entry>
+      <entry>
+         <integer>2</integer>
+         <Level id="2" name="lvl2" description=""/>
+      </entry>
+      <entry>
+         <integer>3</integer>
+         <Level id="3" name="lvl3" description=""/>
+      </entry>
+      <entry>
+         <integer>4</integer>
+         <Level id="4" name="lvl4" description=""/>
+      </entry>
+      <entry>
+         <integer>5</integer>
+         <Level id="5" name="lvl5" description=""/>
+      </entry>
+      <entry>
+         <integer>6</integer>
+         <Level id="6" name="lvl6" description=""/>
+      </entry>
+   </levels>
+</world>

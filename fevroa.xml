@@ -1,0 +1,108 @@
+<world name="fevroa" start="start">
+   <places>
+      <entry>
+         <string>edan</string>
+         <Place name="edan" description="" goal="false" level="4">
+            <passages/>
+         </Place>
+      </entry>
+      <entry>
+         <string>mdeisre</string>
+         <Place name="mdeisre" description="" goal="false" level="3">
+            <passages/>
+         </Place>
+      </entry>
+      <entry>
+         <string>start</string>
+         <Place name="start" description="" goal="false" level="0">
+            <passages/>
+         </Place>
+      </entry>
+      <entry>
+         <string>ptia</string>
+         <Place name="ptia" description="" goal="false" level="3">
+            <passages/>
+         </Place>
+      </entry>
+      <entry>
+         <string>repeqn</string>
+         <Place name="repeqn" description="" goal="false" level="5">
+            <passages/>
+         </Place>
+      </entry>
+      <entry>
+         <string>eprohah</string>
+         <Place name="eprohah" description="" goal="false" level="1">
+            <passages/>
+         </Place>
+      </entry>
+      <entry>
+         <string>aicals</string>
+         <Place name="aicals" description="" goal="false" level="2">
+            <passages/>
+         </Place>
+      </entry>
+      <entry>
+         <string>rape</string>
+         <Place name="rape" description="" goal="false" level="2">
+            <passages/>
+         </Place>
+      </entry>
+      <entry>
+         <string>ntifti</string>
+         <Place name="ntifti" description="" goal="false" level="1">
+            <passages/>
+         </Place>
+      </entry>
+      <entry>
+         <string>cnodp</string>
+         <Place name="cnodp" description="" goal="false" level="3">
+            <passages/>
+         </Place>
+      </entry>
+      <entry>
+         <string>frid</string>
+         <Place name="frid" description="" goal="false" level="2">
+            <passages/>
+         </Place>
+      </entry>
+      <entry>
+         <string>nlasna</string>
+         <Place name="nlasna" description="" goal="false" level="4">
+            <passages/>
+         </Place>
+      </entry>
+      <entry>
+         <string>noir</string>
+         <Place name="noir" description="" goal="false" level="4">
+            <passages/>
+         </Place>
+      </entry>
+   </places>
+   <levels>
+      <entry>
+         <integer>0</integer>
+         <Level id="0" name="lvl0" description=""/>
+      </entry>
+      <entry>
+         <integer>1</integer>
+         <Level id="1" name="lvl1" description=""/>
+      </entry>
+      <entry>
+         <integer>2</integer>
+         <Level id="2" name="lvl2" description=""/>
+      </entry>
+      <entry>
+         <integer>3</integer>
+         <Level id="3" name="lvl3" description=""/>
+      </entry>
+      <entry>
+         <integer>4</integer>
+         <Level id="4" name="lvl4" description=""/>
+      </entry>
+      <entry>
+         <integer>5</integer>
+         <Level id="5" name="lvl5" description=""/>
+      </entry>
+   </levels>
+</world>

@@ -7,7 +7,8 @@ package tosatto.fancyworld.levels;
 
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Root;
-import tosatto.fancyworld.game.Game;
+import tosatto.fancyworld.game.BaseGame;
+import tosatto.fancyworld.game.GameInfo;
 
 /**
  *
@@ -24,9 +25,9 @@ public class Level {
     
     @Attribute (name = "description")
     private String description;
-    
-    protected Game gm;
 
+    protected GameInfo gi;
+    
     public Level(@Attribute (name = "id") int id,
                  @Attribute (name = "name") String name,
                  @Attribute (name = "description") String description) 
@@ -36,8 +37,8 @@ public class Level {
         this.name = name;
     }
 
-    public void setGm(Game gm) {
-        this.gm = gm;
+    public void setGi(GameInfo gi) {
+        this.gi = gi;
     }
     
     public String getDescription() {

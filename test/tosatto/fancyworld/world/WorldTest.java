@@ -39,29 +39,7 @@ public class WorldTest {
     
     @Before
     public void setUp() {
-        instance = new World("prova", "Buio");
-        
-        Place p1 = new Place("Buio", "Luogo deprimente", false, 0);
-        Place p2 = new Place("Luce", "Luogo felice", true, 0);
-        Place p3 = new Place("Luce", "Luogo felice", true, 101010);
-        
-        p1.addPassage(Directions.WEST, new OpenPassage("P1", "Luce"));
-        p2.addPassage(Directions.EST, new OpenPassage("P1", "Buio"));
-        
-        instance.addLevel(new Level(0, "In principio", ""));
-        
-        instance.addPlace(p1);
-        instance.addPlace(p2);
-        
-        try{
-            instance.addPlace(p3);
-            fail();
-        }catch (IllegalArgumentException e)
-        {
-            
-        }
-        
-        
+        instance = RandomWorldGenerator.generate(5, 8, 10, 27);
     }
     
     @After

@@ -5,6 +5,10 @@
  */
 package fancyworld;
 
+import tosatto.fancyworld.IO.ConsoleMessageIO;
+import tosatto.fancyworld.IO.MessageIO;
+import tosatto.fancyworld.world.NameGenerator;
+
 /**
  *
  * @author Davide
@@ -15,7 +19,15 @@ public class FancyWorld {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        MessageIO io = new ConsoleMessageIO();
+        
+//        io.inform("Hello world");
+//        
+////        io.ask("Come va?", new String[]{"bene","male"});
+//        
+//        io.presentMenu("Prova", new String[]{"ciao", "come", "va"});
+
+        io.inform(NameGenerator.getRandomName(4,7));
     }
     
 }

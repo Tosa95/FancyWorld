@@ -8,6 +8,7 @@ package tosatto.fancyworld.passages;
 import java.util.HashMap;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Root;
+import tosatto.fancyworld.game.GameInfo;
 import tosatto.fancyworld.passages.exceptions.PassageException;
 import tosatto.fancyworld.places.Place;
 
@@ -28,7 +29,7 @@ public class OpenPassage extends Passage{
     }
     
     @Override
-    public String pass() throws PassageException {
+    public String next() throws PassageException{
         return nextPlace;
     }
 

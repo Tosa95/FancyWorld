@@ -7,7 +7,8 @@ package tosatto.fancyworld.passages;
 
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Root;
-import tosatto.fancyworld.game.Game;
+import tosatto.fancyworld.game.BaseGame;
+import tosatto.fancyworld.game.GameInfo;
 import tosatto.fancyworld.passages.exceptions.PassageException;
 import tosatto.fancyworld.places.Place;
 
@@ -21,18 +22,19 @@ public abstract class Passage {
     @Attribute (name = "name")
     private String name;
     
-    protected Game gm;
+    protected GameInfo gi;
     
     public Passage (@Attribute (name = "name") String name)
     {
         this.name = name;
     }
 
-    public void setGm(Game gm) {
-        this.gm = gm;
+    public void setGi(GameInfo gi) {
+        this.gi = gi;
     }
     
-    public abstract String pass () throws PassageException;
+    public abstract String next () throws PassageException;
+    
     public String getName ()
     {
         return name;

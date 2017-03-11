@@ -10,7 +10,8 @@ import java.util.Map;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.ElementMap;
 import org.simpleframework.xml.Root;
-import tosatto.fancyworld.game.Game;
+import tosatto.fancyworld.game.BaseGame;
+import tosatto.fancyworld.game.GameInfo;
 import tosatto.fancyworld.passages.ClosedPassage;
 import tosatto.fancyworld.passages.Passage;
 
@@ -36,7 +37,7 @@ public class Place {
     @ElementMap (name = "passages")
     protected HashMap<String, Passage> passages = new HashMap<>();
     
-    protected Game gm;
+    protected GameInfo gi;
     
     public Place (@Attribute (name = "name") String name,
                   @Attribute (name = "description") String description,
@@ -49,14 +50,9 @@ public class Place {
         this.level = level;
     }
 
-    public void setGm(Game gm) {
-        this.gm = gm;
-        
-        for (Passage p: passages.values())
-            p.setGm(gm);
+    public void setGi(GameInfo gi) {
+        this.gi = gi;
     }
-    
-    
     
     public String getName ()
     {
@@ -83,6 +79,7 @@ public class Place {
     
     public void addPassage (String direction, Passage p)
     {
+        p.setGi(gi);
         passages.put(direction, p);
     }
     

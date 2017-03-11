@@ -7,7 +7,8 @@ package tosatto.fancyworld.player;
 
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Root;
-import tosatto.fancyworld.game.Game;
+import tosatto.fancyworld.game.BaseGame;
+import tosatto.fancyworld.game.GameInfo;
 
 /**
  *
@@ -21,16 +22,16 @@ public class Player {
     
     @Attribute (name = "place")
     private String place;
-    
-    protected Game gm;
 
+    protected GameInfo gi;
+    
     public Player(@Attribute (name = "name") String name) 
     {
         this.name = name;
     }
 
-    public void setGm(Game game) {
-        this.gm = game;
+    public void setGi(GameInfo gi) {
+        this.gi = gi;
     }
 
     public void setPlace(String place) {
