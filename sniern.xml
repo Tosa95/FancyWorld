@@ -1,0 +1,176 @@
+<world name="sniern" start="start">
+   <places>
+      <entry>
+         <string>efoef</string>
+         <Place name="efoef" description="" goal="false" level="4">
+            <passages>
+               <entry>
+                  <string>south</string>
+                  <passage class="tosatto.fancyworld.passages.OpenPassage" name="uav" next="tqira"/>
+               </entry>
+            </passages>
+         </Place>
+      </entry>
+      <entry>
+         <string>sorlia</string>
+         <Place name="sorlia" description="" goal="true" level="1">
+            <passages>
+               <entry>
+                  <string>south</string>
+                  <passage class="tosatto.fancyworld.passages.OpenPassage" name="erlaf" next="aitema"/>
+               </entry>
+               <entry>
+                  <string>est</string>
+                  <passage class="tosatto.fancyworld.passages.OpenPassage" name="ialti" next="possatn"/>
+               </entry>
+            </passages>
+         </Place>
+      </entry>
+      <entry>
+         <string>possatn</string>
+         <Place name="possatn" description="" goal="false" level="6">
+            <passages>
+               <entry>
+                  <string>est</string>
+                  <passage class="tosatto.fancyworld.passages.OpenPassage" name="polao" next="thao"/>
+               </entry>
+               <entry>
+                  <string>west</string>
+                  <passage class="tosatto.fancyworld.passages.OpenPassage" name="ialti" next="sorlia"/>
+               </entry>
+               <entry>
+                  <string>down</string>
+                  <passage class="tosatto.fancyworld.passages.OpenPassage" name="itv" next="treotpe"/>
+               </entry>
+            </passages>
+         </Place>
+      </entry>
+      <entry>
+         <string>thao</string>
+         <Place name="thao" description="" goal="false" level="1">
+            <passages>
+               <entry>
+                  <string>north</string>
+                  <passage class="tosatto.fancyworld.passages.OpenPassage" name="polao" next="possatn"/>
+               </entry>
+            </passages>
+         </Place>
+      </entry>
+      <entry>
+         <string>start</string>
+         <Place name="start" description="" goal="false" level="0">
+            <passages>
+               <entry>
+                  <string>north</string>
+                  <passage class="tosatto.fancyworld.passages.OpenPassage" name="ctome" next="anre"/>
+               </entry>
+            </passages>
+         </Place>
+      </entry>
+      <entry>
+         <string>tqira</string>
+         <Place name="tqira" description="" goal="false" level="1">
+            <passages>
+               <entry>
+                  <string>est</string>
+                  <passage class="tosatto.fancyworld.passages.OpenPassage" name="uanz" next="mapi"/>
+               </entry>
+               <entry>
+                  <string>down</string>
+                  <passage class="tosatto.fancyworld.passages.OpenPassage" name="uav" next="efoef"/>
+               </entry>
+            </passages>
+         </Place>
+      </entry>
+      <entry>
+         <string>anre</string>
+         <Place name="anre" description="" goal="false" level="4">
+            <passages>
+               <entry>
+                  <string>north</string>
+                  <passage class="tosatto.fancyworld.passages.OpenPassage" name="ctome" next="start"/>
+               </entry>
+               <entry>
+                  <string>west</string>
+                  <passage class="tosatto.fancyworld.passages.OpenPassage" name="tlei" next="treotpe"/>
+               </entry>
+               <entry>
+                  <string>down</string>
+                  <passage class="tosatto.fancyworld.passages.OpenPassage" name="deore" next="mapi"/>
+               </entry>
+            </passages>
+         </Place>
+      </entry>
+      <entry>
+         <string>mapi</string>
+         <Place name="mapi" description="" goal="false" level="1">
+            <passages>
+               <entry>
+                  <string>north</string>
+                  <passage class="tosatto.fancyworld.passages.OpenPassage" name="uanz" next="tqira"/>
+               </entry>
+               <entry>
+                  <string>est</string>
+                  <passage class="tosatto.fancyworld.passages.OpenPassage" name="deore" next="anre"/>
+               </entry>
+            </passages>
+         </Place>
+      </entry>
+      <entry>
+         <string>aitema</string>
+         <Place name="aitema" description="" goal="false" level="3">
+            <passages>
+               <entry>
+                  <string>south</string>
+                  <passage class="tosatto.fancyworld.passages.OpenPassage" name="erlaf" next="sorlia"/>
+               </entry>
+            </passages>
+         </Place>
+      </entry>
+      <entry>
+         <string>treotpe</string>
+         <Place name="treotpe" description="" goal="false" level="3">
+            <passages>
+               <entry>
+                  <string>south</string>
+                  <passage class="tosatto.fancyworld.passages.OpenPassage" name="itv" next="possatn"/>
+               </entry>
+               <entry>
+                  <string>down</string>
+                  <passage class="tosatto.fancyworld.passages.OpenPassage" name="tlei" next="anre"/>
+               </entry>
+            </passages>
+         </Place>
+      </entry>
+   </places>
+   <levels>
+      <entry>
+         <integer>0</integer>
+         <Level id="0" name="lvl0" description=""/>
+      </entry>
+      <entry>
+         <integer>1</integer>
+         <Level id="1" name="lvl1" description=""/>
+      </entry>
+      <entry>
+         <integer>2</integer>
+         <Level id="2" name="lvl2" description=""/>
+      </entry>
+      <entry>
+         <integer>3</integer>
+         <Level id="3" name="lvl3" description=""/>
+      </entry>
+      <entry>
+         <integer>4</integer>
+         <Level id="4" name="lvl4" description=""/>
+      </entry>
+      <entry>
+         <integer>5</integer>
+         <Level id="5" name="lvl5" description=""/>
+      </entry>
+      <entry>
+         <integer>6</integer>
+         <Level id="6" name="lvl6" description=""/>
+      </entry>
+   </levels>
+</world>

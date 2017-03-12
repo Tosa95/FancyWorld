@@ -9,6 +9,10 @@ import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
 import tosatto.fancyworld.IO.MessageIO;
+import tosatto.fancyworld.passages.exceptions.ClosedPassageException;
+import tosatto.fancyworld.passages.exceptions.PassageException;
+import tosatto.fancyworld.places.Directions;
+import tosatto.fancyworld.places.Place;
 import tosatto.fancyworld.player.Player;
 import tosatto.fancyworld.world.World;
 
@@ -55,10 +59,43 @@ public class BaseGame extends Game{
         this.io = io;
     }
     
+    @Override
     public void play()
     {
         io.inform("Welcome to Fancy World");
         
+        Place p = world.getPlace(world.getStartPlace());
+        
+        io.inform(String.format("Benvenuto. Ti trovi nel luogo %s. Devi "
+                + "raggiungere un luogo che si trova al livello %d", p.getName(), world.getEndLevelIndex()));
+        
+        while (! p.isGoal())
+        {
+            int dir = io.ask("Scegli una direzione", Directions.DIRECTIONS);
+            
+            try {
+                
+                String nextPlace = p.getPassage(Directions.DIRECTIONS[dir]).next();
+                
+                p = world.getPlace(nextPlace);
+                
+                io.inform(String.format ("Ti trovi nel luogo %s, livello %d", nextPlace, p.getLevel()));
+                
+            }catch (ClosedPassageException e){
+                
+                io.inform("Passaggio murato");
+                
+            }catch (PassageException e){
+                
+                io.inform (e.getMessage());
+                
+            }
+            
+            
+        }
+        
+        
+        io.inform("HAI VINTO!!!");
         
     }
     

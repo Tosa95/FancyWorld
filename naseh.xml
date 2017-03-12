@@ -1,0 +1,363 @@
+<world name="naseh" start="start">
+   <places>
+      <entry>
+         <string>uqto</string>
+         <Place name="uqto" description="" goal="false" level="1">
+            <passages>
+               <entry>
+                  <string>est</string>
+                  <passage class="tosatto.fancyworld.passages.OpenPassage" name="btils" next="trere"/>
+               </entry>
+            </passages>
+         </Place>
+      </entry>
+      <entry>
+         <string>vnuodlu</string>
+         <Place name="vnuodlu" description="" goal="false" level="3">
+            <passages>
+               <entry>
+                  <string>down</string>
+                  <passage class="tosatto.fancyworld.passages.OpenPassage" name="inoal" next="ielm"/>
+               </entry>
+            </passages>
+         </Place>
+      </entry>
+      <entry>
+         <string>trere</string>
+         <Place name="trere" description="" goal="false" level="3">
+            <passages>
+               <entry>
+                  <string>south</string>
+                  <passage class="tosatto.fancyworld.passages.OpenPassage" name="eta" next="idecta"/>
+               </entry>
+               <entry>
+                  <string>up</string>
+                  <passage class="tosatto.fancyworld.passages.OpenPassage" name="btils" next="uqto"/>
+               </entry>
+            </passages>
+         </Place>
+      </entry>
+      <entry>
+         <string>dsivte</string>
+         <Place name="dsivte" description="" goal="false" level="2">
+            <passages>
+               <entry>
+                  <string>up</string>
+                  <passage class="tosatto.fancyworld.passages.OpenPassage" name="ais" next="traen"/>
+               </entry>
+               <entry>
+                  <string>down</string>
+                  <passage class="tosatto.fancyworld.passages.OpenPassage" name="mit" next="oiniel"/>
+               </entry>
+            </passages>
+         </Place>
+      </entry>
+      <entry>
+         <string>azadact</string>
+         <Place name="azadact" description="" goal="false" level="3">
+            <passages>
+               <entry>
+                  <string>north</string>
+                  <passage class="tosatto.fancyworld.passages.OpenPassage" name="lih" next="idecta"/>
+               </entry>
+            </passages>
+         </Place>
+      </entry>
+      <entry>
+         <string>start</string>
+         <Place name="start" description="" goal="false" level="0">
+            <passages>
+               <entry>
+                  <string>north</string>
+                  <passage class="tosatto.fancyworld.passages.OpenPassage" name="oite" next="oiqtoe"/>
+               </entry>
+            </passages>
+         </Place>
+      </entry>
+      <entry>
+         <string>ltiopin</string>
+         <Place name="ltiopin" description="" goal="false" level="4">
+            <passages>
+               <entry>
+                  <string>north</string>
+                  <passage class="tosatto.fancyworld.passages.OpenPassage" name="hliro" next="eovimuc"/>
+               </entry>
+            </passages>
+         </Place>
+      </entry>
+      <entry>
+         <string>ielm</string>
+         <Place name="ielm" description="" goal="false" level="0">
+            <passages>
+               <entry>
+                  <string>south</string>
+                  <passage class="tosatto.fancyworld.passages.OpenPassage" name="atd" next="isnotr"/>
+               </entry>
+               <entry>
+                  <string>est</string>
+                  <passage class="tosatto.fancyworld.passages.OpenPassage" name="ilcei" next="oedo"/>
+               </entry>
+               <entry>
+                  <string>north</string>
+                  <passage class="tosatto.fancyworld.passages.OpenPassage" name="inoal" next="vnuodlu"/>
+               </entry>
+               <entry>
+                  <string>up</string>
+                  <passage class="tosatto.fancyworld.passages.OpenPassage" name="dei" next="neiri"/>
+               </entry>
+               <entry>
+                  <string>down</string>
+                  <passage class="tosatto.fancyworld.passages.OpenPassage" name="hnaol" next="niert"/>
+               </entry>
+            </passages>
+         </Place>
+      </entry>
+      <entry>
+         <string>untore</string>
+         <Place name="untore" description="" goal="false" level="3">
+            <passages>
+               <entry>
+                  <string>down</string>
+                  <passage class="tosatto.fancyworld.passages.OpenPassage" name="pia" next="traen"/>
+               </entry>
+            </passages>
+         </Place>
+      </entry>
+      <entry>
+         <string>ioctepr</string>
+         <Place name="ioctepr" description="" goal="false" level="2">
+            <passages>
+               <entry>
+                  <string>north</string>
+                  <passage class="tosatto.fancyworld.passages.OpenPassage" name="enao" next="iare"/>
+               </entry>
+            </passages>
+         </Place>
+      </entry>
+      <entry>
+         <string>hcaefai</string>
+         <Place name="hcaefai" description="" goal="false" level="4">
+            <passages>
+               <entry>
+                  <string>west</string>
+                  <passage class="tosatto.fancyworld.passages.OpenPassage" name="nniu" next="oiniel"/>
+               </entry>
+            </passages>
+         </Place>
+      </entry>
+      <entry>
+         <string>eovimuc</string>
+         <Place name="eovimuc" description="" goal="false" level="4">
+            <passages>
+               <entry>
+                  <string>north</string>
+                  <passage class="tosatto.fancyworld.passages.OpenPassage" name="hliro" next="ltiopin"/>
+               </entry>
+               <entry>
+                  <string>west</string>
+                  <passage class="tosatto.fancyworld.passages.OpenPassage" name="rgaom" next="rlosoa"/>
+               </entry>
+            </passages>
+         </Place>
+      </entry>
+      <entry>
+         <string>oedo</string>
+         <Place name="oedo" description="" goal="false" level="1">
+            <passages>
+               <entry>
+                  <string>north</string>
+                  <passage class="tosatto.fancyworld.passages.OpenPassage" name="doens" next="rlosoa"/>
+               </entry>
+               <entry>
+                  <string>west</string>
+                  <passage class="tosatto.fancyworld.passages.OpenPassage" name="ilcei" next="ielm"/>
+               </entry>
+               <entry>
+                  <string>up</string>
+                  <passage class="tosatto.fancyworld.passages.OpenPassage" name="ata" next="idecta"/>
+               </entry>
+            </passages>
+         </Place>
+      </entry>
+      <entry>
+         <string>niert</string>
+         <Place name="niert" description="" goal="false" level="0">
+            <passages>
+               <entry>
+                  <string>est</string>
+                  <passage class="tosatto.fancyworld.passages.OpenPassage" name="esl" next="iare"/>
+               </entry>
+               <entry>
+                  <string>down</string>
+                  <passage class="tosatto.fancyworld.passages.OpenPassage" name="hnaol" next="ielm"/>
+               </entry>
+            </passages>
+         </Place>
+      </entry>
+      <entry>
+         <string>neiri</string>
+         <Place name="neiri" description="" goal="false" level="2">
+            <passages>
+               <entry>
+                  <string>est</string>
+                  <passage class="tosatto.fancyworld.passages.OpenPassage" name="dei" next="ielm"/>
+               </entry>
+            </passages>
+         </Place>
+      </entry>
+      <entry>
+         <string>oiqtoe</string>
+         <Place name="oiqtoe" description="" goal="false" level="1">
+            <passages>
+               <entry>
+                  <string>est</string>
+                  <passage class="tosatto.fancyworld.passages.OpenPassage" name="oase" next="acao"/>
+               </entry>
+               <entry>
+                  <string>west</string>
+                  <passage class="tosatto.fancyworld.passages.OpenPassage" name="oite" next="start"/>
+               </entry>
+            </passages>
+         </Place>
+      </entry>
+      <entry>
+         <string>oiniel</string>
+         <Place name="oiniel" description="" goal="false" level="2">
+            <passages>
+               <entry>
+                  <string>north</string>
+                  <passage class="tosatto.fancyworld.passages.OpenPassage" name="mit" next="dsivte"/>
+               </entry>
+               <entry>
+                  <string>up</string>
+                  <passage class="tosatto.fancyworld.passages.OpenPassage" name="priol" next="idecta"/>
+               </entry>
+               <entry>
+                  <string>down</string>
+                  <passage class="tosatto.fancyworld.passages.OpenPassage" name="nniu" next="hcaefai"/>
+               </entry>
+            </passages>
+         </Place>
+      </entry>
+      <entry>
+         <string>iare</string>
+         <Place name="iare" description="" goal="false" level="2">
+            <passages>
+               <entry>
+                  <string>north</string>
+                  <passage class="tosatto.fancyworld.passages.OpenPassage" name="enao" next="ioctepr"/>
+               </entry>
+               <entry>
+                  <string>west</string>
+                  <passage class="tosatto.fancyworld.passages.OpenPassage" name="esl" next="niert"/>
+               </entry>
+            </passages>
+         </Place>
+      </entry>
+      <entry>
+         <string>traen</string>
+         <Place name="traen" description="" goal="false" level="0">
+            <passages>
+               <entry>
+                  <string>south</string>
+                  <passage class="tosatto.fancyworld.passages.OpenPassage" name="ipelr" next="acao"/>
+               </entry>
+               <entry>
+                  <string>north</string>
+                  <passage class="tosatto.fancyworld.passages.OpenPassage" name="ais" next="dsivte"/>
+               </entry>
+               <entry>
+                  <string>est</string>
+                  <passage class="tosatto.fancyworld.passages.OpenPassage" name="pia" next="untore"/>
+               </entry>
+            </passages>
+         </Place>
+      </entry>
+      <entry>
+         <string>idecta</string>
+         <Place name="idecta" description="" goal="true" level="0">
+            <passages>
+               <entry>
+                  <string>south</string>
+                  <passage class="tosatto.fancyworld.passages.OpenPassage" name="priol" next="oiniel"/>
+               </entry>
+               <entry>
+                  <string>north</string>
+                  <passage class="tosatto.fancyworld.passages.OpenPassage" name="lih" next="azadact"/>
+               </entry>
+               <entry>
+                  <string>est</string>
+                  <passage class="tosatto.fancyworld.passages.OpenPassage" name="eta" next="trere"/>
+               </entry>
+               <entry>
+                  <string>west</string>
+                  <passage class="tosatto.fancyworld.passages.OpenPassage" name="ata" next="oedo"/>
+               </entry>
+            </passages>
+         </Place>
+      </entry>
+      <entry>
+         <string>isnotr</string>
+         <Place name="isnotr" description="" goal="false" level="1">
+            <passages>
+               <entry>
+                  <string>north</string>
+                  <passage class="tosatto.fancyworld.passages.OpenPassage" name="atd" next="ielm"/>
+               </entry>
+            </passages>
+         </Place>
+      </entry>
+      <entry>
+         <string>acao</string>
+         <Place name="acao" description="" goal="false" level="2">
+            <passages>
+               <entry>
+                  <string>north</string>
+                  <passage class="tosatto.fancyworld.passages.OpenPassage" name="oase" next="oiqtoe"/>
+               </entry>
+               <entry>
+                  <string>up</string>
+                  <passage class="tosatto.fancyworld.passages.OpenPassage" name="ipelr" next="traen"/>
+               </entry>
+            </passages>
+         </Place>
+      </entry>
+      <entry>
+         <string>rlosoa</string>
+         <Place name="rlosoa" description="" goal="false" level="3">
+            <passages>
+               <entry>
+                  <string>south</string>
+                  <passage class="tosatto.fancyworld.passages.OpenPassage" name="rgaom" next="eovimuc"/>
+               </entry>
+               <entry>
+                  <string>up</string>
+                  <passage class="tosatto.fancyworld.passages.OpenPassage" name="doens" next="oedo"/>
+               </entry>
+            </passages>
+         </Place>
+      </entry>
+   </places>
+   <levels>
+      <entry>
+         <integer>0</integer>
+         <Level id="0" name="lvl0" description=""/>
+      </entry>
+      <entry>
+         <integer>1</integer>
+         <Level id="1" name="lvl1" description=""/>
+      </entry>
+      <entry>
+         <integer>2</integer>
+         <Level id="2" name="lvl2" description=""/>
+      </entry>
+      <entry>
+         <integer>3</integer>
+         <Level id="3" name="lvl3" description=""/>
+      </entry>
+      <entry>
+         <integer>4</integer>
+         <Level id="4" name="lvl4" description=""/>
+      </entry>
+   </levels>
+</world>

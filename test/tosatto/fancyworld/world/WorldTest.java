@@ -46,9 +46,6 @@ public class WorldTest {
     public void tearDown() {
     }
 
-    /**
-     * Test of addPlace method, of class World.
-     */
     @Test
     public void testSaveAndLoad() throws Exception {
         Persister p = new Persister();

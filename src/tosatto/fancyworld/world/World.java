@@ -5,7 +5,10 @@
  */
 package tosatto.fancyworld.world;
 
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.Set;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.ElementMap;
 import org.simpleframework.xml.Root;
@@ -51,6 +54,10 @@ public class World {
         for (Level l: levels.values())
             l.setGi(gi);
     }
+
+    public String getStartPlace() {
+        return startPlace;
+    }
     
     public String getName ()
     {
@@ -70,6 +77,11 @@ public class World {
     public Place getPlace (String name)
     {
         return places.get(name);
+    }
+    
+    public Collection<Place> getPlaces ()
+    {
+        return Collections.unmodifiableCollection(places.values());
     }
     
     public void addLevel (Level l)

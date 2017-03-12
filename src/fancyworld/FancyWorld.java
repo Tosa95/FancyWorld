@@ -7,7 +7,11 @@ package fancyworld;
 
 import tosatto.fancyworld.IO.ConsoleMessageIO;
 import tosatto.fancyworld.IO.MessageIO;
+import tosatto.fancyworld.game.BaseGame;
+import tosatto.fancyworld.game.Game;
+import tosatto.fancyworld.player.Player;
 import tosatto.fancyworld.world.NameGenerator;
+import tosatto.fancyworld.world.RandomWorldGenerator;
 
 /**
  *
@@ -27,7 +31,9 @@ public class FancyWorld {
 //        
 //        io.presentMenu("Prova", new String[]{"ciao", "come", "va"});
 
-        io.inform(NameGenerator.getRandomName(4,7));
+        BaseGame g = new BaseGame(new Player("Davide"), RandomWorldGenerator.generate(5, 7, 10, 20), "Gioco prova");
+        g.setIo(new ConsoleMessageIO());
+        g.play();
     }
     
 }

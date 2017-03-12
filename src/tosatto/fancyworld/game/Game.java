@@ -13,4 +13,5 @@ package tosatto.fancyworld.game;
  */
 public abstract class Game {
      public abstract String getName();
+     public abstract void play();
 }
