@@ -98,7 +98,7 @@ public class RandomWorldGenerator {
         
      }
     
-    private static boolean fullyConnected (World w)
+    private static boolean connected (World w)
     {
         Random r = new Random();
         
@@ -138,27 +138,34 @@ public class RandomWorldGenerator {
         return false;
     }
     
-    private static PlacePair pickRandomUnconnectedPair (World w)
+    private static PlacePair pickPair (World w)
     {
-        if (fullyConnected(w))
-            return null;
-        
         Random r = new Random();
         
         Place[] places = w.getPlaces().toArray(new Place[w.getPlaces().size()]);
         
         int pNum = places.length;
         
+        Place p1 = places[r.nextInt(pNum)];
+        Place p2 = places[r.nextInt(pNum)];
+        
+        return new PlacePair(p1.getName(), p2.getName());
+    }
+    
+    private static PlacePair pickRandomUnconnectedPair (World w)
+    {
+        if (connected(w))
+            return null;
+        
         while (true)
         {
-            Place p1 = places[r.nextInt(pNum)];
-            Place p2 = places[r.nextInt(pNum)];
+            PlacePair res = pickPair(w);
             
-            if (!connected(w, p1.getName(), p2.getName(), new ArrayList<>()) )
+            if (!connected(w, res.p1, res.p2, new ArrayList<>()) )
             {
-                if (canBeDirectlyConnected(p1, p2))
+                if (canBeDirectlyConnected(w.getPlace(res.p1), w.getPlace(res.p2)))
                 {
-                    return new PlacePair(p1.getName(), p2.getName());
+                    return res;
                 }
                     
             }
@@ -238,8 +245,10 @@ public class RandomWorldGenerator {
         pl2.addPassage(dir2, p21);
     }
     
-    public static World generate(int minLvl, int maxLvl, int minPlaces, int maxPlaces)
+    public static World generate(int minLvl, int maxLvl, int minPlaces, int maxPlaces, int difficulty)
     {
+        NameGenerator ng = new NameGenerator();
+        
         final String startName = "start";
         
         int lvls = boundRnd(minLvl, maxLvl);
@@ -248,32 +257,49 @@ public class RandomWorldGenerator {
         if (places<lvls)
             places = lvls + 2;
         
-        World res = new World(NameGenerator.getRandomName(4, 10), startName);
+        World res = new World(ng.getUniqueRandomName(4, 10), startName);
         
         
         
         for (int i = 0; i < lvls; i++)
         {
             res.addLevel(new Level(i, String.format("lvl%d", i), ""));
-            res.addPlace(new Place(NameGenerator.getRandomName(4, 8), "", false, i));
+            res.addPlace(new Place(ng.getUniqueRandomName(4, 8), "", false, i));
         }
         
         res.addPlace(new Place(startName, "", false, 0));
         
         for (int pl = places - (2 + lvls); pl > 0; pl--)
         {
-            res.addPlace(new Place(NameGenerator.getRandomName(4, 8), "", false, boundRnd(0, lvls)));
+            res.addPlace(new Place(ng.getUniqueRandomName(4, 8), "", false, boundRnd(0, lvls)));
         }
         
-        String goalName = NameGenerator.getRandomName(4, 8);
+        String goalName = ng.getUniqueRandomName(4, 8);
         
         res.addPlace(new Place(goalName, "", true, boundRnd(0, lvls)));
         
-        while (!fullyConnected(res))
+        while (!connected(res))
         {
             PlacePair pair = pickRandomUnconnectedPair(res);
             
             connect(res, pair.p1, pair.p2);
+        }
+        
+        Random r = new Random();
+        
+        if (difficulty == 0)
+            difficulty = 1;
+        
+        int trials = r.nextInt(((places * lvls)/difficulty)+1);
+        
+        for (int i = 0; i < trials; i++)
+        {
+            PlacePair pair = pickPair(res);
+            
+            if (canBeDirectlyConnected(res.getPlace(pair.p1), res.getPlace(pair.p2)))
+            {
+                connect(res, pair.p1, pair.p2);
+            }
         }
         
         return res;

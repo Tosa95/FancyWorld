@@ -5,6 +5,8 @@
  */
 package tosatto.fancyworld.world;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 import java.util.Random;
 
@@ -115,5 +117,21 @@ public class NameGenerator {
         }
         
         return sb.toString();
+    }
+    
+    private List<String> alreadyExtracted = new ArrayList<>();
+    
+    public String getUniqueRandomName (int lettersMin, int lettersMax)
+    {
+        String res = getRandomName(lettersMin, lettersMax);
+        
+        while (alreadyExtracted.contains(res))
+        {
+            res = getRandomName(lettersMin, lettersMax);
+        }
+        
+        alreadyExtracted.add(res);
+        
+        return res;
     }
 }

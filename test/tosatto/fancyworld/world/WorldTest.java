@@ -39,7 +39,7 @@ public class WorldTest {
     
     @Before
     public void setUp() {
-        instance = RandomWorldGenerator.generate(5, 8, 10, 27);
+        instance = RandomWorldGenerator.generate(5, 8, 10, 27, 1);
     }
     
     @After

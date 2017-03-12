@@ -5,6 +5,8 @@
  */
 package tosatto.fancyworld.game;
 
+import java.util.Arrays;
+import org.apache.commons.lang3.ArrayUtils;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
@@ -59,27 +61,42 @@ public class BaseGame extends Game{
         this.io = io;
     }
     
+    private boolean exit (int choice)
+    {
+        return choice == Directions.DIRECTIONS.length;
+    }
+    
     @Override
     public void play()
     {
         io.inform("Welcome to Fancy World");
+        
+        io.inform("Il mondo è generato casualmente, come lo sono i nomi dei posti!")
         
         Place p = world.getPlace(world.getStartPlace());
         
         io.inform(String.format("Benvenuto. Ti trovi nel luogo %s. Devi "
                 + "raggiungere un luogo che si trova al livello %d", p.getName(), world.getEndLevelIndex()));
         
+        String[] choices = ArrayUtils.addAll(Directions.DIRECTIONS, new String[]{"esci"});
+        
         while (! p.isGoal())
         {
-            int dir = io.ask("Scegli una direzione", Directions.DIRECTIONS);
+            io.inform(String.format ("Ti trovi nel luogo %s, livello %d. Ricorda: devi raggiungere un luogo nel livello %d", p.getName(), p.getLevel(), world.getEndLevelIndex()));
+            
+            int dir = io.presentMenu("Cosa si desidera fare?", choices);
+            
+            if (exit(dir))
+            {
+                io.inform("MI DELUDI :(    TORNA PRESTO!!!");
+                return;
+            }
             
             try {
                 
                 String nextPlace = p.getPassage(Directions.DIRECTIONS[dir]).next();
                 
                 p = world.getPlace(nextPlace);
-                
-                io.inform(String.format ("Ti trovi nel luogo %s, livello %d", nextPlace, p.getLevel()));
                 
             }catch (ClosedPassageException e){
                 
@@ -95,7 +112,7 @@ public class BaseGame extends Game{
         }
         
         
-        io.inform("HAI VINTO!!!");
+        io.inform(String.format("Sei nel luogo goal: %s. HAI VINTO!!!", p.getName()));
         
     }
     

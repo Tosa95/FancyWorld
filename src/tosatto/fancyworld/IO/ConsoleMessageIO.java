@@ -85,8 +85,8 @@ public class ConsoleMessageIO implements MessageIO{
             try{
                 int choice = in.nextInt();
 
-                if (choice < entries.length)
-                    return choice;
+                if (choice <= entries.length)
+                    return choice - 1;
                 
                 inform("Scelta non valida.");
             } catch (Exception e){
