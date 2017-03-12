@@ -71,7 +71,7 @@ public class BaseGame extends Game{
     {
         io.inform("Welcome to Fancy World");
         
-        io.inform("Il mondo è generato casualmente, come lo sono i nomi dei posti!")
+        io.inform("Il mondo è generato casualmente, come lo sono i nomi dei posti!");
         
         Place p = world.getPlace(world.getStartPlace());
         

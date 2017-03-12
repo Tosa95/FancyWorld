@@ -26,6 +26,12 @@ public class RandomWorldGenerator {
     private static final String[] dirsOnLevel = {Directions.EST, Directions.NORTH, Directions.SOUTH, Directions.WEST};
     private static final String[] dirsUD = {Directions.UP, Directions.DOWN};
     
+    /**
+     * Ritorna un numero casuale in un intervallo
+     * @param min 
+     * @param max 
+     * @return 
+     */
     private static int boundRnd (int min, int max)
     {
         Random r = new Random();
@@ -33,6 +39,12 @@ public class RandomWorldGenerator {
         return min + r.nextInt(max-min);
     }
     
+    /**
+     * Dice se due posti sono direttamente connessi o no
+     * @param p1
+     * @param p2
+     * @return 
+     */
     private static boolean directlyConnected (Place p1, Place p2)
     {
         
@@ -51,6 +63,14 @@ public class RandomWorldGenerator {
         return false;
     }
     
+    /**
+     * Dice se due posti sono connessi
+     * @param w
+     * @param p1
+     * @param p2
+     * @param visited Lista dei posti già visitati. Deve essere vuota all'inizio
+     * @return 
+     */
     private static boolean connected (World w, String p1, String p2, List<String> visited)
     {
         Place pl1 = w.getPlace(p1);
@@ -86,6 +106,9 @@ public class RandomWorldGenerator {
         }
     }
     
+    /**
+     * Classe usata per ritornare una coppia di posti
+     */
     private static class PlacePair {
         String p1;
         String p2;
@@ -98,6 +121,11 @@ public class RandomWorldGenerator {
         
      }
     
+    /**
+     * Dice se il grafo dei posti di un mondo è connesso o meno
+     * @param w
+     * @return 
+     */
     private static boolean connected (World w)
     {
         Random r = new Random();
@@ -120,6 +148,14 @@ public class RandomWorldGenerator {
         return true;
     }
     
+    /**
+     * Dice se due posti possono essere connessi direttamente.
+     * 
+     * 
+     * @param p1
+     * @param p2
+     * @return 
+     */
     private static boolean canBeDirectlyConnected (Place p1, Place p2)
     {
         if (p1.getLevel() == p2.getLevel() && hasFreeDirection(p1, dirsOnLevel) && hasFreeDirection(p2, dirsOnLevel))
@@ -138,6 +174,11 @@ public class RandomWorldGenerator {
         return false;
     }
     
+    /**
+     * Ritorna una coppia a caso di posti (può ritornare due volte lo stesso posto)
+     * @param w
+     * @return 
+     */
     private static PlacePair pickPair (World w)
     {
         Random r = new Random();
@@ -152,9 +193,15 @@ public class RandomWorldGenerator {
         return new PlacePair(p1.getName(), p2.getName());
     }
     
+    /**
+     * Ritorna una coppia di posti non connessi
+     * @param w
+     * @return 
+     */
     private static PlacePair pickRandomUnconnectedPair (World w)
     {
         if (connected(w))
+            //Se il grafo è connesso, non è possibile trovare una coppia di posti non connessi
             return null;
         
         while (true)
@@ -172,6 +219,12 @@ public class RandomWorldGenerator {
         }
     }
     
+    /**
+     * Dice se una direzione è libera
+     * @param p
+     * @param dir
+     * @return 
+     */
     public static boolean isFree (Place p, String dir)
     {
         try{
@@ -184,6 +237,12 @@ public class RandomWorldGenerator {
         return false;
     }
     
+    /**
+     * Dice se un posto ha direzioni libere
+     * @param p
+     * @param dirs Lista delle direzioni da controllare
+     * @return 
+     */
     public static boolean hasFreeDirection (Place p, String[] dirs)
     {
         for (String dir: dirs)
@@ -195,6 +254,12 @@ public class RandomWorldGenerator {
         return false;
     }
     
+    /**
+     * Connette due nodi. DEVONO ESSERE DIRETTAMENTE COLLEGABILI
+     * @param w
+     * @param p1
+     * @param p2 
+     */
     public static void connect (World w, String p1, String p2)
     {
         
@@ -245,13 +310,25 @@ public class RandomWorldGenerator {
         pl2.addPassage(dir2, p21);
     }
     
+    /**
+     * Genera un nuovo mondo casuale
+     * @param minLvl Minimo numero di livelli
+     * @param maxLvl Massimo numero di livelli
+     * @param minPlaces Minimo numero di posti
+     * @param maxPlaces Massimo numero di posti
+     * @param difficulty Difficoltà (parametro tra 0 e +inf)
+     * @return 
+     */
     public static World generate(int minLvl, int maxLvl, int minPlaces, int maxPlaces, int difficulty)
     {
         NameGenerator ng = new NameGenerator();
         
         final String startName = "start";
         
+        //Sceglie un numero di livelli
         int lvls = boundRnd(minLvl, maxLvl);
+
+        //Sceglie un numero di posti
         int places = boundRnd(minPlaces, maxPlaces);
         
         if (places<lvls)
@@ -260,38 +337,48 @@ public class RandomWorldGenerator {
         World res = new World(ng.getUniqueRandomName(4, 10), startName);
         
         
-        
+        //Aggiunge i livelli e un posto per ogni livello (altrimenti non potrei avere un grafo connesso)
         for (int i = 0; i < lvls; i++)
         {
             res.addLevel(new Level(i, String.format("lvl%d", i), ""));
             res.addPlace(new Place(ng.getUniqueRandomName(4, 8), "", false, i));
         }
         
+        //Aggiunge il posto iniziale
         res.addPlace(new Place(startName, "", false, 0));
         
+        //Aggiunge altri posti
         for (int pl = places - (2 + lvls); pl > 0; pl--)
         {
             res.addPlace(new Place(ng.getUniqueRandomName(4, 8), "", false, boundRnd(0, lvls)));
         }
         
+        
         String goalName = ng.getUniqueRandomName(4, 8);
         
+        //Aggiunge il posto goal
         res.addPlace(new Place(goalName, "", true, boundRnd(0, lvls)));
         
+        //Aggiunge link fino ad ottenere un grafo connesso
         while (!connected(res))
         {
+            //Per creare un grafo minimo, connette solo posti non già connessi
             PlacePair pair = pickRandomUnconnectedPair(res);
             
             connect(res, pair.p1, pair.p2);
         }
         
+        
         Random r = new Random();
         
+        //Evita divby0
         if (difficulty == 0)
             difficulty = 1;
         
         int trials = r.nextInt(((places * lvls)/difficulty)+1);
         
+        
+        //Aggiunge altri collegamenti tra nodi, in numero inversamente proporzionale alla difficoltà
         for (int i = 0; i < trials; i++)
         {
             PlacePair pair = pickPair(res);

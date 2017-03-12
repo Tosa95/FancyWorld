@@ -15,17 +15,25 @@ import java.util.Random;
  * @author Davide
  */
 public class NameGenerator {
+    
+    //Frequenze dei caratteri italiani
     private final static double[] freq = {10.85,1.05,4.30,3.39,11.49,1.01,1.65,1.43,10.18,0,0,5.70,
                              2.87,7.02,9.97,2.96,0.45,6.19,5.48,6.97,3.16,1.75,0,0,0,0.75};
     
+    //Somme parziali delle frequenze
     private final static double[] partials = {10.85,11.90,16.20,19.59,31.08,32.09,
                                               33.74,35.17,45.35,45.35,45.35,51.05,
                                               53.92,60.94,70.91,73.87,74.32,80.51,
                                               85.99,92.96,96.12,97.87,97.87,97.87,
                                               97.87,98.62};
     
+    //Somma di tutte le frequenze
     private final static double sum = 98.61999999999999;
     
+    /**
+     * Ritorna un carattere casuale, con distribuzione simile a quella della lingua italiana
+     * @return 
+     */
     private static char getRandomChar ()
     {
         Random r = new Random();
@@ -41,6 +49,11 @@ public class NameGenerator {
         return 'z';
     }
     
+    /**
+     * Dice se un carattere è vocale
+     * @param c
+     * @return 
+     */
     private static boolean isVocal (char c)
     {
         char[] vocals = {'a', 'e', 'i', 'o', 'u'};
@@ -54,6 +67,12 @@ public class NameGenerator {
         return false;
     }
     
+    /**
+     * Ritorna un nome pseudo-italiano
+     * @param lettersMin Numero minimo di lettere
+     * @param lettersMax Numero massimo di lettere
+     * @return 
+     */
     public static String getRandomName (int lettersMin, int lettersMax)
     {
         Random r = new Random();
@@ -119,8 +138,17 @@ public class NameGenerator {
         return sb.toString();
     }
     
-    private List<String> alreadyExtracted = new ArrayList<>();
+    /**
+     * Usato per contenere i nomi già estratti
+     */
+    private final List<String> alreadyExtracted = new ArrayList<>();
     
+    /**
+     * Ritorna un nome pseudo-italiano unico
+     * @param lettersMin
+     * @param lettersMax
+     * @return 
+     */
     public String getUniqueRandomName (int lettersMin, int lettersMax)
     {
         String res = getRandomName(lettersMin, lettersMax);
