@@ -11,7 +11,8 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import tosatto.fancyworld.places.Place;
+import tosatto.fancyworld.world.factories.BasicWorldFactory;
+import tosatto.fancyworld.world.places.Place;
 
 /**
  *
@@ -46,7 +47,7 @@ public class RandomWorldGeneratorTest {
     @Test
     public void testTest() {
         System.out.println("test");
-        RandomWorldGenerator.test();
+        new RandomWorldGenerator(new BasicWorldFactory()).test();
     }
     
 }

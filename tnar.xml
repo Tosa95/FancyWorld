@@ -1,0 +1,340 @@
+<world name="tnar" start="start">
+   <places>
+      <entry>
+         <string>mporiet</string>
+         <Place name="mporiet" description="" goal="false" level="4">
+            <passages>
+               <entry>
+                  <string>north</string>
+                  <string>iolzo</string>
+               </entry>
+            </passages>
+         </Place>
+      </entry>
+      <entry>
+         <string>onoafa</string>
+         <Place name="onoafa" description="" goal="false" level="1">
+            <passages>
+               <entry>
+                  <string>up</string>
+                  <string>gpel</string>
+               </entry>
+            </passages>
+         </Place>
+      </entry>
+      <entry>
+         <string>start</string>
+         <Place name="start" description="" goal="false" level="0">
+            <passages>
+               <entry>
+                  <string>west</string>
+                  <string>rem</string>
+               </entry>
+               <entry>
+                  <string>up</string>
+                  <string>atopd</string>
+               </entry>
+            </passages>
+         </Place>
+      </entry>
+      <entry>
+         <string>eripa</string>
+         <Place name="eripa" description="" goal="false" level="2">
+            <passages>
+               <entry>
+                  <string>west</string>
+                  <string>iulr</string>
+               </entry>
+               <entry>
+                  <string>down</string>
+                  <string>acio</string>
+               </entry>
+            </passages>
+         </Place>
+      </entry>
+      <entry>
+         <string>dtahsal</string>
+         <Place name="dtahsal" description="" goal="false" level="2">
+            <passages>
+               <entry>
+                  <string>west</string>
+                  <string>ttod</string>
+               </entry>
+               <entry>
+                  <string>up</string>
+                  <string>agvef</string>
+               </entry>
+               <entry>
+                  <string>down</string>
+                  <string>gpel</string>
+               </entry>
+            </passages>
+         </Place>
+      </entry>
+      <entry>
+         <string>gans</string>
+         <Place name="gans" description="" goal="false" level="4">
+            <passages>
+               <entry>
+                  <string>south</string>
+                  <string>ope</string>
+               </entry>
+               <entry>
+                  <string>north</string>
+                  <string>onis</string>
+               </entry>
+            </passages>
+         </Place>
+      </entry>
+      <entry>
+         <string>rinitpo</string>
+         <Place name="rinitpo" description="" goal="false" level="4">
+            <passages>
+               <entry>
+                  <string>south</string>
+                  <string>tepta</string>
+               </entry>
+               <entry>
+                  <string>north</string>
+                  <string>thea</string>
+               </entry>
+               <entry>
+                  <string>est</string>
+                  <string>vfah</string>
+               </entry>
+               <entry>
+                  <string>west</string>
+                  <string>onis</string>
+               </entry>
+               <entry>
+                  <string>down</string>
+                  <string>oci</string>
+               </entry>
+            </passages>
+         </Place>
+      </entry>
+      <entry>
+         <string>tcolusq</string>
+         <Place name="tcolusq" description="" goal="false" level="1">
+            <passages>
+               <entry>
+                  <string>up</string>
+                  <string>acio</string>
+               </entry>
+               <entry>
+                  <string>down</string>
+                  <string>osue</string>
+               </entry>
+            </passages>
+         </Place>
+      </entry>
+      <entry>
+         <string>aird</string>
+         <Place name="aird" description="" goal="false" level="2">
+            <passages>
+               <entry>
+                  <string>south</string>
+                  <string>ttod</string>
+               </entry>
+               <entry>
+                  <string>north</string>
+                  <string>iulr</string>
+               </entry>
+               <entry>
+                  <string>down</string>
+                  <string>cluab</string>
+               </entry>
+            </passages>
+         </Place>
+      </entry>
+      <entry>
+         <string>aolbico</string>
+         <Place name="aolbico" description="" goal="false" level="4">
+            <passages>
+               <entry>
+                  <string>south</string>
+                  <string>tom</string>
+               </entry>
+               <entry>
+                  <string>west</string>
+                  <string>vfah</string>
+               </entry>
+            </passages>
+         </Place>
+      </entry>
+      <entry>
+         <string>tror</string>
+         <Place name="tror" description="" goal="false" level="0">
+            <passages>
+               <entry>
+                  <string>up</string>
+                  <string>osue</string>
+               </entry>
+            </passages>
+         </Place>
+      </entry>
+      <entry>
+         <string>nenta</string>
+         <Place name="nenta" description="" goal="true" level="1">
+            <passages>
+               <entry>
+                  <string>up</string>
+                  <string>cluab</string>
+               </entry>
+               <entry>
+                  <string>down</string>
+                  <string>atopd</string>
+               </entry>
+            </passages>
+         </Place>
+      </entry>
+      <entry>
+         <string>sneir</string>
+         <Place name="sneir" description="" goal="false" level="3">
+            <passages>
+               <entry>
+                  <string>up</string>
+                  <string>oci</string>
+               </entry>
+               <entry>
+                  <string>down</string>
+                  <string>agvef</string>
+               </entry>
+            </passages>
+         </Place>
+      </entry>
+      <entry>
+         <string>rlahc</string>
+         <Place name="rlahc" description="" goal="false" level="4">
+            <passages>
+               <entry>
+                  <string>south</string>
+                  <string>ope</string>
+               </entry>
+               <entry>
+                  <string>west</string>
+                  <string>tom</string>
+               </entry>
+            </passages>
+         </Place>
+      </entry>
+      <entry>
+         <string>cena</string>
+         <Place name="cena" description="" goal="false" level="4">
+            <passages>
+               <entry>
+                  <string>south</string>
+                  <string>iolzo</string>
+               </entry>
+               <entry>
+                  <string>west</string>
+                  <string>thea</string>
+               </entry>
+            </passages>
+         </Place>
+      </entry>
+      <entry>
+         <string>udcila</string>
+         <Place name="udcila" description="" goal="false" level="0">
+            <passages>
+               <entry>
+                  <string>est</string>
+                  <string>rem</string>
+               </entry>
+            </passages>
+         </Place>
+      </entry>
+   </places>
+   <levels>
+      <entry>
+         <integer>0</integer>
+         <Level id="0" name="lvl0" description=""/>
+      </entry>
+      <entry>
+         <integer>1</integer>
+         <Level id="1" name="lvl1" description=""/>
+      </entry>
+      <entry>
+         <integer>2</integer>
+         <Level id="2" name="lvl2" description=""/>
+      </entry>
+      <entry>
+         <integer>3</integer>
+         <Level id="3" name="lvl3" description=""/>
+      </entry>
+      <entry>
+         <integer>4</integer>
+         <Level id="4" name="lvl4" description=""/>
+      </entry>
+   </levels>
+   <passages>
+      <entry>
+         <string>gpel</string>
+         <passage class="tosatto.fancyworld.world.passages.OpenPassage" name="gpel" p1="onoafa" p2="dtahsal"/>
+      </entry>
+      <entry>
+         <string>iolzo</string>
+         <passage class="tosatto.fancyworld.world.passages.OpenPassage" name="iolzo" p1="mporiet" p2="cena"/>
+      </entry>
+      <entry>
+         <string>osue</string>
+         <passage class="tosatto.fancyworld.world.passages.OpenPassage" name="osue" p1="tcolusq" p2="tror"/>
+      </entry>
+      <entry>
+         <string>vfah</string>
+         <passage class="tosatto.fancyworld.world.passages.OpenPassage" name="vfah" p1="rinitpo" p2="aolbico"/>
+      </entry>
+      <entry>
+         <string>ttod</string>
+         <passage class="tosatto.fancyworld.world.passages.OpenPassage" name="ttod" p1="dtahsal" p2="aird"/>
+      </entry>
+      <entry>
+         <string>iulr</string>
+         <passage class="tosatto.fancyworld.world.passages.OpenPassage" name="iulr" p1="eripa" p2="aird"/>
+      </entry>
+      <entry>
+         <string>ope</string>
+         <passage class="tosatto.fancyworld.world.passages.OpenPassage" name="ope" p1="rlahc" p2="gans"/>
+      </entry>
+      <entry>
+         <string>acio</string>
+         <passage class="tosatto.fancyworld.world.passages.OpenPassage" name="acio" p1="tcolusq" p2="eripa"/>
+      </entry>
+      <entry>
+         <string>thea</string>
+         <passage class="tosatto.fancyworld.world.passages.OpenPassage" name="thea" p1="rinitpo" p2="cena"/>
+      </entry>
+      <entry>
+         <string>cluab</string>
+         <passage class="tosatto.fancyworld.world.passages.OpenPassage" name="cluab" p1="nenta" p2="aird"/>
+      </entry>
+      <entry>
+         <string>tom</string>
+         <passage class="tosatto.fancyworld.world.passages.OpenPassage" name="tom" p1="aolbico" p2="rlahc"/>
+      </entry>
+      <entry>
+         <string>oci</string>
+         <passage class="tosatto.fancyworld.world.passages.OpenPassage" name="oci" p1="sneir" p2="rinitpo"/>
+      </entry>
+      <entry>
+         <string>agvef</string>
+         <passage class="tosatto.fancyworld.world.passages.OpenPassage" name="agvef" p1="dtahsal" p2="sneir"/>
+      </entry>
+      <entry>
+         <string>rem</string>
+         <passage class="tosatto.fancyworld.world.passages.OpenPassage" name="rem" p1="start" p2="udcila"/>
+      </entry>
+      <entry>
+         <string>onis</string>
+         <passage class="tosatto.fancyworld.world.passages.OpenPassage" name="onis" p1="gans" p2="rinitpo"/>
+      </entry>
+      <entry>
+         <string>atopd</string>
+         <passage class="tosatto.fancyworld.world.passages.OpenPassage" name="atopd" p1="nenta" p2="start"/>
+      </entry>
+      <entry>
+         <string>tepta</string>
+         <passage class="tosatto.fancyworld.world.passages.OpenPassage" name="tepta" p1="rinitpo" p2="rinitpo"/>
+      </entry>
+   </passages>
+</world>

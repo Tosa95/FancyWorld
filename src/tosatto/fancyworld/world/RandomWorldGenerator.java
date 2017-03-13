@@ -10,12 +10,13 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Random;
 import java.util.logging.Logger;
-import tosatto.fancyworld.levels.Level;
-import tosatto.fancyworld.passages.OpenPassage;
-import tosatto.fancyworld.passages.Passage;
-import tosatto.fancyworld.passages.exceptions.PassageException;
-import tosatto.fancyworld.places.Directions;
-import tosatto.fancyworld.places.Place;
+import tosatto.fancyworld.world.factories.WorldFactory;
+import tosatto.fancyworld.world.levels.Level;
+import tosatto.fancyworld.world.passages.OpenPassage;
+import tosatto.fancyworld.world.passages.Passage;
+import tosatto.fancyworld.world.passages.exceptions.PassageException;
+import tosatto.fancyworld.world.places.Directions;
+import tosatto.fancyworld.world.places.Place;
 
 /**
  *
@@ -26,15 +27,30 @@ public class RandomWorldGenerator {
     private static final String[] dirsOnLevel = {Directions.EST, Directions.NORTH, Directions.SOUTH, Directions.WEST};
     private static final String[] dirsUD = {Directions.UP, Directions.DOWN};
     
+    private Random r;
+    private NameGenerator ng;
+    private WorldFactory wf;
+
+    public RandomWorldGenerator(Random r, WorldFactory wf) {
+        this.r = r;
+        ng = new NameGenerator(r);
+        this.wf = wf;
+    }
+
+    public RandomWorldGenerator(WorldFactory wf) {
+        this(new Random(), wf);
+    }
+    
+    
+    
     /**
      * Ritorna un numero casuale in un intervallo
      * @param min 
      * @param max 
      * @return 
      */
-    private static int boundRnd (int min, int max)
+    private int boundRnd (int min, int max)
     {
-        Random r = new Random();
         
         return min + r.nextInt(max-min);
     }
@@ -45,7 +61,7 @@ public class RandomWorldGenerator {
      * @param p2
      * @return 
      */
-    private static boolean directlyConnected (World w, Place p1, Place p2)
+    private boolean directlyConnected (World w, Place p1, Place p2)
     {
         
         for (Passage pass: w.getAllPassages(p1.getPassages().values()))
@@ -71,7 +87,7 @@ public class RandomWorldGenerator {
      * @param visited Lista dei posti già visitati. Deve essere vuota all'inizio
      * @return 
      */
-    private static boolean connected (World w, String p1, String p2, List<String> visited)
+    private boolean connected (World w, String p1, String p2, List<String> visited)
     {
         Place pl1 = w.getPlace(p1);
         Place pl2 = w.getPlace(p2);
@@ -109,7 +125,7 @@ public class RandomWorldGenerator {
     /**
      * Classe usata per ritornare una coppia di posti
      */
-    private static class PlacePair {
+    private class PlacePair {
         String p1;
         String p2;
 
@@ -126,9 +142,8 @@ public class RandomWorldGenerator {
      * @param w
      * @return 
      */
-    private static boolean connected (World w)
+    private boolean connected (World w)
     {
-        Random r = new Random();
         
         Place[] places = w.getPlaces().toArray(new Place[w.getPlaces().size()]);
         
@@ -156,7 +171,7 @@ public class RandomWorldGenerator {
      * @param p2
      * @return 
      */
-    private static boolean canBeDirectlyConnected (World w, Place p1, Place p2)
+    private boolean canBeDirectlyConnected (World w, Place p1, Place p2)
     {
         if (p1.getLevel() == p2.getLevel() && hasFreeDirection(w, p1, dirsOnLevel) && hasFreeDirection(w, p2, dirsOnLevel))
         {
@@ -179,9 +194,8 @@ public class RandomWorldGenerator {
      * @param w
      * @return 
      */
-    private static PlacePair pickPair (World w)
+    private PlacePair pickPair (World w)
     {
-        Random r = new Random();
         
         Place[] places = w.getPlaces().toArray(new Place[w.getPlaces().size()]);
         
@@ -198,7 +212,7 @@ public class RandomWorldGenerator {
      * @param w
      * @return 
      */
-    private static PlacePair pickRandomUnconnectedPair (World w)
+    private PlacePair pickRandomUnconnectedPair (World w)
     {
         if (connected(w))
             //Se il grafo è connesso, non è possibile trovare una coppia di posti non connessi
@@ -227,7 +241,7 @@ public class RandomWorldGenerator {
      * @param dir
      * @return 
      */
-    public static boolean isFree (World w, Place p, String dir)
+    public boolean isFree (World w, Place p, String dir)
     {
         try{
             w.getPassage(p.getPassage(dir)).next(p.getName());
@@ -245,7 +259,7 @@ public class RandomWorldGenerator {
      * @param dirs Lista delle direzioni da controllare
      * @return 
      */
-    public static boolean hasFreeDirection (World w, Place p, String[] dirs)
+    public boolean hasFreeDirection (World w, Place p, String[] dirs)
     {
         for (String dir: dirs)
         {
@@ -262,11 +276,8 @@ public class RandomWorldGenerator {
      * @param p1
      * @param p2 
      */
-    public static void connect (NameGenerator ng, World w, String p1, String p2)
+    public void connect (NameGenerator ng, World w, String p1, String p2)
     {
-        
-        
-        Random r = new Random();
         
         Place pl1 = w.getPlace(p1);
         Place pl2 = w.getPlace(p2);
@@ -305,7 +316,7 @@ public class RandomWorldGenerator {
         
         String passageName = ng.getUniqueRandomName(3, 6);
 
-        OpenPassage p = new OpenPassage(passageName, p1, p2);
+        Passage p = wf.getPassage(passageName, p1, p2);
         
         w.addPassage(p);
 
@@ -322,10 +333,8 @@ public class RandomWorldGenerator {
      * @param difficulty Difficoltà (parametro tra 0 e +inf)
      * @return 
      */
-    public static World generate(int minLvl, int maxLvl, int minPlaces, int maxPlaces, int difficulty)
+    public World generate(int minLvl, int maxLvl, int minPlaces, int maxPlaces, int difficulty)
     {
-        NameGenerator ng = new NameGenerator();
-        
         final String startName = "start";
         
         //Sceglie un numero di livelli
@@ -337,30 +346,30 @@ public class RandomWorldGenerator {
         if (places<lvls)
             places = lvls + 2;
         
-        World res = new World(ng.getUniqueRandomName(4, 10), startName);
+        World res = wf.getWorld(ng.getUniqueRandomName(4, 10), startName);
         
         
         //Aggiunge i livelli e un posto per ogni livello (altrimenti non potrei avere un grafo connesso)
         for (int i = 0; i < lvls; i++)
         {
-            res.addLevel(new Level(i, String.format("lvl%d", i), ""));
-            res.addPlace(new Place(ng.getUniqueRandomName(4, 8), "", false, i));
+            res.addLevel(wf.getLevel(i, String.format("lvl%d", i), ""));
+            res.addPlace(wf.getPlace(ng.getUniqueRandomName(4, 8), "", false, i));
         }
         
         //Aggiunge il posto iniziale
-        res.addPlace(new Place(startName, "", false, 0));
+        res.addPlace(wf.getPlace(startName, "", false, 0));
         
         //Aggiunge altri posti
         for (int pl = places - (2 + lvls); pl > 0; pl--)
         {
-            res.addPlace(new Place(ng.getUniqueRandomName(4, 8), "", false, boundRnd(0, lvls)));
+            res.addPlace(wf.getPlace(ng.getUniqueRandomName(4, 8), "", false, boundRnd(0, lvls)));
         }
         
         
         String goalName = ng.getUniqueRandomName(4, 8);
         
         //Aggiunge il posto goal
-        res.addPlace(new Place(goalName, "", true, boundRnd(0, lvls)));
+        res.addPlace(wf.getPlace(goalName, "", true, boundRnd(0, lvls)));
         
         //Aggiunge link fino ad ottenere un grafo connesso
         while (!connected(res))
@@ -372,7 +381,7 @@ public class RandomWorldGenerator {
         }
         
         
-        Random r = new Random();
+        
         
         //Evita divby0
         if (difficulty == 0)
@@ -395,7 +404,7 @@ public class RandomWorldGenerator {
         return res;
     }
     
-    public static void test ()
+    public void test ()
     {
         World w = new World("prova", "start");
         
@@ -406,12 +415,6 @@ public class RandomWorldGenerator {
         
         w.addPlace(start);
         w.addPlace(p2);
-        
-        Passage p = new OpenPassage("try", "start", "p2");
-        
-        w.addPassage(p);
-        
-        NameGenerator ng = new NameGenerator();
         
         connect(ng, w, "start", "p2");
         

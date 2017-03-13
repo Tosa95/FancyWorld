@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tosatto.fancyworld.passages;
+package tosatto.fancyworld.world.passages;
 
 import java.util.HashMap;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Root;
 import tosatto.fancyworld.game.GameInfo;
-import tosatto.fancyworld.passages.exceptions.PassageException;
-import tosatto.fancyworld.places.Place;
+import tosatto.fancyworld.world.passages.exceptions.PassageException;
+import tosatto.fancyworld.world.places.Place;
 
 /**
  *
@@ -34,7 +34,7 @@ public class OpenPassage extends Passage{
     
     @Override
     public String next(String actPlace) throws PassageException{
-        return actPlace.equals(p1)?p1:p2;
+        return actPlace.equals(p1)?p2:p1;
     }
 
     @Override

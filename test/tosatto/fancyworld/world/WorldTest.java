@@ -13,10 +13,11 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.simpleframework.xml.core.Persister;
-import tosatto.fancyworld.levels.Level;
-import tosatto.fancyworld.passages.OpenPassage;
-import tosatto.fancyworld.places.Directions;
-import tosatto.fancyworld.places.Place;
+import tosatto.fancyworld.world.factories.BasicWorldFactory;
+import tosatto.fancyworld.world.levels.Level;
+import tosatto.fancyworld.world.passages.OpenPassage;
+import tosatto.fancyworld.world.places.Directions;
+import tosatto.fancyworld.world.places.Place;
 
 /**
  *
@@ -39,7 +40,7 @@ public class WorldTest {
     
     @Before
     public void setUp() {
-        instance = RandomWorldGenerator.generate(5, 8, 10, 27, 1);
+        instance = new RandomWorldGenerator(new BasicWorldFactory()).generate(5, 8, 10, 27, 1);
     }
     
     @After

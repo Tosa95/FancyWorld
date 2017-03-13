@@ -11,11 +11,11 @@ import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
 import tosatto.fancyworld.IO.MessageIO;
-import tosatto.fancyworld.passages.Passage;
-import tosatto.fancyworld.passages.exceptions.ClosedPassageException;
-import tosatto.fancyworld.passages.exceptions.PassageException;
-import tosatto.fancyworld.places.Directions;
-import tosatto.fancyworld.places.Place;
+import tosatto.fancyworld.world.passages.Passage;
+import tosatto.fancyworld.world.passages.exceptions.ClosedPassageException;
+import tosatto.fancyworld.world.passages.exceptions.PassageException;
+import tosatto.fancyworld.world.places.Directions;
+import tosatto.fancyworld.world.places.Place;
 import tosatto.fancyworld.player.Player;
 import tosatto.fancyworld.world.World;
 

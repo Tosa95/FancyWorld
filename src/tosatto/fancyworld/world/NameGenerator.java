@@ -30,13 +30,24 @@ public class NameGenerator {
     //Somma di tutte le frequenze
     private final static double sum = 98.61999999999999;
     
+    private Random r;
+
+    public NameGenerator(Random r) {
+        this.r = r;
+    }
+
+    public NameGenerator() {
+        this.r = new Random();
+    }
+    
+    
+    
     /**
      * Ritorna un carattere casuale, con distribuzione simile a quella della lingua italiana
      * @return 
      */
-    private static char getRandomChar ()
+    private char getRandomChar ()
     {
-        Random r = new Random();
         
         double rnd = r.nextFloat()*sum;
         
@@ -54,7 +65,7 @@ public class NameGenerator {
      * @param c
      * @return 
      */
-    private static boolean isVocal (char c)
+    private boolean isVocal (char c)
     {
         char[] vocals = {'a', 'e', 'i', 'o', 'u'};
         
@@ -73,9 +84,8 @@ public class NameGenerator {
      * @param lettersMax Numero massimo di lettere
      * @return 
      */
-    public static String getRandomName (int lettersMin, int lettersMax)
+    public String getRandomName (int lettersMin, int lettersMax)
     {
-        Random r = new Random();
         
         int letters = lettersMin + r.nextInt(lettersMax-lettersMin);
         
