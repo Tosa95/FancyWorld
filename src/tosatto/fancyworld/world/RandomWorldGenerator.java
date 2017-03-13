@@ -45,13 +45,13 @@ public class RandomWorldGenerator {
      * @param p2
      * @return 
      */
-    private static boolean directlyConnected (Place p1, Place p2)
+    private static boolean directlyConnected (World w, Place p1, Place p2)
     {
         
-        for (Passage pass: p1.getPassages().values())
+        for (Passage pass: w.getAllPassages(p1.getPassages().values()))
         {
             try {
-                if (pass.next().equals(p2.getName()))
+                if (pass.next(p1.getName()).equals(p2.getName()))
                 {
                     return true;
                 }
@@ -80,16 +80,16 @@ public class RandomWorldGenerator {
         {
             return true;
         }
-        else if (directlyConnected(pl1, pl2))
+        else if (directlyConnected(w, pl1, pl2))
         {
             return true;
         } else {
             visited.add(p1);
             
-            for (Passage pass: pl1.getPassages().values())
+            for (Passage pass: w.getAllPassages(pl1.getPassages().values()))
             {
                 try {
-                    String nxt = pass.next();
+                    String nxt = pass.next(p1);
                     
                     if (!visited.contains(nxt) && connected(w, nxt, p2, visited))
                     {
@@ -156,17 +156,17 @@ public class RandomWorldGenerator {
      * @param p2
      * @return 
      */
-    private static boolean canBeDirectlyConnected (Place p1, Place p2)
+    private static boolean canBeDirectlyConnected (World w, Place p1, Place p2)
     {
-        if (p1.getLevel() == p2.getLevel() && hasFreeDirection(p1, dirsOnLevel) && hasFreeDirection(p2, dirsOnLevel))
+        if (p1.getLevel() == p2.getLevel() && hasFreeDirection(w, p1, dirsOnLevel) && hasFreeDirection(w, p2, dirsOnLevel))
         {
             return true;
         }
-        else if (p1.getLevel() == p2.getLevel() + 1 && isFree(p1, Directions.DOWN) && isFree(p2, Directions.UP)) 
+        else if (p1.getLevel() == p2.getLevel() + 1 && isFree(w, p1, Directions.DOWN) && isFree(w, p2, Directions.UP)) 
         {
             return true;
         }
-        else if (p1.getLevel() == p2.getLevel() - 1 && isFree(p1, Directions.UP) && isFree(p2, Directions.DOWN)) 
+        else if (p1.getLevel() == p2.getLevel() - 1 && isFree(w, p1, Directions.UP) && isFree(w, p2, Directions.DOWN)) 
         {
             return true;
         }
@@ -210,12 +210,14 @@ public class RandomWorldGenerator {
             
             if (!connected(w, res.p1, res.p2, new ArrayList<>()) )
             {
-                if (canBeDirectlyConnected(w.getPlace(res.p1), w.getPlace(res.p2)))
+                if (canBeDirectlyConnected(w, w.getPlace(res.p1), w.getPlace(res.p2)))
                 {
                     return res;
                 }
                     
             }
+            
+            connected(w);
         }
     }
     
@@ -225,10 +227,10 @@ public class RandomWorldGenerator {
      * @param dir
      * @return 
      */
-    public static boolean isFree (Place p, String dir)
+    public static boolean isFree (World w, Place p, String dir)
     {
         try{
-            p.getPassage(dir).next();
+            w.getPassage(p.getPassage(dir)).next(p.getName());
         }catch (PassageException e)
         {
             return true;
@@ -243,11 +245,11 @@ public class RandomWorldGenerator {
      * @param dirs Lista delle direzioni da controllare
      * @return 
      */
-    public static boolean hasFreeDirection (Place p, String[] dirs)
+    public static boolean hasFreeDirection (World w, Place p, String[] dirs)
     {
         for (String dir: dirs)
         {
-            if (isFree(p,dir))
+            if (isFree(w, p,dir))
                 return true;
         }
         
@@ -260,7 +262,7 @@ public class RandomWorldGenerator {
      * @param p1
      * @param p2 
      */
-    public static void connect (World w, String p1, String p2)
+    public static void connect (NameGenerator ng, World w, String p1, String p2)
     {
         
         
@@ -279,12 +281,12 @@ public class RandomWorldGenerator {
             
             d1 = r.nextInt(dirs.length);
 
-            while (!isFree(pl1,dirs[d1]))
+            while (!isFree(w, pl1,dirs[d1]))
                 d1 = r.nextInt(dirs.length);
 
             d2 = r.nextInt(dirs.length);
 
-            while (!isFree(pl2,dirs[d2]))
+            while (!isFree(w, pl2,dirs[d2]))
                 d2 = r.nextInt(dirs.length);
 
             dir1 = dirs[d1];
@@ -301,13 +303,14 @@ public class RandomWorldGenerator {
             dir2 = Directions.DOWN;
         }
         
-        String passageName = NameGenerator.getRandomName(3, 6);
+        String passageName = ng.getUniqueRandomName(3, 6);
 
-        OpenPassage p12 = new OpenPassage(passageName, p2);
-        OpenPassage p21 = new OpenPassage(passageName, p1);
+        OpenPassage p = new OpenPassage(passageName, p1, p2);
+        
+        w.addPassage(p);
 
-        pl1.addPassage(dir1, p12);
-        pl2.addPassage(dir2, p21);
+        pl1.addPassage(dir1, passageName);
+        pl2.addPassage(dir2, passageName);
     }
     
     /**
@@ -365,7 +368,7 @@ public class RandomWorldGenerator {
             //Per creare un grafo minimo, connette solo posti non già connessi
             PlacePair pair = pickRandomUnconnectedPair(res);
             
-            connect(res, pair.p1, pair.p2);
+            connect(ng, res, pair.p1, pair.p2);
         }
         
         
@@ -383,12 +386,36 @@ public class RandomWorldGenerator {
         {
             PlacePair pair = pickPair(res);
             
-            if (canBeDirectlyConnected(res.getPlace(pair.p1), res.getPlace(pair.p2)))
+            if (canBeDirectlyConnected(res, res.getPlace(pair.p1), res.getPlace(pair.p2)))
             {
-                connect(res, pair.p1, pair.p2);
+                connect(ng, res, pair.p1, pair.p2);
             }
         }
         
         return res;
+    }
+    
+    public static void test ()
+    {
+        World w = new World("prova", "start");
+        
+        Place start = new Place("start", "", false, 0);
+        Place p2 = new Place("p2", "", false, 0);
+        
+        w.addLevel(new Level(0, "", ""));
+        
+        w.addPlace(start);
+        w.addPlace(p2);
+        
+        Passage p = new OpenPassage("try", "start", "p2");
+        
+        w.addPassage(p);
+        
+        NameGenerator ng = new NameGenerator();
+        
+        connect(ng, w, "start", "p2");
+        
+        if (!directlyConnected(w, start, p2))
+            throw new IllegalAccessError("Errore. Dovrebbero essere connessi!");
     }
 }

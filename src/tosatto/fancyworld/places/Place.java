@@ -35,7 +35,7 @@ public class Place {
     private int level;
     
     @ElementMap (name = "passages")
-    protected HashMap<String, Passage> passages = new HashMap<>();
+    protected HashMap<String, String> passages = new HashMap<>();
     
     protected GameInfo gi;
     
@@ -64,22 +64,21 @@ public class Place {
         return description;
     }
     
-    public Map<String, Passage> getPassages ()
+    public Map<String, String> getPassages ()
     {
-        return (Map<String,Passage>)passages.clone();
+        return (Map<String,String>)passages.clone();
     }
 
-    public Passage getPassage (String direction)
+    public String getPassage (String direction)
     {
         if (passages.containsKey(direction))
             return passages.get(direction);
         else
-            return new ClosedPassage();
+            return null;
     }
     
-    public void addPassage (String direction, Passage p)
+    public void addPassage (String direction, String p)
     {
-        p.setGi(gi);
         passages.put(direction, p);
     }
     
@@ -110,10 +109,10 @@ public class Place {
         sb.append(name).append("\n goal? ").append(goal).append("\n level: ")
           .append(level).append("\n Links:\n");
         
-        for (Map.Entry<String, Passage> pair: passages.entrySet())
+        for (Map.Entry<String, String> pair: passages.entrySet())
         {
             sb.append("  ").append(pair.getKey()).append(": ")
-              .append(pair.getValue().toString());
+              .append(pair.getValue());
         }
         
         return sb.toString();

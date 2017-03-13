@@ -29,7 +29,7 @@ public class ClosedPassage extends Passage{
     }
     
     @Override
-    public String next() throws PassageException {
+    public String next(String actPlace) throws PassageException {
         throw new ClosedPassageException();
     }
     

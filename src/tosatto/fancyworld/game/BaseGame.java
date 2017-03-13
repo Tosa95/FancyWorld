@@ -11,6 +11,7 @@ import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
 import tosatto.fancyworld.IO.MessageIO;
+import tosatto.fancyworld.passages.Passage;
 import tosatto.fancyworld.passages.exceptions.ClosedPassageException;
 import tosatto.fancyworld.passages.exceptions.PassageException;
 import tosatto.fancyworld.places.Directions;
@@ -94,7 +95,7 @@ public class BaseGame extends Game{
             
             try {
                 
-                String nextPlace = p.getPassage(Directions.DIRECTIONS[dir]).next();
+                String nextPlace = world.getPassage(p.getPassage(Directions.DIRECTIONS[dir])).next(p.getName());
                 
                 p = world.getPlace(nextPlace);
                 

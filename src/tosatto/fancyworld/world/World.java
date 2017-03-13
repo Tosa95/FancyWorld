@@ -5,9 +5,12 @@
  */
 package tosatto.fancyworld.world;
 
+import com.sun.jmx.remote.internal.ArrayQueue;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Set;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.ElementMap;
@@ -15,6 +18,8 @@ import org.simpleframework.xml.Root;
 import tosatto.fancyworld.game.BaseGame;
 import tosatto.fancyworld.game.GameInfo;
 import tosatto.fancyworld.levels.Level;
+import tosatto.fancyworld.passages.ClosedPassage;
+import tosatto.fancyworld.passages.Passage;
 import tosatto.fancyworld.places.Place;
 
 /**
@@ -29,6 +34,9 @@ public class World {
     
     @ElementMap (name = "levels")
     private HashMap<Integer, Level> levels = new HashMap<>();
+    
+    @ElementMap (name = "passages")
+    private HashMap<String, Passage> passages = new HashMap<>();
     
     @Attribute (name = "name")
     private String name;
@@ -98,6 +106,32 @@ public class World {
         return levels.get(index);
     }
 
+    public void addPassage (Passage p)
+    {
+        p.setGi(gi);
+        passages.put(p.getName(), p);
+    }
+    
+    public Passage getPassage (String name)
+    {
+        if (name == null)
+            return new ClosedPassage();
+        
+        if (!passages.containsKey(name))
+            throw new IllegalArgumentException ("Passage " + name + " does not exist");
+        
+        return passages.get(name);
+    }
+    
+    public Collection<Passage> getAllPassages (Collection<String> names)
+    {
+        List<Passage> res = new ArrayList<>();
+        
+        names.stream().forEach(n->res.add(getPassage(n)));
+        
+        return res;
+    }
+    
     public int getEndLevelIndex ()
     {
         for (Place p: places.values())

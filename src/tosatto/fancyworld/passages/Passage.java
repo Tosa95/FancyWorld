@@ -33,7 +33,7 @@ public abstract class Passage {
         this.gi = gi;
     }
     
-    public abstract String next () throws PassageException;
+    public abstract String next (String actPlace) throws PassageException;
     
     public String getName ()
     {

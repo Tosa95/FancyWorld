@@ -5,6 +5,8 @@
  */
 package tosatto.fancyworld.game;
 
+import tosatto.fancyworld.passages.Passage;
+
 /**
  *
  * Contiene funzioni per accedere alle proprietà del gioco di rilievo per le classi
@@ -26,5 +28,4 @@ package tosatto.fancyworld.game;
  * @author Davide
  */
 public interface GameInfo {
-    
 }

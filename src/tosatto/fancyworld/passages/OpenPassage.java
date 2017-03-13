@@ -19,23 +19,27 @@ import tosatto.fancyworld.places.Place;
 @Root
 public class OpenPassage extends Passage{
 
-    @Attribute (name = "next")
-    private final String nextPlace;
+    @Attribute (name = "p1")
+    private final String p1;
     
-    public OpenPassage (@Attribute (name = "name") String name, @Attribute (name = "next") String nextPlace)
+    @Attribute (name = "p2")
+    private final String p2;
+    
+    public OpenPassage (@Attribute (name = "name") String name, @Attribute (name = "p1") String p1, @Attribute (name = "p2") String p2)
     {
         super(name);
-        this.nextPlace = nextPlace;
+        this.p1 = p1;
+        this.p2 = p2;
     }
     
     @Override
-    public String next() throws PassageException{
-        return nextPlace;
+    public String next(String actPlace) throws PassageException{
+        return actPlace.equals(p1)?p1:p2;
     }
 
     @Override
     public String toString() {
-        return super.toString() + ": --> " + nextPlace;
+        return String.format ("%s: %s <--> %s" , super.toString(), p1, p2);
     }
     
     
