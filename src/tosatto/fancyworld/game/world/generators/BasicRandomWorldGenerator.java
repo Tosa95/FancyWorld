@@ -3,26 +3,28 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tosatto.fancyworld.world;
+package tosatto.fancyworld.game.world.generators;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Random;
 import java.util.logging.Logger;
-import tosatto.fancyworld.world.factories.WorldFactory;
-import tosatto.fancyworld.world.levels.Level;
-import tosatto.fancyworld.world.passages.OpenPassage;
-import tosatto.fancyworld.world.passages.Passage;
-import tosatto.fancyworld.world.passages.exceptions.PassageException;
-import tosatto.fancyworld.world.places.Directions;
-import tosatto.fancyworld.world.places.Place;
+import tosatto.fancyworld.game.world.NameGenerator;
+import tosatto.fancyworld.game.world.World;
+import tosatto.fancyworld.game.world.factories.WorldFactory;
+import tosatto.fancyworld.game.world.levels.Level;
+import tosatto.fancyworld.game.world.passages.OpenPassage;
+import tosatto.fancyworld.game.world.passages.Passage;
+import tosatto.fancyworld.game.world.passages.exceptions.PassageException;
+import tosatto.fancyworld.game.world.places.Directions;
+import tosatto.fancyworld.game.world.places.Place;
 
 /**
  *
  * @author Davide
  */
-public class RandomWorldGenerator {
+public class BasicRandomWorldGenerator implements RandomWorldGenerator{
     
     private static final String[] dirsOnLevel = {Directions.EST, Directions.NORTH, Directions.SOUTH, Directions.WEST};
     private static final String[] dirsUD = {Directions.UP, Directions.DOWN};
@@ -31,14 +33,36 @@ public class RandomWorldGenerator {
     private NameGenerator ng;
     private WorldFactory wf;
 
-    public RandomWorldGenerator(Random r, WorldFactory wf) {
+    private int minLvl, maxLvl, minPlaces, maxPlaces, difficulty;
+    
+    public BasicRandomWorldGenerator(Random r, 
+                                WorldFactory wf,
+                                int minLvl, 
+                                int maxLvl, 
+                                int minPlaces, 
+                                int maxPlaces, 
+                                int difficulty) {
+        
         this.r = r;
         ng = new NameGenerator(r);
         this.wf = wf;
+        
+        this.minLvl = minLvl;
+        this.maxLvl = maxLvl;
+        
+        this.minPlaces = minPlaces;
+        this.maxPlaces = maxPlaces;
+        
+        this.difficulty = difficulty;
     }
 
-    public RandomWorldGenerator(WorldFactory wf) {
-        this(new Random(), wf);
+    public BasicRandomWorldGenerator(WorldFactory wf,
+                                int minLvl, 
+                                int maxLvl, 
+                                int minPlaces, 
+                                int maxPlaces, 
+                                int difficulty) {
+        this(new Random(), wf, minLvl, maxLvl, minPlaces, maxPlaces, difficulty);
     }
     
     
@@ -52,7 +76,7 @@ public class RandomWorldGenerator {
     private int boundRnd (int min, int max)
     {
         
-        return min + r.nextInt(max-min);
+        return Helper.boundRnd(r, min, max);
     }
     
     /**
@@ -120,6 +144,21 @@ public class RandomWorldGenerator {
             
             return false;
         }
+    }
+
+    @Override
+    public Random getRandom() {
+        return r;
+    }
+
+    @Override
+    public NameGenerator getNameGenerator() {
+        return ng;
+    }
+
+    @Override
+    public WorldFactory getWorldFactory() {
+        return wf;
     }
     
     /**
@@ -326,14 +365,9 @@ public class RandomWorldGenerator {
     
     /**
      * Genera un nuovo mondo casuale
-     * @param minLvl Minimo numero di livelli
-     * @param maxLvl Massimo numero di livelli
-     * @param minPlaces Minimo numero di posti
-     * @param maxPlaces Massimo numero di posti
-     * @param difficulty Difficoltà (parametro tra 0 e +inf)
      * @return 
      */
-    public World generate(int minLvl, int maxLvl, int minPlaces, int maxPlaces, int difficulty)
+    public World generate()
     {
         final String startName = "start";
         

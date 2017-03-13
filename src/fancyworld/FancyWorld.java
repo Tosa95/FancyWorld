@@ -9,10 +9,10 @@ import tosatto.fancyworld.IO.ConsoleMessageIO;
 import tosatto.fancyworld.IO.MessageIO;
 import tosatto.fancyworld.game.BaseGame;
 import tosatto.fancyworld.game.Game;
-import tosatto.fancyworld.player.Player;
-import tosatto.fancyworld.world.NameGenerator;
-import tosatto.fancyworld.world.RandomWorldGenerator;
-import tosatto.fancyworld.world.factories.BasicWorldFactory;
+import tosatto.fancyworld.game.player.Player;
+import tosatto.fancyworld.game.world.NameGenerator;
+import tosatto.fancyworld.game.world.generators.BasicRandomWorldGenerator;
+import tosatto.fancyworld.game.world.factories.BasicWorldFactory;
 
 /**
  *
@@ -32,7 +32,7 @@ public class FancyWorld {
 //        
 //        io.presentMenu("Prova", new String[]{"ciao", "come", "va"});
 
-        BaseGame g = new BaseGame(new Player("Davide"), new RandomWorldGenerator(new BasicWorldFactory()).generate(5, 7, 10, 20, 100), "Gioco prova");
+        BaseGame g = new BaseGame(new Player("Davide"), new BasicRandomWorldGenerator(new BasicWorldFactory()).generate(5, 7, 10, 20, 100), "Gioco prova");
         g.setIo(new ConsoleMessageIO());
         g.play();
     }

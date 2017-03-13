@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tosatto.fancyworld.world;
+package tosatto.fancyworld.game.world;
 
 import com.sun.jmx.remote.internal.ArrayQueue;
 import java.util.ArrayList;
@@ -17,10 +17,10 @@ import org.simpleframework.xml.ElementMap;
 import org.simpleframework.xml.Root;
 import tosatto.fancyworld.game.BaseGame;
 import tosatto.fancyworld.game.GameInfo;
-import tosatto.fancyworld.world.levels.Level;
-import tosatto.fancyworld.world.passages.ClosedPassage;
-import tosatto.fancyworld.world.passages.Passage;
-import tosatto.fancyworld.world.places.Place;
+import tosatto.fancyworld.game.world.levels.Level;
+import tosatto.fancyworld.game.world.passages.ClosedPassage;
+import tosatto.fancyworld.game.world.passages.Passage;
+import tosatto.fancyworld.game.world.places.Place;
 
 /**
  *

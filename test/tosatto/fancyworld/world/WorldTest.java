@@ -5,6 +5,8 @@
  */
 package tosatto.fancyworld.world;
 
+import tosatto.fancyworld.game.world.World;
+import tosatto.fancyworld.game.world.generators.BasicRandomWorldGenerator;
 import java.io.File;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -13,11 +15,11 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.simpleframework.xml.core.Persister;
-import tosatto.fancyworld.world.factories.BasicWorldFactory;
-import tosatto.fancyworld.world.levels.Level;
-import tosatto.fancyworld.world.passages.OpenPassage;
-import tosatto.fancyworld.world.places.Directions;
-import tosatto.fancyworld.world.places.Place;
+import tosatto.fancyworld.game.world.factories.BasicWorldFactory;
+import tosatto.fancyworld.game.world.levels.Level;
+import tosatto.fancyworld.game.world.passages.OpenPassage;
+import tosatto.fancyworld.game.world.places.Directions;
+import tosatto.fancyworld.game.world.places.Place;
 
 /**
  *
@@ -40,7 +42,7 @@ public class WorldTest {
     
     @Before
     public void setUp() {
-        instance = new RandomWorldGenerator(new BasicWorldFactory()).generate(5, 8, 10, 27, 1);
+        instance = new BasicRandomWorldGenerator(new BasicWorldFactory()).generate(5, 8, 10, 27, 1);
     }
     
     @After

@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tosatto.fancyworld.world.factories;
+package tosatto.fancyworld.game.world.factories;
 
-import tosatto.fancyworld.world.World;
-import tosatto.fancyworld.world.levels.Level;
-import tosatto.fancyworld.world.passages.Passage;
-import tosatto.fancyworld.world.places.Place;
+import tosatto.fancyworld.game.world.World;
+import tosatto.fancyworld.game.world.levels.Level;
+import tosatto.fancyworld.game.world.passages.Passage;
+import tosatto.fancyworld.game.world.places.Place;
 
 /**
  *

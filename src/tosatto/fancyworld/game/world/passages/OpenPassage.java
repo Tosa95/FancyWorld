@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tosatto.fancyworld.world.passages;
+package tosatto.fancyworld.game.world.passages;
 
 import java.util.HashMap;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Root;
 import tosatto.fancyworld.game.GameInfo;
-import tosatto.fancyworld.world.passages.exceptions.PassageException;
-import tosatto.fancyworld.world.places.Place;
+import tosatto.fancyworld.game.world.passages.exceptions.PassageException;
+import tosatto.fancyworld.game.world.places.Place;
 
 /**
  *

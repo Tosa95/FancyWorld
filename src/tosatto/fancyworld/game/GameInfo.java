@@ -5,7 +5,7 @@
  */
 package tosatto.fancyworld.game;
 
-import tosatto.fancyworld.world.passages.Passage;
+import tosatto.fancyworld.game.world.passages.Passage;
 
 /**
  *

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tosatto.fancyworld.world;
+package tosatto.fancyworld.game.world;
 
 import java.util.ArrayList;
 import java.util.List;

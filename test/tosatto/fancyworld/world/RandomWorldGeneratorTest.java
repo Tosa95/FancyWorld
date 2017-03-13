@@ -5,14 +5,15 @@
  */
 package tosatto.fancyworld.world;
 
+import tosatto.fancyworld.game.world.generators.BasicRandomWorldGenerator;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import tosatto.fancyworld.world.factories.BasicWorldFactory;
-import tosatto.fancyworld.world.places.Place;
+import tosatto.fancyworld.game.world.factories.BasicWorldFactory;
+import tosatto.fancyworld.game.world.places.Place;
 
 /**
  *
@@ -47,7 +48,7 @@ public class RandomWorldGeneratorTest {
     @Test
     public void testTest() {
         System.out.println("test");
-        new RandomWorldGenerator(new BasicWorldFactory()).test();
+        new BasicRandomWorldGenerator(new BasicWorldFactory()).test();
     }
     
 }

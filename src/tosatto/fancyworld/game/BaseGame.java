@@ -11,13 +11,13 @@ import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
 import tosatto.fancyworld.IO.MessageIO;
-import tosatto.fancyworld.world.passages.Passage;
-import tosatto.fancyworld.world.passages.exceptions.ClosedPassageException;
-import tosatto.fancyworld.world.passages.exceptions.PassageException;
-import tosatto.fancyworld.world.places.Directions;
-import tosatto.fancyworld.world.places.Place;
-import tosatto.fancyworld.player.Player;
-import tosatto.fancyworld.world.World;
+import tosatto.fancyworld.game.world.passages.Passage;
+import tosatto.fancyworld.game.world.passages.exceptions.ClosedPassageException;
+import tosatto.fancyworld.game.world.passages.exceptions.PassageException;
+import tosatto.fancyworld.game.world.places.Directions;
+import tosatto.fancyworld.game.world.places.Place;
+import tosatto.fancyworld.game.player.Player;
+import tosatto.fancyworld.game.world.World;
 
 /**
  * Classe Game.

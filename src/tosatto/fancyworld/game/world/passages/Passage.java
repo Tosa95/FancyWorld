@@ -3,29 +3,28 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tosatto.fancyworld.player;
+package tosatto.fancyworld.game.world.passages;
 
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Root;
 import tosatto.fancyworld.game.BaseGame;
 import tosatto.fancyworld.game.GameInfo;
+import tosatto.fancyworld.game.world.passages.exceptions.PassageException;
+import tosatto.fancyworld.game.world.places.Place;
 
 /**
  *
  * @author Davide
  */
-@Root (name = "Player")
-public class Player {
+@Root
+public abstract class Passage {
     
     @Attribute (name = "name")
     private String name;
     
-    @Attribute (name = "place")
-    private String place;
-
     protected GameInfo gi;
     
-    public Player(@Attribute (name = "name") String name) 
+    public Passage (@Attribute (name = "name") String name)
     {
         this.name = name;
     }
@@ -33,17 +32,18 @@ public class Player {
     public void setGi(GameInfo gi) {
         this.gi = gi;
     }
-
-    public void setPlace(String place) {
-        this.place = place;
-    }
-
-    public String getPlace() {
-        return place;
-    }
-
-    public String getName() {
+    
+    public abstract String next (String actPlace) throws PassageException;
+    
+    public String getName ()
+    {
         return name;
     }
+
+    @Override
+    public String toString() {
+        return name;
+    }
+    
     
 }
