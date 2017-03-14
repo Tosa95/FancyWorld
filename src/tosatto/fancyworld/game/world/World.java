@@ -61,6 +61,9 @@ public class World {
         
         for (Level l: levels.values())
             l.setGi(gi);
+        
+        for (Passage p: passages.values())
+            p.setGi(gi);
     }
 
     public String getStartPlace() {
@@ -130,6 +133,11 @@ public class World {
         names.stream().forEach(n->res.add(getPassage(n)));
         
         return res;
+    }
+    
+    public Collection<Passage> getAllPassages ()
+    {
+        return passages.values();
     }
     
     public int getEndLevelIndex ()

@@ -1,0 +1,329 @@
+<world name="omugtear" start="start">
+   <places>
+      <entry>
+         <string>coelasi</string>
+         <Place name="coelasi" description="" goal="false" level="3">
+            <passages>
+               <entry>
+                  <string>up</string>
+                  <string>rleoh</string>
+               </entry>
+               <entry>
+                  <string>down</string>
+                  <string>ans</string>
+               </entry>
+            </passages>
+         </Place>
+      </entry>
+      <entry>
+         <string>iosulc</string>
+         <Place name="iosulc" description="" goal="false" level="0">
+            <passages>
+               <entry>
+                  <string>south</string>
+                  <string>irrar</string>
+               </entry>
+               <entry>
+                  <string>north</string>
+                  <string>iml</string>
+               </entry>
+               <entry>
+                  <string>est</string>
+                  <string>usi</string>
+               </entry>
+               <entry>
+                  <string>west</string>
+                  <string>solo</string>
+               </entry>
+            </passages>
+         </Place>
+      </entry>
+      <entry>
+         <string>niamt</string>
+         <Place name="niamt" description="" goal="false" level="1">
+            <passages>
+               <entry>
+                  <string>up</string>
+                  <string>fvo</string>
+               </entry>
+               <entry>
+                  <string>down</string>
+                  <string>ipl</string>
+               </entry>
+            </passages>
+         </Place>
+      </entry>
+      <entry>
+         <string>teihasi</string>
+         <Place name="teihasi" description="" goal="false" level="2">
+            <passages>
+               <entry>
+                  <string>north</string>
+                  <string>aoc</string>
+               </entry>
+               <entry>
+                  <string>west</string>
+                  <string>aoc</string>
+               </entry>
+               <entry>
+                  <string>up</string>
+                  <string>ans</string>
+               </entry>
+               <entry>
+                  <string>down</string>
+                  <string>fvo</string>
+               </entry>
+            </passages>
+         </Place>
+      </entry>
+      <entry>
+         <string>aicipfo</string>
+         <Place name="aicipfo" description="" goal="true" level="0">
+            <passages>
+               <entry>
+                  <string>south</string>
+                  <string>asc</string>
+               </entry>
+               <entry>
+                  <string>north</string>
+                  <string>ecte</string>
+               </entry>
+               <entry>
+                  <string>est</string>
+                  <string>elm</string>
+               </entry>
+               <entry>
+                  <string>west</string>
+                  <string>lefi</string>
+               </entry>
+               <entry>
+                  <string>up</string>
+                  <string>ipl</string>
+               </entry>
+            </passages>
+         </Place>
+      </entry>
+      <entry>
+         <string>lnoccoi</string>
+         <Place name="lnoccoi" description="" goal="false" level="6">
+            <passages>
+               <entry>
+                  <string>south</string>
+                  <string>iceip</string>
+               </entry>
+               <entry>
+                  <string>down</string>
+                  <string>ueneu</string>
+               </entry>
+            </passages>
+         </Place>
+      </entry>
+      <entry>
+         <string>start</string>
+         <Place name="start" description="" goal="false" level="0">
+            <passages>
+               <entry>
+                  <string>south</string>
+                  <string>irrar</string>
+               </entry>
+               <entry>
+                  <string>est</string>
+                  <string>ecte</string>
+               </entry>
+               <entry>
+                  <string>north</string>
+                  <string>elm</string>
+               </entry>
+               <entry>
+                  <string>west</string>
+                  <string>pao</string>
+               </entry>
+            </passages>
+         </Place>
+      </entry>
+      <entry>
+         <string>ired</string>
+         <Place name="ired" description="" goal="false" level="5">
+            <passages>
+               <entry>
+                  <string>up</string>
+                  <string>ueneu</string>
+               </entry>
+               <entry>
+                  <string>down</string>
+                  <string>poa</string>
+               </entry>
+            </passages>
+         </Place>
+      </entry>
+      <entry>
+         <string>tono</string>
+         <Place name="tono" description="" goal="false" level="4">
+            <passages>
+               <entry>
+                  <string>south</string>
+                  <string>rdeli</string>
+               </entry>
+               <entry>
+                  <string>north</string>
+                  <string>fue</string>
+               </entry>
+               <entry>
+                  <string>up</string>
+                  <string>poa</string>
+               </entry>
+            </passages>
+         </Place>
+      </entry>
+      <entry>
+         <string>neisg</string>
+         <Place name="neisg" description="" goal="false" level="4">
+            <passages>
+               <entry>
+                  <string>south</string>
+                  <string>fue</string>
+               </entry>
+               <entry>
+                  <string>est</string>
+                  <string>rdeli</string>
+               </entry>
+               <entry>
+                  <string>down</string>
+                  <string>rleoh</string>
+               </entry>
+            </passages>
+         </Place>
+      </entry>
+      <entry>
+         <string>oino</string>
+         <Place name="oino" description="" goal="false" level="0">
+            <passages>
+               <entry>
+                  <string>south</string>
+                  <string>iml</string>
+               </entry>
+               <entry>
+                  <string>est</string>
+                  <string>usi</string>
+               </entry>
+               <entry>
+                  <string>north</string>
+                  <string>lefi</string>
+               </entry>
+               <entry>
+                  <string>west</string>
+                  <string>asc</string>
+               </entry>
+            </passages>
+         </Place>
+      </entry>
+   </places>
+   <levels>
+      <entry>
+         <integer>0</integer>
+         <Level id="0" name="lvl0" description=""/>
+      </entry>
+      <entry>
+         <integer>1</integer>
+         <Level id="1" name="lvl1" description=""/>
+      </entry>
+      <entry>
+         <integer>2</integer>
+         <Level id="2" name="lvl2" description=""/>
+      </entry>
+      <entry>
+         <integer>3</integer>
+         <Level id="3" name="lvl3" description=""/>
+      </entry>
+      <entry>
+         <integer>4</integer>
+         <Level id="4" name="lvl4" description=""/>
+      </entry>
+      <entry>
+         <integer>5</integer>
+         <Level id="5" name="lvl5" description=""/>
+      </entry>
+      <entry>
+         <integer>6</integer>
+         <Level id="6" name="lvl6" description=""/>
+      </entry>
+   </levels>
+   <passages>
+      <entry>
+         <string>ecte</string>
+         <passage class="tosatto.fancyworld.game.world.passages.OpenPassage" name="ecte" p1="aicipfo" p2="start"/>
+      </entry>
+      <entry>
+         <string>poa</string>
+         <passage class="tosatto.fancyworld.game.world.passages.OpenPassage" name="poa" p1="tono" p2="ired"/>
+      </entry>
+      <entry>
+         <string>ipl</string>
+         <passage class="tosatto.fancyworld.game.world.passages.OpenPassage" name="ipl" p1="aicipfo" p2="niamt"/>
+      </entry>
+      <entry>
+         <string>iceip</string>
+         <passage class="tosatto.fancyworld.game.world.passages.OpenPassage" name="iceip" p1="lnoccoi" p2="lnoccoi"/>
+      </entry>
+      <entry>
+         <string>rdeli</string>
+         <passage class="tosatto.fancyworld.game.world.passages.OpenPassage" name="rdeli" p1="tono" p2="neisg"/>
+      </entry>
+      <entry>
+         <string>irrar</string>
+         <passage class="tosatto.fancyworld.game.world.passages.OpenPassage" name="irrar" p1="iosulc" p2="start"/>
+      </entry>
+      <entry>
+         <string>ans</string>
+         <passage class="tosatto.fancyworld.game.world.passages.OpenPassage" name="ans" p1="teihasi" p2="coelasi"/>
+      </entry>
+      <entry>
+         <string>elm</string>
+         <passage class="tosatto.fancyworld.game.world.passages.OpenPassage" name="elm" p1="start" p2="aicipfo"/>
+      </entry>
+      <entry>
+         <string>iml</string>
+         <passage class="tosatto.fancyworld.game.world.passages.OpenPassage" name="iml" p1="oino" p2="iosulc"/>
+      </entry>
+      <entry>
+         <string>usi</string>
+         <passage class="tosatto.fancyworld.game.world.passages.OpenPassage" name="usi" p1="oino" p2="iosulc"/>
+      </entry>
+      <entry>
+         <string>solo</string>
+         <passage class="tosatto.fancyworld.game.world.passages.OpenPassage" name="solo" p1="iosulc" p2="iosulc"/>
+      </entry>
+      <entry>
+         <string>ueneu</string>
+         <passage class="tosatto.fancyworld.game.world.passages.OpenPassage" name="ueneu" p1="ired" p2="lnoccoi"/>
+      </entry>
+      <entry>
+         <string>lefi</string>
+         <passage class="tosatto.fancyworld.game.world.passages.OpenPassage" name="lefi" p1="aicipfo" p2="oino"/>
+      </entry>
+      <entry>
+         <string>asc</string>
+         <passage class="tosatto.fancyworld.game.world.passages.OpenPassage" name="asc" p1="aicipfo" p2="oino"/>
+      </entry>
+      <entry>
+         <string>aoc</string>
+         <passage class="tosatto.fancyworld.game.world.passages.OpenPassage" name="aoc" p1="teihasi" p2="teihasi"/>
+      </entry>
+      <entry>
+         <string>fue</string>
+         <passage class="tosatto.fancyworld.game.world.passages.OpenPassage" name="fue" p1="neisg" p2="tono"/>
+      </entry>
+      <entry>
+         <string>rleoh</string>
+         <passage class="tosatto.fancyworld.game.world.passages.OpenPassage" name="rleoh" p1="neisg" p2="coelasi"/>
+      </entry>
+      <entry>
+         <string>fvo</string>
+         <passage class="tosatto.fancyworld.game.world.passages.OpenPassage" name="fvo" p1="teihasi" p2="niamt"/>
+      </entry>
+      <entry>
+         <string>pao</string>
+         <passage class="tosatto.fancyworld.game.world.passages.OpenPassage" name="pao" p1="start" p2="start"/>
+      </entry>
+   </passages>
+</world>

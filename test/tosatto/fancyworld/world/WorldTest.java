@@ -42,7 +42,7 @@ public class WorldTest {
     
     @Before
     public void setUp() {
-        instance = new BasicRandomWorldGenerator(new BasicWorldFactory()).generate(5, 8, 10, 27, 1);
+        instance = new BasicRandomWorldGenerator(new BasicWorldFactory(), 5, 8, 10, 27, 1).generate();
     }
     
     @After

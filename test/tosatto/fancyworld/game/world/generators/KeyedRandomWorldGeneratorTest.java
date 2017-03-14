@@ -37,12 +37,14 @@ public class KeyedRandomWorldGeneratorTest {
     
     KeyedWorld kw;
     
+    KeyedRandomWorldGenerator krwg;
+    
     @Before
     public void setUp() {
         
-        BasicRandomWorldGenerator brwg = new BasicRandomWorldGenerator(new KeyedWorldFactory(), 5, 10, 10, 20, 1);
+        BasicRandomWorldGenerator brwg = new BasicRandomWorldGenerator(new KeyedWorldFactory(), 5, 10, 100, 200, 10000000);
         
-        KeyedRandomWorldGenerator krwg = new KeyedRandomWorldGenerator(brwg, 10, 15, 0.7, 0.2);
+        krwg = new KeyedRandomWorldGenerator(brwg, 10, 15, 0.7, 0.9);
         
         kw = (KeyedWorld)krwg.generate();
     }
@@ -57,54 +59,7 @@ public class KeyedRandomWorldGeneratorTest {
     @Test
     public void testGenerate() {
         System.out.println("generate");
-        KeyedRandomWorldGenerator instance = null;
-        World expResult = null;
-        World result = instance.generate();
-        assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(krwg.connected(kw), true);
     }
-
-    /**
-     * Test of getRandom method, of class KeyedRandomWorldGenerator.
-     */
-    @Test
-    public void testGetRandom() {
-        System.out.println("getRandom");
-        KeyedRandomWorldGenerator instance = null;
-        Random expResult = null;
-        Random result = instance.getRandom();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getNameGenerator method, of class KeyedRandomWorldGenerator.
-     */
-    @Test
-    public void testGetNameGenerator() {
-        System.out.println("getNameGenerator");
-        KeyedRandomWorldGenerator instance = null;
-        NameGenerator expResult = null;
-        NameGenerator result = instance.getNameGenerator();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getWorldFactory method, of class KeyedRandomWorldGenerator.
-     */
-    @Test
-    public void testGetWorldFactory() {
-        System.out.println("getWorldFactory");
-        KeyedRandomWorldGenerator instance = null;
-        WorldFactory expResult = null;
-        WorldFactory result = instance.getWorldFactory();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-    
 }

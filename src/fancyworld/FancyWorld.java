@@ -32,7 +32,7 @@ public class FancyWorld {
 //        
 //        io.presentMenu("Prova", new String[]{"ciao", "come", "va"});
 
-        BaseGame g = new BaseGame(new Player("Davide"), new BasicRandomWorldGenerator(new BasicWorldFactory()).generate(5, 7, 10, 20, 100), "Gioco prova");
+        BaseGame g = new BaseGame(new Player("Davide"), new BasicRandomWorldGenerator(new BasicWorldFactory(), 5, 7, 10, 20, 100).generate(), "Gioco prova");
         g.setIo(new ConsoleMessageIO());
         g.play();
     }

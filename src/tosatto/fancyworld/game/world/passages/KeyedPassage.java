@@ -30,6 +30,10 @@ public class KeyedPassage extends OpenPassage{
         super(name, p1, p2);
     }
 
+    public void setKey(String neededKey) {
+        this.neededKey = neededKey;
+    }
+    
     @Override
     public String next(String actPlace) throws PassageException {
         
@@ -44,6 +48,11 @@ public class KeyedPassage extends OpenPassage{
     public boolean isClosed ()
     {
         return neededKey!=null && !opened;
+    }
+    
+    public void open()
+    {
+        this.opened = true;
     }
     
     public String requiredKey ()

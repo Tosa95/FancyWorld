@@ -91,15 +91,8 @@ public class KeyedRandomWorldGenerator implements RandomWorldGenerator{
         h1.putAll(res);
     }
     
-    private boolean setEq (Set<String> s1, Set<String> s2)
+    private boolean includeSet (Set<String> s1, Set<String> s2)
     {
-        for (String str : s1)
-        {
-            if (!s2.contains(str))
-            {
-                return false;
-            }
-        }
         
         for (String str : s2)
         {
@@ -114,11 +107,21 @@ public class KeyedRandomWorldGenerator implements RandomWorldGenerator{
     
     private int callCount = 0;
     
+    /**
+     * Versione modificata dell'algoritmo di Djikstra per calcolare le chiavi effettivamente
+     * possibili da avere in ogni posto.
+     * @param w Mondo in esame
+     * @param actPlace Posto attuale
+     * @param availKeys Chiavi che si possono avere con il cammino in esame
+     * @param hm Risultato, mappa [nomeposto, lista chiavi]
+     */
     private void getAvailableKeysAtPlaces (World w, String actPlace, Set<String> availKeys, HashMap <String, Set<String>> hm)
     {
         //System.out.println ("Visiting " + actPlace);
         
-        callCount++;
+        //System.out.println("Begun " + actPlace + "   " + Integer.toString(callCount));
+        
+        //callCount++;
         
         HashMap<String, Set<String>> temp = new HashMap<>();
         
@@ -129,7 +132,7 @@ public class KeyedRandomWorldGenerator implements RandomWorldGenerator{
         if (pl.hasKey() && !availKeys.contains(pl.getKey()))
             availKeys.add(pl.getKey());
 
-        if (hm.containsKey(actPlace) && setEq(hm.get(actPlace), availKeys))
+        if (hm.containsKey(actPlace) && includeSet(hm.get(actPlace), availKeys))
         {
              return;
         }
@@ -154,7 +157,8 @@ public class KeyedRandomWorldGenerator implements RandomWorldGenerator{
             
         }
         
-        System.out.println("Done " + actPlace);
+        //System.out.println("Done " + actPlace + "   " + Integer.toString(callCount));
+        //callCount--;
     }
     
     private HashMap <String, Set<String>> getAvailableKeysAtPlaces (World w)
@@ -162,6 +166,17 @@ public class KeyedRandomWorldGenerator implements RandomWorldGenerator{
         HashMap <String, Set<String>> res = new HashMap<>();
         getAvailableKeysAtPlaces(w, w.getStartPlace(), new HashSet<>(), res);
         return res;
+    }
+    
+    /**
+     * Dice se è possibile raggiungere tutti i posti, tenendo in considerazione anche
+     * le chiavi
+     * @param w
+     * @return 
+     */
+    public boolean connected (World w)
+    {
+        return getAvailableKeysAtPlaces(w).keySet().size() == w.getPlaces().size();
     }
     
     @Override
@@ -178,14 +193,31 @@ public class KeyedRandomWorldGenerator implements RandomWorldGenerator{
         
         int keys = Helper.boundRnd(r, minKeys, maxKeys);
         
+        List<Key> keyList = new ArrayList<>();
+        
         for (int i = 0; i < keys; i++)
         {
-            res.addKey(new Key(ng.getUniqueRandomName(2, 4)));
+            Key k = new Key(ng.getUniqueRandomName(2, 4));
+            res.addKey(k);
+            keyList.add(k);
         }
         
         placeRandomKeys(res);
         
-        HashMap<String, Set<String>> availK = getAvailableKeysAtPlaces(res);
+        for (Passage p : res.getAllPassages())
+        {
+            KeyedPassage kp = (KeyedPassage)p;
+            
+            if (r.nextDouble()<keyPassageProb)
+            {
+                Key k = keyList.get(r.nextInt(keyList.size()));
+                
+                kp.setKey(k.getName());
+                
+                if (!connected(res))
+                    kp.setKey(null);
+            }
+        }
         
         return res;
         
