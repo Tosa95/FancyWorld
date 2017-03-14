@@ -11,6 +11,8 @@ import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
 import tosatto.fancyworld.IO.MessageIO;
+import tosatto.fancyworld.game.interactions.PassageInteraction;
+import tosatto.fancyworld.game.interactions.PlaceIntercation;
 import tosatto.fancyworld.game.world.passages.Passage;
 import tosatto.fancyworld.game.world.passages.exceptions.ClosedPassageException;
 import tosatto.fancyworld.game.world.passages.exceptions.PassageException;
@@ -47,6 +49,10 @@ public class BaseGame extends Game{
     @Attribute (name = "name")
     private String name;
     
+    private PassageInteraction passInt;
+    
+    private PlaceIntercation placeInt;
+    
     private MessageIO io;
     
     public BaseGame(@Element (name = "player") Player player,
@@ -60,6 +66,12 @@ public class BaseGame extends Game{
 
     public void setIo(MessageIO io) {
         this.io = io;
+    }
+    
+    public void setInteractions (PassageInteraction passInt, PlaceIntercation placeInt)
+    {
+        this.passInt = passInt;
+        this.placeInt = placeInt;
     }
     
     private boolean exit (int choice)
@@ -83,7 +95,7 @@ public class BaseGame extends Game{
         
         while (! p.isGoal())
         {
-            io.inform(String.format ("Ti trovi nel luogo %s, livello %d. Ricorda: devi raggiungere un luogo nel livello %d", p.getName(), p.getLevel(), world.getEndLevelIndex()));
+            placeInt.interact(io, this, p);
             
             int dir = io.presentMenu("Cosa si desidera fare?", choices);
             
@@ -95,7 +107,11 @@ public class BaseGame extends Game{
             
             try {
                 
+                passInt.interact(io, this, world.getPassage(p.getPassage(Directions.DIRECTIONS[dir])));
+                
                 String nextPlace = world.getPassage(p.getPassage(Directions.DIRECTIONS[dir])).next(p.getName());
+                
+                
                 
                 p = world.getPlace(nextPlace);
                 
@@ -105,7 +121,7 @@ public class BaseGame extends Game{
                 
             }catch (PassageException e){
                 
-                io.inform (e.getMessage());
+                //io.inform (e.getMessage());
                 
             }
             

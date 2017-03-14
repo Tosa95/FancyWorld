@@ -37,9 +37,19 @@ public class KeyedPlayer extends Player{
         keys.add(keyName);
     }
     
+    public void removeKey (String keyName)
+    {
+        keys.remove(keyName);
+    }
+    
     public Collection<String> getKeys ()
     {
         return Collections.unmodifiableCollection(keys);
+    }
+    
+    public boolean hasKey (String keyName)
+    {
+        return keys.contains(keyName);
     }
     
 }

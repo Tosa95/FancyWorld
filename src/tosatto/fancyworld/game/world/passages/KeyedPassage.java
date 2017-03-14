@@ -39,7 +39,7 @@ public class KeyedPassage extends OpenPassage{
         
         KeyedGameInfo kgi = (KeyedGameInfo)gi;
         
-        if (neededKey == null || opened || kgi.playerHasKey(neededKey))
+        if (neededKey == null || opened)
             return super.next(actPlace);
         else
             throw new NoKeyPassageException();

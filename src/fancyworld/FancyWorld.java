@@ -5,14 +5,20 @@
  */
 package fancyworld;
 
+import java.util.Random;
 import tosatto.fancyworld.IO.ConsoleMessageIO;
 import tosatto.fancyworld.IO.MessageIO;
 import tosatto.fancyworld.game.BaseGame;
 import tosatto.fancyworld.game.Game;
+import tosatto.fancyworld.game.interactions.KeyedPassageInteraction;
+import tosatto.fancyworld.game.interactions.KeyedPlaceInteraction;
+import tosatto.fancyworld.game.player.KeyedPlayer;
 import tosatto.fancyworld.game.player.Player;
 import tosatto.fancyworld.game.world.NameGenerator;
 import tosatto.fancyworld.game.world.generators.BasicRandomWorldGenerator;
 import tosatto.fancyworld.game.world.factories.BasicWorldFactory;
+import tosatto.fancyworld.game.world.factories.KeyedWorldFactory;
+import tosatto.fancyworld.game.world.generators.KeyedRandomWorldGenerator;
 
 /**
  *
@@ -32,8 +38,13 @@ public class FancyWorld {
 //        
 //        io.presentMenu("Prova", new String[]{"ciao", "come", "va"});
 
-        BaseGame g = new BaseGame(new Player("Davide"), new BasicRandomWorldGenerator(new BasicWorldFactory(), 5, 7, 10, 20, 100).generate(), "Gioco prova");
+        BasicRandomWorldGenerator brwg = new BasicRandomWorldGenerator(new Random(101274981236489263L), new KeyedWorldFactory(), 5, 10, 10, 20, 1);
+        
+        KeyedRandomWorldGenerator krwg = new KeyedRandomWorldGenerator(brwg, 10, 15, 0.7, 1);
+
+        BaseGame g = new BaseGame(new KeyedPlayer("Davide"), krwg.generate(), "Gioco prova");
         g.setIo(new ConsoleMessageIO());
+        g.setInteractions(new KeyedPassageInteraction(), new KeyedPlaceInteraction());
         g.play();
     }
     

@@ -240,8 +240,15 @@ public class BasicRandomWorldGenerator implements RandomWorldGenerator{
         
         int pNum = places.length;
         
+        
         Place p1 = places[r.nextInt(pNum)];
         Place p2 = places[r.nextInt(pNum)];
+        
+        while (p1.getName().equals(p2.getName()))
+        {
+            p1 = places[r.nextInt(pNum)];
+            p2 = places[r.nextInt(pNum)];
+        }
         
         return new PlacePair(p1.getName(), p2.getName());
     }
@@ -421,7 +428,7 @@ public class BasicRandomWorldGenerator implements RandomWorldGenerator{
         if (difficulty == 0)
             difficulty = 1;
         
-        int trials = r.nextInt(((places * lvls)/difficulty)+1);
+        int trials = r.nextInt(((100 * places * lvls)/difficulty)+1);
         
         
         //Aggiunge altri collegamenti tra nodi, in numero inversamente proporzionale alla difficoltà

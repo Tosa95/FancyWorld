@@ -210,12 +210,16 @@ public class KeyedRandomWorldGenerator implements RandomWorldGenerator{
             
             if (r.nextDouble()<keyPassageProb)
             {
+                System.out.println("K");
+                
                 Key k = keyList.get(r.nextInt(keyList.size()));
                 
                 kp.setKey(k.getName());
                 
-                if (!connected(res))
+                if (!connected(res)){
+                    System.out.println("NC");
                     kp.setKey(null);
+                }
             }
         }
         

@@ -5,13 +5,19 @@
  */
 package tosatto.fancyworld.game;
 
+import tosatto.fancyworld.game.player.Player;
+import tosatto.fancyworld.game.world.World;
+
 /**
  * 
- * Classe base di Game. Generaslizza tutte le possibili partite. Ha solo un nome
+ * Classe base di Game. Generaslizza tutte le possibili partite. Ha solo un nome,
+ * un giocatore e un mondo
  * 
  * @author Davide
  */
 public abstract class Game {
      public abstract String getName();
+     public abstract Player getPlayer();
+     public abstract World getWorld();
      public abstract void play();
 }
