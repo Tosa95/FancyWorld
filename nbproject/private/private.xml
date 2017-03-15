@@ -3,9 +3,21 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/test/tosatto/fancyworld/world/RandomWorldGeneratorTest.java</file>
-            <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/src/tosatto/fancyworld/game/GameInfo.java</file>
+            <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/test/tosatto/fancyworld/game/world/generators/KeyedRandomWorldGeneratorTest.java</file>
+            <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/src/tosatto/fancyworld/game/Game.java</file>
+            <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/src/tosatto/fancyworld/game/interactions/KeyedPassageInteraction.java</file>
+            <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/src/tosatto/fancyworld/game/world/generators/BasicRandomWorldGenerator.java</file>
+            <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/src/fancyworld/FancyWorld.java</file>
+            <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/src/tosatto/fancyworld/game/world/generators/KeyedRandomWorldGenerator.java</file>
             <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/src/tosatto/fancyworld/game/BaseGame.java</file>
+            <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/src/tosatto/fancyworld/game/player/Player.java</file>
+            <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/src/tosatto/fancyworld/game/world/World.java</file>
+            <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/src/tosatto/fancyworld/game/interactions/PlaceIntercation.java</file>
+            <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/src/tosatto/fancyworld/game/interactions/PassageInteraction.java</file>
+            <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/src/tosatto/fancyworld/game/world/passages/KeyedPassage.java</file>
+            <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/src/tosatto/fancyworld/game/interactions/KeyedPlaceInteraction.java</file>
+            <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/src/tosatto/fancyworld/game/player/KeyedPlayer.java</file>
+            <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/test/tosatto/fancyworld/world/WorldTest.java</file>
         </group>
     </open-files>
 </project-private>

@@ -11,6 +11,7 @@ import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
 import tosatto.fancyworld.IO.MessageIO;
+import tosatto.fancyworld.game.interactions.MainInteraction;
 import tosatto.fancyworld.game.interactions.PassageInteraction;
 import tosatto.fancyworld.game.interactions.PlaceIntercation;
 import tosatto.fancyworld.game.world.passages.Passage;
@@ -53,6 +54,8 @@ public class BaseGame extends Game{
     
     private PlaceIntercation placeInt;
     
+    private MainInteraction mainInt;
+    
     private MessageIO io;
     
     public BaseGame(@Element (name = "player") Player player,
@@ -68,10 +71,11 @@ public class BaseGame extends Game{
         this.io = io;
     }
     
-    public void setInteractions (PassageInteraction passInt, PlaceIntercation placeInt)
+    public void setInteractions (PassageInteraction passInt, PlaceIntercation placeInt, MainInteraction mainInt)
     {
         this.passInt = passInt;
         this.placeInt = placeInt;
+        this.mainInt = mainInt;
     }
     
     private boolean exit (int choice)
@@ -86,50 +90,32 @@ public class BaseGame extends Game{
         
         io.inform("Il mondo è generato casualmente, come lo sono i nomi dei posti!");
         
-        Place p = world.getPlace(world.getStartPlace());
+        player.setPlace(world.getStartPlace());
         
         io.inform(String.format("Benvenuto. Ti trovi nel luogo %s. Devi "
-                + "raggiungere un luogo che si trova al livello %d", p.getName(), world.getEndLevelIndex()));
+                + "raggiungere un luogo che si trova al livello %d", player.getPlace(), world.getEndLevelIndex()));
         
         String[] choices = ArrayUtils.addAll(Directions.DIRECTIONS, new String[]{"esci"});
         
-        while (! p.isGoal())
+        String prevPlace = null;
+        boolean exit = false;
+        
+        while (! world.getPlace(player.getPlace()).isGoal() || exit)
         {
-            placeInt.interact(io, this, p);
+            if (prevPlace == null || !player.getPlace().equals(prevPlace))
+                placeInt.interact(io, this, world.getPlace(player.getPlace()));
             
-            int dir = io.presentMenu("Cosa si desidera fare?", choices);
+            prevPlace = player.getPlace();
             
-            if (exit(dir))
-            {
-                io.inform("MI DELUDI :(    TORNA PRESTO!!!");
-                return;
-            }
+            mainInt.interact(io, passInt, this);
             
-            try {
-                
-                passInt.interact(io, this, world.getPassage(p.getPassage(Directions.DIRECTIONS[dir])));
-                
-                String nextPlace = world.getPassage(p.getPassage(Directions.DIRECTIONS[dir])).next(p.getName());
-                
-                
-                
-                p = world.getPlace(nextPlace);
-                
-            }catch (ClosedPassageException e){
-                
-                io.inform("Passaggio murato");
-                
-            }catch (PassageException e){
-                
-                //io.inform (e.getMessage());
-                
-            }
+            
             
             
         }
         
         
-        io.inform(String.format("Sei nel luogo goal: %s. HAI VINTO!!!", p.getName()));
+        io.inform(String.format("Sei nel luogo goal: %s. HAI VINTO!!!", player.getPlace()));
         
     }
     

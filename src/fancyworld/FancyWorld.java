@@ -10,6 +10,7 @@ import tosatto.fancyworld.IO.ConsoleMessageIO;
 import tosatto.fancyworld.IO.MessageIO;
 import tosatto.fancyworld.game.BaseGame;
 import tosatto.fancyworld.game.Game;
+import tosatto.fancyworld.game.interactions.KeyedMainInteraction;
 import tosatto.fancyworld.game.interactions.KeyedPassageInteraction;
 import tosatto.fancyworld.game.interactions.KeyedPlaceInteraction;
 import tosatto.fancyworld.game.player.KeyedPlayer;
@@ -44,7 +45,7 @@ public class FancyWorld {
 
         BaseGame g = new BaseGame(new KeyedPlayer("Davide"), krwg.generate(), "Gioco prova");
         g.setIo(new ConsoleMessageIO());
-        g.setInteractions(new KeyedPassageInteraction(), new KeyedPlaceInteraction());
+        g.setInteractions(new KeyedPassageInteraction(), new KeyedPlaceInteraction(), new KeyedMainInteraction());
         g.play();
     }
     
