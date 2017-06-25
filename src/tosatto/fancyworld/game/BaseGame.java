@@ -100,22 +100,28 @@ public class BaseGame extends Game{
         String prevPlace = null;
         boolean exit = false;
         
-        while (! world.getPlace(player.getPlace()).isGoal() || exit)
+        while (! world.getPlace(player.getPlace()).isGoal() && !exit)
         {
             if (prevPlace == null || !player.getPlace().equals(prevPlace))
                 placeInt.interact(io, this, world.getPlace(player.getPlace()));
             
             prevPlace = player.getPlace();
             
-            mainInt.interact(io, passInt, this);
+            exit = !mainInt.interact(io, passInt, this);
             
             
             
             
         }
         
+        if (exit)
+        {
+            io.inform("OK, MI CHIUDO. MA MI DELUDI, MAI ARRENDERSI!!!");
+        } else {
+            io.inform(String.format("Sei nel luogo goal: %s. HAI VINTO!!!", player.getPlace()));
+        }
         
-        io.inform(String.format("Sei nel luogo goal: %s. HAI VINTO!!!", player.getPlace()));
+        
         
     }
     

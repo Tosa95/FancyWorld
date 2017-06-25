@@ -5,7 +5,6 @@
  */
 package tosatto.fancyworld.IO;
 
-import com.sun.xml.internal.ws.api.policy.AlternativeSelector;
 import java.io.BufferedReader;
 import java.io.Reader;
 import java.util.Scanner;

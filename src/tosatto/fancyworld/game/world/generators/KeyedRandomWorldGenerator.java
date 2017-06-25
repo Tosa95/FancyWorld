@@ -179,6 +179,21 @@ public class KeyedRandomWorldGenerator implements RandomWorldGenerator{
         return getAvailableKeysAtPlaces(w).keySet().size() == w.getPlaces().size();
     }
     
+    public boolean canReachGoal (World w)
+    {
+        String goal = "";
+        
+        for (Place p : w.getPlaces())
+        {
+            if (p.isGoal())
+                goal = p.getName();
+        }
+        
+        HashMap <String, Set<String>> map = getAvailableKeysAtPlaces(w);
+        
+        return map.containsKey(goal);
+    }
+    
     @Override
     public World generate() {
         
@@ -216,7 +231,7 @@ public class KeyedRandomWorldGenerator implements RandomWorldGenerator{
                 
                 kp.setKey(k.getName());
                 
-                if (!connected(res)){
+                if (!canReachGoal(res)){
                     System.out.println("NC");
                     kp.setKey(null);
                 }

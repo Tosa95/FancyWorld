@@ -41,7 +41,7 @@ public class FancyWorld {
 
         BasicRandomWorldGenerator brwg = new BasicRandomWorldGenerator(new Random(101274981236489263L), new KeyedWorldFactory(), 5, 10, 10, 20, 1);
         
-        KeyedRandomWorldGenerator krwg = new KeyedRandomWorldGenerator(brwg, 10, 15, 0.7, 1);
+        KeyedRandomWorldGenerator krwg = new KeyedRandomWorldGenerator(brwg, 10, 15, 0.3, 1);
 
         BaseGame g = new BaseGame(new KeyedPlayer("Davide"), krwg.generate(), "Gioco prova");
         g.setIo(new ConsoleMessageIO());
