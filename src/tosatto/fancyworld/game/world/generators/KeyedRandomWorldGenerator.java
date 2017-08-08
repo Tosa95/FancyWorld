@@ -62,24 +62,32 @@ public class KeyedRandomWorldGenerator implements RandomWorldGenerator{
         
         for (Place p : w.getPlaces())
         {
-            KeyedPlace kp = (KeyedPlace) p;
-        
-            if (r.nextDouble()<keyPlaceProb)
-                kp.setKey(keys[r.nextInt(keys.length)]);
+            if (!p.isGoal() && !p.getName().equals("start"))
+            {
+                KeyedPlace kp = (KeyedPlace) p;
+
+                if (r.nextDouble()<keyPlaceProb)
+                    kp.setKey(keys[r.nextInt(keys.length)]);
+            }
         }
     }
     
+    /**
+     * Unisce due mappe nomePosto:insiemeChiavi
+     * @param h1 Prima mappa, contiene anche il risultato
+     * @param h2 Seconda mappa
+     */
     private void mergeHM (HashMap <String, Set<String>> h1, HashMap <String, Set<String>> h2)
     {
         HashMap <String, Set<String>> res = new HashMap<>(h1);
         
         for (String key : h2.keySet())
         {
-            if (h1.containsKey(key))
+            if (h1.containsKey(key) /*Il posto c'è in entrambe le mappe*/)
             {
                 Set<String> merged = new HashSet<>(h1.get(key));
                 
-                merged.addAll(h2.get(key));
+                merged.addAll(h2.get(key)); /*unisce le chiavi*/
                 
                 res.put(key, merged);
             }else{
@@ -91,6 +99,12 @@ public class KeyedRandomWorldGenerator implements RandomWorldGenerator{
         h1.putAll(res);
     }
     
+    /**
+     * Controlla se s1 contiene s2
+     * @param s1 Primo insieme
+     * @param s2 Secondo insieme
+     * @return true: s2 <- s1, false altrimenti
+     */
     private boolean includeSet (Set<String> s1, Set<String> s2)
     {
         
@@ -132,13 +146,20 @@ public class KeyedRandomWorldGenerator implements RandomWorldGenerator{
         if (pl.hasKey() && !availKeys.contains(pl.getKey()))
             availKeys.add(pl.getKey());
 
-        if (hm.containsKey(actPlace) && includeSet(hm.get(actPlace), availKeys))
+        if (hm.containsKey(actPlace) /*sono già passato di qua*/ && 
+                includeSet(hm.get(actPlace), availKeys) /*il percorso attuale non 
+                aggiunge chiavi a quelle già ottenibili nel posto*/)
         {
              return;
         }
         
+        //Se arrivo qua significa che con il percorso attuale sto aggiungendo chiavi
+        //a quelle ottenibili dal posto, quindi devo rivalutare tutti gli altri posti
+        //collegati per vedere se aggiungo anche a loro
+        
         temp.put(actPlace, availKeys);
-        mergeHM(hm, temp);
+        mergeHM(hm, temp); //Aggiungo le info sulle chiavi ottenibili alla mappa principale
+        
         
         for (Passage p : w.getAllPassages(w.getPlace(actPlace).getPassages().values()))
         {
@@ -147,8 +168,9 @@ public class KeyedRandomWorldGenerator implements RandomWorldGenerator{
             try {
                 String nextPlace = w.getPlace(p.next(actPlace)).getName();
                 
-                if (!kp.isClosed()||availKeys.contains(kp.requiredKey()))
+                if (!kp.isClosed()/*se è un passaggio aperto*/||availKeys.contains(kp.requiredKey())/*oppure ho la chiave*/ )
                 {
+                    /*provo a passare, se era murato, mi da eccezione*/
                     getAvailableKeysAtPlaces(w, nextPlace, availKeys, hm);
                 }
             } catch (PassageException ex) {
@@ -161,6 +183,11 @@ public class KeyedRandomWorldGenerator implements RandomWorldGenerator{
         //callCount--;
     }
     
+    /**
+     * Wrapper per getAvailableKeysAtPlaces con più parametri, in modo da semplificare la chiamata
+     * @param w Il mondo 
+     * @return la mappa contenente le chiavi ottenibili in ogni posto
+     */
     private HashMap <String, Set<String>> getAvailableKeysAtPlaces (World w)
     {
         HashMap <String, Set<String>> res = new HashMap<>();
@@ -170,15 +197,21 @@ public class KeyedRandomWorldGenerator implements RandomWorldGenerator{
     
     /**
      * Dice se è possibile raggiungere tutti i posti, tenendo in considerazione anche
-     * le chiavi
+     * le chiavi 
      * @param w
      * @return 
      */
     public boolean connected (World w)
     {
+        //Basta che l'algoritmo di mapping posto-chiavi sia in grado di raggiungere tutti i posti
         return getAvailableKeysAtPlaces(w).keySet().size() == w.getPlaces().size();
     }
     
+    /**
+     * Controlla se il goal è raggiungibile con le chiavi correntemente piazzate
+     * @param w
+     * @return 
+     */
     public boolean canReachGoal (World w)
     {
         String goal = "";
@@ -197,7 +230,9 @@ public class KeyedRandomWorldGenerator implements RandomWorldGenerator{
     @Override
     public World generate() {
         
+        //Fa generare il mondo senza chiavi al generatore di cui è decorator
         KeyedWorld res = (KeyedWorld) rwg.generate();
+        
         
         res.setGi(new KeyedGameInfo() {
             @Override
@@ -210,6 +245,7 @@ public class KeyedRandomWorldGenerator implements RandomWorldGenerator{
         
         List<Key> keyList = new ArrayList<>();
         
+        //Crea chiavi a caso
         for (int i = 0; i < keys; i++)
         {
             Key k = new Key(ng.getUniqueRandomName(2, 4));
@@ -217,22 +253,29 @@ public class KeyedRandomWorldGenerator implements RandomWorldGenerator{
             keyList.add(k);
         }
         
+        //Piazza chiavi a caso nei vari posti
         placeRandomKeys(res);
         
+        //Chiude a chiave certi passaggi
         for (Passage p : res.getAllPassages())
         {
             KeyedPassage kp = (KeyedPassage)p;
             
+            //Lo chiude se il numero estratto è sotto alla probabilità prescelta
             if (r.nextDouble()<keyPassageProb)
             {
                 System.out.println("K");
                 
+                //Sceglie una chiave a caso
                 Key k = keyList.get(r.nextInt(keyList.size()));
                 
+                //La usa per chiudere il passaggio
                 kp.setKey(k.getName());
                 
+                //Controlla che il goal sia ancora raggiungibile
                 if (!canReachGoal(res)){
                     System.out.println("NC");
+                    //Se non è raggiungibile, riapre il passaggio
                     kp.setKey(null);
                 }
             }

@@ -24,7 +24,7 @@ public class KeyedPassageInteraction implements PassageInteraction{
         
         if (!(p instanceof KeyedPassage))
         {
-            
+            //TODO: Aggiustare qua, non mi piace
         }
         else
         {

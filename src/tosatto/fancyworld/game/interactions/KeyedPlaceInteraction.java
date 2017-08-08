@@ -40,22 +40,26 @@ public class KeyedPlaceInteraction implements PlaceIntercation{
             }
                 
         } else {
-            int ans = io.ask("Il luogo non ha alcuna chiave. Vuoi depositarne una?", new String[]{"si", "no"});
             
-            if (ans == 0)
+            if (kPlayer.getKeys().size() > 0)
             {
-                String[] keys = kPlayer.getKeys().toArray(new String[kPlayer.getKeys().size()]);
-                
-                int k = io.presentMenu("Seleziona chiave", keys);
-                
-                kp.setKey(keys[k]);
-                kPlayer.removeKey(keys[k]);
-               
-                io.inform("Ok, chiave depositata");
-            }
-            else
-            {
-                io.inform("Ok. Proseguiamo!");
+                int ans = io.ask("Il luogo non ha alcuna chiave. Vuoi depositarne una?", new String[]{"si", "no"});
+
+                if (ans == 0)
+                {
+                    String[] keys = kPlayer.getKeys().toArray(new String[kPlayer.getKeys().size()]);
+
+                    int k = io.presentMenu("Seleziona chiave", keys);
+
+                    kp.setKey(keys[k]);
+                    kPlayer.removeKey(keys[k]);
+
+                    io.inform("Ok, chiave depositata");
+                }
+                else
+                {
+                    io.inform("Ok. Proseguiamo!");
+                }
             }
         }
     }

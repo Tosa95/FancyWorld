@@ -37,7 +37,7 @@ public class KeyedPassage extends OpenPassage{
     @Override
     public String next(String actPlace) throws PassageException {
         
-        KeyedGameInfo kgi = (KeyedGameInfo)gi;
+        
         
         if (neededKey == null || opened)
             return super.next(actPlace);
@@ -47,12 +47,19 @@ public class KeyedPassage extends OpenPassage{
     
     public boolean isClosed ()
     {
+        
+        
         return neededKey!=null && !opened;
     }
     
     public void open()
     {
-        this.opened = true;
+        KeyedGameInfo kgi = (KeyedGameInfo)gi;
+        
+        if (kgi.playerHasKey(this.neededKey))
+        {
+            this.opened = true;
+        }
     }
     
     public String requiredKey ()
