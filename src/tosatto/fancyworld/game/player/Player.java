@@ -32,8 +32,15 @@ public class Player {
 
     public void setGi(GameInfo gi) {
         this.gi = gi;
+        setSubGi(gi);
     }
 
+    //template method
+    protected void setSubGi(GameInfo gi)
+    {
+        
+    }
+    
     public void setPlace(String place) {
         this.place = place;
     }

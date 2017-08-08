@@ -17,13 +17,21 @@ public class Key {
     
     @Attribute (name = "name")
     private String name;
+    
+    @Attribute (name = "weight")
+    private int weight;
 
-    public Key(@Attribute (name = "name") String name) {
+    public Key(@Attribute (name = "name") String name, @Attribute (name = "weight") int weight) {
         this.name = name;
+        this.weight = weight;
     }
 
     public String getName() {
         return name;
+    }
+    
+    public int getWeight() {
+        return weight;
     }
     
     

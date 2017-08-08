@@ -72,7 +72,7 @@ public class ConsoleMessageIO implements MessageIO{
     }
     
     @Override
-    public int presentMenu(String title, String[] entries) {
+    public int showMenu(String title, String[] entries) {
         
                     
         Scanner in = new Scanner(System.in);

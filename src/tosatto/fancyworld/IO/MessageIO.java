@@ -38,5 +38,5 @@ public interface MessageIO {
      * @param entries Voci del menu
      * @return Voce selezionata
      */
-    public int presentMenu (String title, String[] entries);
+    public int showMenu (String title, String[] entries);
 }

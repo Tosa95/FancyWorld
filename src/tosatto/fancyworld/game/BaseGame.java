@@ -6,6 +6,8 @@
 package tosatto.fancyworld.game;
 
 import java.util.Arrays;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.apache.commons.lang3.ArrayUtils;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
@@ -50,6 +52,8 @@ public class BaseGame extends Game{
     @Attribute (name = "name")
     private String name;
     
+    
+    
     private PassageInteraction passInt;
     
     private PlaceIntercation placeInt;
@@ -90,7 +94,7 @@ public class BaseGame extends Game{
         
         io.inform("Il mondo è generato casualmente, come lo sono i nomi dei posti!");
         
-        player.setPlace(world.getStartPlace());
+        
         
         io.inform(String.format("Benvenuto. Ti trovi nel luogo %s. Devi "
                 + "raggiungere un luogo che si trova al livello %d", player.getPlace(), world.getEndLevelIndex()));
@@ -117,6 +121,24 @@ public class BaseGame extends Game{
         if (exit)
         {
             io.inform("OK, MI CHIUDO. MA MI DELUDI, MAI ARRENDERSI!!!");
+            int resp = io.ask("Anzi, aspetta... Prima di andartene almeno vuoi salvare?", new String[]{"si", "no"});
+            
+            if (resp == 0)
+            {
+                GamePersister gp = new GamePersister(GamePersister.SAVE_FILENAME_TEMPORARY, BaseGame.class);
+                
+                try {
+                    gp.save(this);
+                } catch (Exception ex) {
+                    Logger.getLogger(BaseGame.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+            }else{
+                io.inform("Allora non ti importa proprio nulla di me :(");
+                io.inform("Non sono stato un bravo giochino???");
+                io.inform("Vabbè allora mi dileguo. Buon proseguimanto :D");
+            }
+                    
         } else {
             io.inform(String.format("Sei nel luogo goal: %s. HAI VINTO!!!", player.getPlace()));
         }
@@ -136,6 +158,12 @@ public class BaseGame extends Game{
     public String getName() {
         return name;
     }
+
+    public void setGameInfo(GameInfo gi) {
+        world.setGi(gi);
+        player.setGi(gi);
+    }
+    
     
     
     public class BaseGameInfo implements GameInfo

@@ -1,6 +1,8 @@
 <Game name="Game">
-   <player class="tosatto.fancyworld.game.player.KeyedPlayer" name="Granli Brum" place="start">
-      <keys class="java.util.ArrayList"/>
+   <player class="tosatto.fancyworld.game.player.KeyedPlayer" name="Granli Brum" place="aels">
+      <keys class="java.util.ArrayList">
+         <string>sl</string>
+      </keys>
    </player>
    <world class="tosatto.fancyworld.game.world.KeyedWorld" name="sirfa" start="start">
       <places>
@@ -21,7 +23,7 @@
          </entry>
          <entry>
             <string>eteras</string>
-            <Place class="tosatto.fancyworld.game.world.places.KeyedPlace" name="eteras" description="" goal="false" level="3">
+            <Place class="tosatto.fancyworld.game.world.places.KeyedPlace" name="eteras" description="" goal="false" level="3" key="er">
                <passages>
                   <entry>
                      <string>south</string>
@@ -144,7 +146,7 @@
          </entry>
          <entry>
             <string>fnoanli</string>
-            <Place class="tosatto.fancyworld.game.world.places.KeyedPlace" name="fnoanli" description="" goal="false" level="5">
+            <Place class="tosatto.fancyworld.game.world.places.KeyedPlace" name="fnoanli" description="" goal="false" level="5" key="rti">
                <passages>
                   <entry>
                      <string>est</string>
@@ -159,7 +161,7 @@
          </entry>
          <entry>
             <string>pciec</string>
-            <Place class="tosatto.fancyworld.game.world.places.KeyedPlace" name="pciec" description="" goal="false" level="3">
+            <Place class="tosatto.fancyworld.game.world.places.KeyedPlace" name="pciec" description="" goal="false" level="3" key="nt">
                <passages>
                   <entry>
                      <string>south</string>
@@ -186,7 +188,7 @@
          </entry>
          <entry>
             <string>mtia</string>
-            <Place class="tosatto.fancyworld.game.world.places.KeyedPlace" name="mtia" description="" goal="false" level="5">
+            <Place class="tosatto.fancyworld.game.world.places.KeyedPlace" name="mtia" description="" goal="false" level="5" key="nro">
                <passages>
                   <entry>
                      <string>south</string>
@@ -282,7 +284,7 @@
          </entry>
          <entry>
             <string>bagmo</string>
-            <Place class="tosatto.fancyworld.game.world.places.KeyedPlace" name="bagmo" description="" goal="false" level="3">
+            <Place class="tosatto.fancyworld.game.world.places.KeyedPlace" name="bagmo" description="" goal="false" level="3" key="ar">
                <passages>
                   <entry>
                      <string>south</string>

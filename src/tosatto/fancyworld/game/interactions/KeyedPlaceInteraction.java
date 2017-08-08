@@ -5,9 +5,13 @@
  */
 package tosatto.fancyworld.game.interactions;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import tosatto.fancyworld.IO.MessageIO;
 import tosatto.fancyworld.game.Game;
 import tosatto.fancyworld.game.player.KeyedPlayer;
+import tosatto.fancyworld.game.player.exceptions.UnableToPickUpKeyException;
+import tosatto.fancyworld.game.world.KeyedWorld;
 import tosatto.fancyworld.game.world.places.KeyedPlace;
 import tosatto.fancyworld.game.world.places.Place;
 
@@ -24,17 +28,26 @@ public class KeyedPlaceInteraction implements PlaceIntercation{
         
         KeyedPlace kp = (KeyedPlace)p;
         KeyedPlayer kPlayer = (KeyedPlayer) g.getPlayer();
+        KeyedWorld kw = (KeyedWorld) g.getWorld();
         
         if (kp.hasKey())
         {
-            int ans = io.ask(String.format("In questo luogo c'è la chiave %s. Vuoi prenderla?", kp.getKey()), new String[]{"si", "no"});
+            int ans = io.ask(String.format("In questo luogo c'è la chiave %s, peso %d. "
+                    + "Il peso attualmente portato è %d. Vuoi prenderla?", 
+                    kp.getKey(), kw.getKey(kp.getKey()).getWeight(), kPlayer.getKeyringWeight()), new String[]{"si", "no"});
             
             if (ans == 0)
             {
-                kPlayer.addKey(kp.getKey());
-                kp.setKey(null);
-                
-                io.inform("Ok. Chiave presa");
+                try {
+                    kPlayer.addKey(kp.getKey());
+                    kp.setKey(null);
+                    
+                    io.inform(String.format("Ok. Chiave presa. Ora il tuo portachiavi pesa %d", kPlayer.getKeyringWeight()));
+                } catch (UnableToPickUpKeyException ex) {
+                    
+                    io.inform(ex.getMessage());
+                    
+                }
             } else {
                 io.inform("Ok. Chiave lasciata dove era");
             }
@@ -49,12 +62,12 @@ public class KeyedPlaceInteraction implements PlaceIntercation{
                 {
                     String[] keys = kPlayer.getKeys().toArray(new String[kPlayer.getKeys().size()]);
 
-                    int k = io.presentMenu("Seleziona chiave", keys);
+                    int k = io.showMenu("Seleziona chiave", keys);
 
                     kp.setKey(keys[k]);
                     kPlayer.removeKey(keys[k]);
 
-                    io.inform("Ok, chiave depositata");
+                    io.inform(String.format("Ok, chiave depositata. Ora il tuo portachiavi pesa %d", kPlayer.getKeyringWeight()));
                 }
                 else
                 {

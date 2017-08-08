@@ -7,5 +7,6 @@ package tosatto.fancyworld.game;
 public interface KeyedGameInfo extends GameInfo{
     
     public boolean playerHasKey (String keyName);
+    public int getKeyWeight (String keyName);
     
 }

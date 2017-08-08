@@ -20,4 +20,5 @@ public abstract class Game {
      public abstract Player getPlayer();
      public abstract World getWorld();
      public abstract void play();
+     public abstract void setGameInfo(GameInfo gi);
 }

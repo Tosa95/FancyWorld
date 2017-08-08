@@ -52,7 +52,7 @@ public class KeyedMainInteraction implements MainInteraction{
         
         menuAlt.add(String.format("%12s", "esci"));
         
-        int dir = io.presentMenu("Cosa si desidera fare?", menuAlt.toArray(new String[menuAlt.size()]));
+        int dir = io.showMenu("Cosa si desidera fare?", menuAlt.toArray(new String[menuAlt.size()]));
         
         if (dir == Directions.DIRECTIONS.length)
             return false;

@@ -21,7 +21,7 @@ public class KeyedPassage extends OpenPassage{
     @Attribute (name = "opened")
     private boolean opened = false;
     
-    @Attribute (name = "neededKey")
+    @Attribute (name = "neededKey", required = false)
     private String neededKey = null;
     
     public KeyedPassage(@Attribute(name="name") String name,

@@ -41,6 +41,8 @@ public class KeyedRandomWorldGenerator implements RandomWorldGenerator{
     
     private double keyPlaceProb, keyPassageProb;
     
+    private final static int MAX_KEY_WEIGHT = 25;
+    
     public KeyedRandomWorldGenerator(RandomWorldGenerator rwg, int minKeys, int maxKeys, double keyPlaceProb, double keyPassageProb)
     {
         this.rwg = rwg;
@@ -239,6 +241,11 @@ public class KeyedRandomWorldGenerator implements RandomWorldGenerator{
             public boolean playerHasKey(String keyName) {
                 return true;
             }
+
+            @Override
+            public int getKeyWeight(String keyName) {
+                return 0;
+            }
         });
         
         int keys = Helper.boundRnd(r, minKeys, maxKeys);
@@ -248,7 +255,7 @@ public class KeyedRandomWorldGenerator implements RandomWorldGenerator{
         //Crea chiavi a caso
         for (int i = 0; i < keys; i++)
         {
-            Key k = new Key(ng.getUniqueRandomName(2, 4));
+            Key k = new Key(ng.getUniqueRandomName(2, 4), r.nextInt(MAX_KEY_WEIGHT + 1));
             res.addKey(k);
             keyList.add(k);
         }

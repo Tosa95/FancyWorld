@@ -5,15 +5,21 @@
  */
 package tosatto.fancyworld.game.world.places;
 
+import org.simpleframework.xml.Attribute;
+
 /**
  *
  * @author davide
  */
 public class KeyedPlace extends Place{
     
+    @Attribute (name = "key", required = false)
     private String key = null;
     
-    public KeyedPlace(String name, String description, boolean goal, int level) {
+    public KeyedPlace(@Attribute (name = "name") String name,
+                  @Attribute (name = "description") String description,
+                  @Attribute (name = "goal") boolean goal,
+                  @Attribute (name = "level") int level) {
         super(name, description, goal, level);
     }
 
