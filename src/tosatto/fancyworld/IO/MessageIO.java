@@ -33,6 +33,14 @@ public interface MessageIO {
     public String ask (String msg);
     
     /**
+     * Chiede un intero all'utente
+     * @param msg Richiesta
+     * @param errorMsg Messaggio da mostrare in caso di formato errato
+     * @return L'intero letto
+     */
+    public int askForInteger (String msg, String errorMsg);
+    
+    /**
      * Presenta un menu all'utente
      * @param title Titolo del menu
      * @param entries Voci del menu

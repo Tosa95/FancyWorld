@@ -34,6 +34,10 @@ import tosatto.fancyworld.game.world.trials.SequenceTrial;
 import tosatto.fancyworld.game.world.trials.Trial;
 import tosatto.fancyworld.game.world.trials.WordTrial;
 import tosatto.fancyworld.game.world.trials.Words;
+import tosatto.fancyworld.main.ChooseYourWorldChooser;
+import tosatto.fancyworld.main.bundles.BundleInteraction;
+import tosatto.fancyworld.main.bundles.ParametersBundle;
+import tosatto.fancyworld.main.bundles.StandardBundleInteraction;
 
 /**
  *
@@ -83,34 +87,53 @@ public class Prove {
 //        uti.interact(new SequenceTrial(), new ConsoleMessageIO());
 //        uti.interact(new FortuneTrial(), new ConsoleMessageIO());
 
-        BasicRandomWorldGenerator brwg = new BasicRandomWorldGenerator(new Random(101274981236489263L), new TrialedWorldFactory(), 5, 10, 10, 20, 1);
+//        BasicRandomWorldGenerator brwg = new BasicRandomWorldGenerator(new Random(101274981236489263L), new TrialedWorldFactory(), 5, 10, 10, 20, 1);
+//
+//        KeyedRandomWorldGenerator krwg = new KeyedRandomWorldGenerator(brwg, 10, 15, 0.3, 1);
+//        
+//        TrialedRandomWorldGenerator trwg = new TrialedRandomWorldGenerator(krwg, 1);
+//        
+//        trwg.generate();
+//
+//        TrialedWorld w = new TrialedWorld("prova", "prova");
+//        
+//        w.addKey(new Key("k", 20));
+//        w.addTrial(new WordTrial());
+//        
+//        TrialedPlace p = new TrialedPlace("prova", "", false, 0);
+//        
+//        w.addLevel(new Level(0, "livello 0", "bla bla"));
+//        
+//        w.addPlace(p);
+//        
+//        p.setKey("k");
+//        p.setTrial("Word");
+//        
+//        UniversalPlaceInteraction upi = new UniversalPlaceInteraction();
+//        
+//        BaseGame g = new BaseGame(new PointedPlayer("prova"), w, "prova");
+//        
+//        g.setGameInfo(new BaseTrialedGameInfo(g));
+//        
+//        upi.interact(new ConsoleMessageIO(), g, p);
 
-        KeyedRandomWorldGenerator krwg = new KeyedRandomWorldGenerator(brwg, 10, 15, 0.3, 1);
-        
-        TrialedRandomWorldGenerator trwg = new TrialedRandomWorldGenerator(krwg, 1);
-        
-        trwg.generate();
+//        ChooseYourWorldChooser cywc = new ChooseYourWorldChooser();
+//        
+//        cywc.choose(new ConsoleMessageIO());
 
-        TrialedWorld w = new TrialedWorld("prova", "prova");
+        ParametersBundle res = new ParametersBundle();
         
-        w.addKey(new Key("k", 20));
-        w.addTrial(new WordTrial());
+        res.addParameter("KEY_TYPE_NUMBER", 5);
+        res.addParameter("MAX_KEYRING_WEIGHT", 50);
+        res.addParameter("MAX_KEYRING_SIZE", 5);
+        res.addParameter("MAX_KEY_WEIGHT", 25);
+        res.addParameter("TRIAL_TYPES_NUMBER", 3);
+        res.addParameter("MAX_TRIAL_VALUE", 20);
+        res.addParameter("INITIAL_POINTS", 10);
+        res.addParameter("GOAL_POINTS", 100);
         
-        TrialedPlace p = new TrialedPlace("prova", "", false, 0);
+        BundleInteraction bi = new StandardBundleInteraction();
         
-        w.addLevel(new Level(0, "livello 0", "bla bla"));
-        
-        w.addPlace(p);
-        
-        p.setKey("k");
-        p.setTrial("Word");
-        
-        UniversalPlaceInteraction upi = new UniversalPlaceInteraction();
-        
-        BaseGame g = new BaseGame(new PointedPlayer("prova"), w, "prova");
-        
-        g.setGameInfo(new BaseTrialedGameInfo(g));
-        
-        upi.interact(new ConsoleMessageIO(), g, p);
+        bi.interact(res, new ConsoleMessageIO());
     }
 }

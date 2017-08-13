@@ -1,11 +1,7 @@
 <Game name="Game">
-   <player class="tosatto.fancyworld.game.player.PointedPlayer" name="Granli Brum" place="oars" points="0">
+   <player class="tosatto.fancyworld.game.player.PointedPlayer" name="Granli Brum" place="telbu" points="10">
       <keys class="java.util.ArrayList">
          <string>psi</string>
-         <string>old</string>
-         <string>ci</string>
-         <string>on</string>
-         <string>noe</string>
       </keys>
    </player>
    <world class="tosatto.fancyworld.game.world.TrialedWorld" name="ireageod" start="start">
@@ -66,7 +62,7 @@
          </entry>
          <entry>
             <string>eatab</string>
-            <Place class="tosatto.fancyworld.game.world.places.TrialedPlace" name="eatab" description="" goal="false" level="0" trial="Sequence">
+            <Place class="tosatto.fancyworld.game.world.places.TrialedPlace" name="eatab" description="" goal="false" level="0" key="old" trial="Sequence">
                <passages>
                   <entry>
                      <string>south</string>
@@ -151,7 +147,7 @@
          </entry>
          <entry>
             <string>aevoi</string>
-            <Place class="tosatto.fancyworld.game.world.places.TrialedPlace" name="aevoi" description="" goal="false" level="2">
+            <Place class="tosatto.fancyworld.game.world.places.TrialedPlace" name="aevoi" description="" goal="false" level="2" key="ci">
                <passages>
                   <entry>
                      <string>south</string>
@@ -178,7 +174,7 @@
          </entry>
          <entry>
             <string>lini</string>
-            <Place class="tosatto.fancyworld.game.world.places.TrialedPlace" name="lini" description="" goal="false" level="3" trial="Sequence">
+            <Place class="tosatto.fancyworld.game.world.places.TrialedPlace" name="lini" description="" goal="false" level="3" key="on" trial="Sequence">
                <passages>
                   <entry>
                      <string>south</string>
@@ -440,7 +436,7 @@
          </entry>
          <entry>
             <string>lsiost</string>
-            <Place class="tosatto.fancyworld.game.world.places.TrialedPlace" name="lsiost" description="" goal="false" level="4">
+            <Place class="tosatto.fancyworld.game.world.places.TrialedPlace" name="lsiost" description="" goal="false" level="4" key="noe">
                <passages>
                   <entry>
                      <string>south</string>
@@ -623,7 +619,7 @@
          </entry>
          <entry>
             <string>thi</string>
-            <passage class="tosatto.fancyworld.game.world.passages.KeyedPassage" name="thi" p1="aegpae" p2="lpol" opened="true" neededKey="psi"/>
+            <passage class="tosatto.fancyworld.game.world.passages.KeyedPassage" name="thi" p1="aegpae" p2="lpol" opened="false" neededKey="psi"/>
          </entry>
          <entry>
             <string>gavd</string>

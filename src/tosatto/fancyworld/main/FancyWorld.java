@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package fancyworld;
+package tosatto.fancyworld.main;
 
 import java.util.Random;
 import java.util.logging.Level;
@@ -51,7 +51,7 @@ public class FancyWorld {
 //        
 //        io.presentMenu("Prova", new String[]{"ciao", "come", "va"});
 
-        GamePersister gp = new GamePersister(GamePersister.SAVE_FILENAME_TEMPORARY, BaseGame.class);
+        GamePersister gp = new GamePersister(BaseGame.class, "Fancy Worls NG");
         io = new ConsoleMessageIO();
         
         boolean load = false;

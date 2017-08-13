@@ -97,5 +97,28 @@ public class ConsoleMessageIO implements MessageIO{
         
         
     }
+
+    @Override
+    public int askForInteger(String msg, String errorMsg) {
+        
+        boolean ok = false;
+        int res = 0;
+        
+        do
+        {
+            String resp = ask(msg);
+            
+            try{
+                res = Integer.parseInt(resp);
+                ok = true;
+            } catch (NumberFormatException ex)
+            {
+                System.out.println(errorMsg);
+            }
+            
+        }while (!ok);
+        
+        return res;
+    }
     
 }

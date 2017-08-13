@@ -143,7 +143,7 @@ public class BaseGame extends Game{
             
             if (resp == 0)
             {
-                GamePersister gp = new GamePersister(GamePersister.SAVE_FILENAME_TEMPORARY, BaseGame.class);
+                GamePersister gp = new GamePersister(BaseGame.class, "Fancy World NG");
                 
                 try {
                     gp.save(this);
