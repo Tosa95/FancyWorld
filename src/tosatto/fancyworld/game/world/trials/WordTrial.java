@@ -8,12 +8,14 @@ package tosatto.fancyworld.game.world.trials;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.simpleframework.xml.Root;
 import tosatto.fancyworld.common.UniqueRandomGenerator;
 
 /**
  *
  * @author Davide
  */
+@Root(name = "WordTrial")
 public class WordTrial implements Trial{
 
     private final static int MINIMUM_WORD_SIZE = 5;

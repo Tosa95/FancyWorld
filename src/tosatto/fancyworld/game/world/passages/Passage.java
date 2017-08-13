@@ -8,7 +8,7 @@ package tosatto.fancyworld.game.world.passages;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Root;
 import tosatto.fancyworld.game.BaseGame;
-import tosatto.fancyworld.game.GameInfo;
+import tosatto.fancyworld.game.info.GameInfo;
 import tosatto.fancyworld.game.world.passages.exceptions.PassageException;
 import tosatto.fancyworld.game.world.places.Place;
 

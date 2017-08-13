@@ -41,12 +41,27 @@ public class UniqueRandomGenerator {
         
         do
         {
-            res = min + r.nextInt(max-min); 
+            res = getInt(min, max); 
         }while(extractedInts.contains(res));
         
         extractedInts.add(res);
         
         return res;
+    }
+    
+    public int getInt (int min, int max)
+    {
+        return min + r.nextInt(max-min);
+    }
+    
+    public boolean getRandomBooleanWithProbability(double p)
+    {
+        int res = getInt(0, 1000);
+        
+        int bound = (int)(p*1000);
+        
+        return res < bound;
+        
     }
     
 }

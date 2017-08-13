@@ -15,7 +15,7 @@ import tosatto.fancyworld.game.world.trials.Trial;
 public class TrialedPlace extends KeyedPlace{
     
     @Attribute (name = "trial", required = false)
-    private Trial t = null;
+    private String trial = null;
     
     public TrialedPlace(@Attribute (name = "name") String name,
                   @Attribute (name = "description") String description,
@@ -26,19 +26,19 @@ public class TrialedPlace extends KeyedPlace{
         
     }
     
-    public void setTrial (Trial t)
+    public void setTrial (String trial)
     {
-        this.t = t;
+        this.trial = trial;
     }
     
-    public Trial getTrial ()
+    public String getTrial ()
     {
-        return this.t;
+        return this.trial;
     }
     
     public boolean hasTrial()
     {
-        return !(t == null);
+        return !(trial == null);
     }
     
     

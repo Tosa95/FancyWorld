@@ -13,7 +13,7 @@ import java.util.Random;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import tosatto.fancyworld.game.KeyedGameInfo;
+import tosatto.fancyworld.game.info.KeyedGameInfo;
 import tosatto.fancyworld.game.world.KeyedWorld;
 import tosatto.fancyworld.game.world.NameGenerator;
 import tosatto.fancyworld.game.world.World;
@@ -131,13 +131,16 @@ public class KeyedRandomWorldGenerator implements RandomWorldGenerator{
      * @param availKeys Chiavi che si possono avere con il cammino in esame
      * @param hm Risultato, mappa [nomeposto, lista chiavi]
      */
-    private void getAvailableKeysAtPlaces (World w, String actPlace, Set<String> availKeys, HashMap <String, Set<String>> hm)
+    private void getAvailableKeysAtPlaces (World w, String actPlace, Set<String> availKeys, HashMap <String, Set<String>> hm, PlaceAction pa)
     {
         //System.out.println ("Visiting " + actPlace);
         
         //System.out.println("Begun " + actPlace + "   " + Integer.toString(callCount));
         
         //callCount++;
+        
+        if (pa != null)
+            pa.interact(w.getPlace(actPlace));
         
         HashMap<String, Set<String>> temp = new HashMap<>();
         
@@ -173,7 +176,7 @@ public class KeyedRandomWorldGenerator implements RandomWorldGenerator{
                 if (!kp.isClosed()/*se è un passaggio aperto*/||availKeys.contains(kp.requiredKey())/*oppure ho la chiave*/ )
                 {
                     /*provo a passare, se era murato, mi da eccezione*/
-                    getAvailableKeysAtPlaces(w, nextPlace, availKeys, hm);
+                    getAvailableKeysAtPlaces(w, nextPlace, availKeys, hm, pa);
                 }
             } catch (PassageException ex) {
                 //Ok, passaggio murato
@@ -193,8 +196,22 @@ public class KeyedRandomWorldGenerator implements RandomWorldGenerator{
     private HashMap <String, Set<String>> getAvailableKeysAtPlaces (World w)
     {
         HashMap <String, Set<String>> res = new HashMap<>();
-        getAvailableKeysAtPlaces(w, w.getStartPlace(), new HashSet<>(), res);
+        getAvailableKeysAtPlaces(w, w.getStartPlace(), new HashSet<>(), res, null);
         return res;
+    }
+    
+    /**
+     * Permette di visitare il grafo dei posti con le regole del giocatore, ossia si
+     * visiteranno solo i posti effettivamente raggiungibili.
+     * 
+     * Non è garantito che si visiti una sola volta ogni posto
+     * @param w Il mondo da visitare
+     * @param pa L'azione da compiere ad ogni posto
+     */
+    public void visitGraph (World w, PlaceAction pa)
+    {
+        HashMap <String, Set<String>> res = new HashMap<>();
+        getAvailableKeysAtPlaces(w, w.getStartPlace(), new HashSet<>(), res, pa);
     }
     
     /**

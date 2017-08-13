@@ -5,6 +5,7 @@
  */
 package tosatto.fancyworld.game;
 
+import tosatto.fancyworld.game.info.GameInfo;
 import tosatto.fancyworld.game.player.Player;
 import tosatto.fancyworld.game.world.World;
 

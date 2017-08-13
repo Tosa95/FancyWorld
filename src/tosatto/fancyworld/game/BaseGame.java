@@ -5,6 +5,7 @@
  */
 package tosatto.fancyworld.game;
 
+import tosatto.fancyworld.game.info.GameInfo;
 import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -22,6 +23,7 @@ import tosatto.fancyworld.game.world.passages.exceptions.PassageException;
 import tosatto.fancyworld.game.world.places.Directions;
 import tosatto.fancyworld.game.world.places.Place;
 import tosatto.fancyworld.game.player.Player;
+import tosatto.fancyworld.game.player.PointedPlayer;
 import tosatto.fancyworld.game.world.World;
 
 /**
@@ -52,7 +54,7 @@ public class BaseGame extends Game{
     @Attribute (name = "name")
     private String name;
     
-    
+    private static int GOAL_WIN_POINTS = 100;
     
     private PassageInteraction passInt;
     
@@ -104,10 +106,26 @@ public class BaseGame extends Game{
         String prevPlace = null;
         boolean exit = false;
         
-        while (! world.getPlace(player.getPlace()).isGoal() && !exit)
-        {
+        while (!exit)
+        {   
             if (prevPlace == null || !player.getPlace().equals(prevPlace))
+            {
+                if (world.getPlace(player.getPlace()).isGoal())
+                {
+                    io.inform("Attenzione!!! Hai raggiunto il luogo goal!!!");
+                    
+                    if (((PointedPlayer)player).getPoints() < GOAL_WIN_POINTS)
+                    {
+                        io.inform("Purtroppo hai solo " + ((PointedPlayer)player).getPoints() +
+                                " punti, ma te ne servono " + GOAL_WIN_POINTS + " torna quando li avrai");
+                        
+                    }else{
+                        break;
+                    }
+                }
+                
                 placeInt.interact(io, this, world.getPlace(player.getPlace()));
+            }
             
             prevPlace = player.getPlace();
             
@@ -140,7 +158,8 @@ public class BaseGame extends Game{
             }
                     
         } else {
-            io.inform(String.format("Sei nel luogo goal: %s. HAI VINTO!!!", player.getPlace()));
+            io.inform(String.format("Gentile avventuriero, %s era il luogo da raggiungere"
+                    + "e lo hai raggiunto con %d punti. HAI VINTO!!!", player.getPlace(), ((PointedPlayer)player).getPoints()));
         }
         
         

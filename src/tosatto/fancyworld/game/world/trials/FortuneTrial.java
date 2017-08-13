@@ -6,11 +6,13 @@
 package tosatto.fancyworld.game.world.trials;
 
 import java.util.Random;
+import org.simpleframework.xml.Root;
 
 /**
  *
  * @author Davide
  */
+@Root(name = "FortuneTrial")
 public class FortuneTrial implements Trial{
 
     @Override

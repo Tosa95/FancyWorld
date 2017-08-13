@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tosatto.fancyworld.game;
+package tosatto.fancyworld.game.info;
 
 import tosatto.fancyworld.game.world.passages.Passage;
 

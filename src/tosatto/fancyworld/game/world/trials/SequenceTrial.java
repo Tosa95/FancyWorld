@@ -6,11 +6,13 @@
 package tosatto.fancyworld.game.world.trials;
 
 import java.util.Random;
+import org.simpleframework.xml.Root;
 
 /**
  *
  * @author Davide
  */
+@Root(name = "SequenceTrial")
 public class SequenceTrial implements Trial{
     
     private Random r;

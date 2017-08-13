@@ -12,8 +12,8 @@ import java.util.List;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Root;
-import tosatto.fancyworld.game.GameInfo;
-import tosatto.fancyworld.game.KeyedGameInfo;
+import tosatto.fancyworld.game.info.GameInfo;
+import tosatto.fancyworld.game.info.KeyedGameInfo;
 import tosatto.fancyworld.game.player.exceptions.UnableToPickUpKeyException;
 
 /**

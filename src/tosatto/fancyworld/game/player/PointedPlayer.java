@@ -18,7 +18,7 @@ public class PointedPlayer extends KeyedPlayer {
     
     public static int MINIMUM_POINTS = 0;
     
-    public PointedPlayer(String name) {
+    public PointedPlayer(@Attribute (name = "name") String name) {
         super(name);
         points = 0;
     }
@@ -26,6 +26,11 @@ public class PointedPlayer extends KeyedPlayer {
     public int getPoints()
     {
         return points;
+    }
+    
+    public void setPoints(int pt)
+    {
+        this.points = pt;
     }
     
     public void applyDeltaPoints (int delta)

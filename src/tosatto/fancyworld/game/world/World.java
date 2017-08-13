@@ -16,7 +16,7 @@ import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.ElementMap;
 import org.simpleframework.xml.Root;
 import tosatto.fancyworld.game.BaseGame;
-import tosatto.fancyworld.game.GameInfo;
+import tosatto.fancyworld.game.info.GameInfo;
 import tosatto.fancyworld.game.world.levels.Level;
 import tosatto.fancyworld.game.world.passages.ClosedPassage;
 import tosatto.fancyworld.game.world.passages.Passage;

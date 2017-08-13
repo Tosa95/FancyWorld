@@ -6,9 +6,11 @@
 package fancyworld;
 
 import java.io.IOException;
+import java.util.Random;
 import tosatto.fancyworld.IO.ConsoleMessageIO;
 import tosatto.fancyworld.game.BaseGame;
-import tosatto.fancyworld.game.KeyedGameInfo;
+import tosatto.fancyworld.game.info.BaseTrialedGameInfo;
+import tosatto.fancyworld.game.info.KeyedGameInfo;
 import tosatto.fancyworld.game.interactions.places.UniversalPlaceInteraction;
 import tosatto.fancyworld.game.interactions.trials.FortuneTrialInteraction;
 import tosatto.fancyworld.game.interactions.trials.SequenceTrialInteraction;
@@ -18,7 +20,12 @@ import tosatto.fancyworld.game.player.KeyedPlayer;
 import tosatto.fancyworld.game.player.Player;
 import tosatto.fancyworld.game.player.PointedPlayer;
 import tosatto.fancyworld.game.world.KeyedWorld;
+import tosatto.fancyworld.game.world.TrialedWorld;
 import tosatto.fancyworld.game.world.World;
+import tosatto.fancyworld.game.world.factories.TrialedWorldFactory;
+import tosatto.fancyworld.game.world.generators.BasicRandomWorldGenerator;
+import tosatto.fancyworld.game.world.generators.KeyedRandomWorldGenerator;
+import tosatto.fancyworld.game.world.generators.TrialedRandomWorldGenerator;
 import tosatto.fancyworld.game.world.keys.Key;
 import tosatto.fancyworld.game.world.levels.Level;
 import tosatto.fancyworld.game.world.places.TrialedPlace;
@@ -76,9 +83,18 @@ public class Prove {
 //        uti.interact(new SequenceTrial(), new ConsoleMessageIO());
 //        uti.interact(new FortuneTrial(), new ConsoleMessageIO());
 
-        KeyedWorld w = new KeyedWorld("prova", "prova");
+        BasicRandomWorldGenerator brwg = new BasicRandomWorldGenerator(new Random(101274981236489263L), new TrialedWorldFactory(), 5, 10, 10, 20, 1);
+
+        KeyedRandomWorldGenerator krwg = new KeyedRandomWorldGenerator(brwg, 10, 15, 0.3, 1);
+        
+        TrialedRandomWorldGenerator trwg = new TrialedRandomWorldGenerator(krwg, 1);
+        
+        trwg.generate();
+
+        TrialedWorld w = new TrialedWorld("prova", "prova");
         
         w.addKey(new Key("k", 20));
+        w.addTrial(new WordTrial());
         
         TrialedPlace p = new TrialedPlace("prova", "", false, 0);
         
@@ -87,23 +103,13 @@ public class Prove {
         w.addPlace(p);
         
         p.setKey("k");
-        p.setTrial(new WordTrial());
+        p.setTrial("Word");
         
         UniversalPlaceInteraction upi = new UniversalPlaceInteraction();
         
         BaseGame g = new BaseGame(new PointedPlayer("prova"), w, "prova");
         
-        g.setGameInfo(new KeyedGameInfo() {
-            @Override
-            public boolean playerHasKey(String keyName) {
-                return ((KeyedPlayer)g.getPlayer()).hasKey(keyName);
-            }
-
-            @Override
-            public int getKeyWeight(String keyName) {
-                return w.getKey(keyName).getWeight();
-            }
-        });
+        g.setGameInfo(new BaseTrialedGameInfo(g));
         
         upi.interact(new ConsoleMessageIO(), g, p);
     }

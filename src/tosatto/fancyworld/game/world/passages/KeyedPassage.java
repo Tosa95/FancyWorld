@@ -7,7 +7,7 @@ package tosatto.fancyworld.game.world.passages;
 
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Root;
-import tosatto.fancyworld.game.KeyedGameInfo;
+import tosatto.fancyworld.game.info.KeyedGameInfo;
 import tosatto.fancyworld.game.world.passages.exceptions.NoKeyPassageException;
 import tosatto.fancyworld.game.world.passages.exceptions.PassageException;
 

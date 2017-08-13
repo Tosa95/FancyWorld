@@ -9,6 +9,7 @@ import tosatto.fancyworld.IO.MessageIO;
 import tosatto.fancyworld.game.Game;
 import tosatto.fancyworld.game.interactions.trials.UniversalTrialInteraction;
 import tosatto.fancyworld.game.player.PointedPlayer;
+import tosatto.fancyworld.game.world.TrialedWorld;
 import tosatto.fancyworld.game.world.places.Place;
 import tosatto.fancyworld.game.world.places.TrialedPlace;
 
@@ -21,10 +22,11 @@ public class TrialedPlaceInteraction implements PlaceIntercation{
     @Override
     public void interact(MessageIO io, Game g, Place p) {
         TrialedPlace tp = (TrialedPlace)p;
+        TrialedWorld tw = (TrialedWorld)g.getWorld();
         
         if (tp.hasTrial())
         {
-            io.inform(String.format("Questo posto ha una prova di tipo %s, valore %d punti", tp.getTrial().getType(), tp.getTrial().getValue()));
+            io.inform(String.format("Questo posto ha una prova di tipo %s, valore %d punti", tw.getTrial(tp.getTrial()).getType(), tw.getTrial(tp.getTrial()).getValue()));
             
             int res = io.ask("Vuoi sottoporti alla prova?", new String[] {"si", "no"});
             
@@ -32,7 +34,7 @@ public class TrialedPlaceInteraction implements PlaceIntercation{
             {
                 UniversalTrialInteraction uti = new UniversalTrialInteraction();
                 
-                uti.doTrial((PointedPlayer)g.getPlayer(), tp.getTrial(), io);
+                uti.doTrial((PointedPlayer)g.getPlayer(), tw.getTrial(tp.getTrial()), io);
                 
             }else{
                 io.inform("Perfetto, continuiamo!!!");

@@ -1,4 +1,4 @@
-package tosatto.fancyworld.game;
+package tosatto.fancyworld.game.info;
 
 /**
  * Serve per permettere a un passaggio di sapere se un giocatore ha le chiavi per passare
