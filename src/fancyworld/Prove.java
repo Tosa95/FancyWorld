@@ -7,10 +7,21 @@ package fancyworld;
 
 import java.io.IOException;
 import tosatto.fancyworld.IO.ConsoleMessageIO;
+import tosatto.fancyworld.game.BaseGame;
+import tosatto.fancyworld.game.KeyedGameInfo;
+import tosatto.fancyworld.game.interactions.places.UniversalPlaceInteraction;
 import tosatto.fancyworld.game.interactions.trials.FortuneTrialInteraction;
 import tosatto.fancyworld.game.interactions.trials.SequenceTrialInteraction;
 import tosatto.fancyworld.game.interactions.trials.UniversalTrialInteraction;
 import tosatto.fancyworld.game.interactions.trials.WordTrialInteraction;
+import tosatto.fancyworld.game.player.KeyedPlayer;
+import tosatto.fancyworld.game.player.Player;
+import tosatto.fancyworld.game.player.PointedPlayer;
+import tosatto.fancyworld.game.world.KeyedWorld;
+import tosatto.fancyworld.game.world.World;
+import tosatto.fancyworld.game.world.keys.Key;
+import tosatto.fancyworld.game.world.levels.Level;
+import tosatto.fancyworld.game.world.places.TrialedPlace;
 import tosatto.fancyworld.game.world.trials.FortuneTrial;
 import tosatto.fancyworld.game.world.trials.SequenceTrial;
 import tosatto.fancyworld.game.world.trials.Trial;
@@ -48,21 +59,52 @@ public class Prove {
 //        System.out.println(wt.getObfuscatedWord());
 //        System.out.println(wt.getRealWord());
 
-        UniversalTrialInteraction uti = new UniversalTrialInteraction();
+//        UniversalTrialInteraction uti = new UniversalTrialInteraction();
+//        
+//        uti.interact(new Trial() {
+//            @Override
+//            public int getValue() {
+//                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//            }
+//
+//            @Override
+//            public String getType() {
+//                return "eh, volevi!";
+//            }
+//        }, new ConsoleMessageIO());
+//        uti.interact(new WordTrial(), new ConsoleMessageIO());
+//        uti.interact(new SequenceTrial(), new ConsoleMessageIO());
+//        uti.interact(new FortuneTrial(), new ConsoleMessageIO());
+
+        KeyedWorld w = new KeyedWorld("prova", "prova");
         
-        uti.interact(new Trial() {
+        w.addKey(new Key("k", 20));
+        
+        TrialedPlace p = new TrialedPlace("prova", "", false, 0);
+        
+        w.addLevel(new Level(0, "livello 0", "bla bla"));
+        
+        w.addPlace(p);
+        
+        p.setKey("k");
+        p.setTrial(new WordTrial());
+        
+        UniversalPlaceInteraction upi = new UniversalPlaceInteraction();
+        
+        BaseGame g = new BaseGame(new PointedPlayer("prova"), w, "prova");
+        
+        g.setGameInfo(new KeyedGameInfo() {
             @Override
-            public int getValue() {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            public boolean playerHasKey(String keyName) {
+                return ((KeyedPlayer)g.getPlayer()).hasKey(keyName);
             }
 
             @Override
-            public String getType() {
-                return "eh, volevi!";
+            public int getKeyWeight(String keyName) {
+                return w.getKey(keyName).getWeight();
             }
-        }, new ConsoleMessageIO());
-        uti.interact(new WordTrial(), new ConsoleMessageIO());
-        uti.interact(new SequenceTrial(), new ConsoleMessageIO());
-        uti.interact(new FortuneTrial(), new ConsoleMessageIO());
+        });
+        
+        upi.interact(new ConsoleMessageIO(), g, p);
     }
 }

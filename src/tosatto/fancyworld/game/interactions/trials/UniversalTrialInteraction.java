@@ -8,6 +8,7 @@ package tosatto.fancyworld.game.interactions.trials;
 import java.util.HashMap;
 import java.util.Map;
 import tosatto.fancyworld.IO.MessageIO;
+import tosatto.fancyworld.game.player.PointedPlayer;
 import tosatto.fancyworld.game.world.trials.Trial;
 
 /**
@@ -43,6 +44,24 @@ public class UniversalTrialInteraction implements TrialInteraction{
         return interactions.get(t.getType()).interact(t, io);
     }
     
+    public void doTrial(PointedPlayer pp, Trial t, MessageIO io)
+    {
+        boolean passed = this.interact(t, io);
+                
+        if (passed)
+        {
+            pp.applyDeltaPoints(t.getValue());
+
+            io.inform(String.format("Hai vinto. Ti vengono accreditati %d punti."
+                    + " Ora hai un totale di %d punti", t.getValue(), pp.getPoints()));
+        } else {
+            
+            pp.applyDeltaPoints(- t.getValue());
+            
+            io.inform(String.format("Purtroppo hai perso. Ti vengono tolti %d punti."
+                    + " Ora hai un totale di %d punti", t.getValue(), pp.getPoints()));
+        }
+    }
     
     
 }

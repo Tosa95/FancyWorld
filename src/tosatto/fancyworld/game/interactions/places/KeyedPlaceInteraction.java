@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tosatto.fancyworld.game.interactions;
+package tosatto.fancyworld.game.interactions.places;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -75,6 +75,11 @@ public class KeyedPlaceInteraction implements PlaceIntercation{
                 }
             }
         }
+    }
+
+    @Override
+    public Class<?> type() {
+        return KeyedPlace.class;
     }
     
 }

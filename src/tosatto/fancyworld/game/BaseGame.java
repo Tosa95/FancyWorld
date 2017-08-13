@@ -15,7 +15,7 @@ import org.simpleframework.xml.Root;
 import tosatto.fancyworld.IO.MessageIO;
 import tosatto.fancyworld.game.interactions.MainInteraction;
 import tosatto.fancyworld.game.interactions.PassageInteraction;
-import tosatto.fancyworld.game.interactions.PlaceIntercation;
+import tosatto.fancyworld.game.interactions.places.PlaceIntercation;
 import tosatto.fancyworld.game.world.passages.Passage;
 import tosatto.fancyworld.game.world.passages.exceptions.ClosedPassageException;
 import tosatto.fancyworld.game.world.passages.exceptions.PassageException;

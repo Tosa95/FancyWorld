@@ -16,7 +16,7 @@ import tosatto.fancyworld.game.GamePersister;
 import tosatto.fancyworld.game.KeyedGameInfo;
 import tosatto.fancyworld.game.interactions.KeyedMainInteraction;
 import tosatto.fancyworld.game.interactions.KeyedPassageInteraction;
-import tosatto.fancyworld.game.interactions.KeyedPlaceInteraction;
+import tosatto.fancyworld.game.interactions.places.KeyedPlaceInteraction;
 import tosatto.fancyworld.game.player.KeyedPlayer;
 import tosatto.fancyworld.game.player.Player;
 import tosatto.fancyworld.game.world.KeyedWorld;

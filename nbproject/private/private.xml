@@ -4,19 +4,27 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/src/tosatto/fancyworld/game/world/trials/FortuneTrial.java</file>
+            <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/src/tosatto/fancyworld/game/world/trials/WordTrial.java</file>
             <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/src/fancyworld/FancyWorld.java</file>
             <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/src/tosatto/fancyworld/game/interactions/trials/SequenceTrialInteraction.java</file>
             <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/src/tosatto/fancyworld/game/interactions/trials/TrialInteraction.java</file>
             <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/src/tosatto/fancyworld/game/world/trials/Trial.java</file>
             <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/src/fancyworld/Prove.java</file>
+            <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/src/tosatto/fancyworld/game/interactions/trials/WordTrialInteraction.java</file>
             <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/test/tosatto/fancyworld/game/world/trials/SequenceTrialTest.java</file>
             <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/src/tosatto/fancyworld/game/interactions/PlaceIntercation.java</file>
+            <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/test/tosatto/fancyworld/common/UniqueRandomGeneratorTest.java</file>
+            <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/src/tosatto/fancyworld/game/world/trials/MaxTrialCountReachedException.java</file>
+            <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/src/tosatto/fancyworld/game/world/generators/Helper.java</file>
+            <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/src/tosatto/fancyworld/game/interactions/trials/NoInteractionFoundException.java</file>
             <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/src/tosatto/fancyworld/game/world/trials/SequenceTrial.java</file>
             <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/test/tosatto/fancyworld/game/interactions/trials/SequenceTrialInteractionTest.java</file>
             <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/src/tosatto/fancyworld/game/player/KeyedPlayer.java</file>
             <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/src/tosatto/fancyworld/game/interactions/trials/FortuneTrialInteraction.java</file>
             <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/src/tosatto/fancyworld/game/world/trials/Words.java</file>
             <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/src/tosatto/fancyworld/IO/ConsoleMessageIO.java</file>
+            <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/src/tosatto/fancyworld/common/UniqueRandomGenerator.java</file>
+            <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/src/tosatto/fancyworld/game/interactions/trials/UniversalTrialInteraction.java</file>
         </group>
     </open-files>
 </project-private>
