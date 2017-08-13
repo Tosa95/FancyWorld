@@ -30,7 +30,7 @@ public class SequenceTrial implements Trial{
     
     @Override
     public int getValue() {
-        return 10;
+        return 25;
     }
 
     @Override
