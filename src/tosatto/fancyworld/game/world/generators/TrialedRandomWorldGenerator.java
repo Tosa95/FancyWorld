@@ -20,6 +20,7 @@ import tosatto.fancyworld.game.world.factories.WorldFactory;
 import tosatto.fancyworld.game.world.places.Place;
 import tosatto.fancyworld.game.world.places.TrialedPlace;
 import tosatto.fancyworld.game.world.trials.Trial;
+import tosatto.fancyworld.game.world.trials.TrialPool;
 
 /**
  *
@@ -34,15 +35,27 @@ public class TrialedRandomWorldGenerator implements RandomWorldGenerator{
     private KeyedRandomWorldGenerator base;
     private double trialRatio;
     
-    private static final int WORLD_TRIALS_NUMBER = 3;
+    private int tnum;
     
-    
-    public TrialedRandomWorldGenerator(KeyedRandomWorldGenerator base, double trialRatio) {
+    /**
+     * Inizializza il generatore casuale di un mondo con prove.
+     * 
+     * Precondizione: trialTypeNumber deve essere inferiore o uguale al numero di prove
+     * effettivamente definite nell'apposito package. Se non rispettata il risultato sarà
+     * un ciclo infinito
+     * 
+     * @param base
+     * @param trialRatio
+     * @param trialTypeNumber 
+     */
+    public TrialedRandomWorldGenerator(KeyedRandomWorldGenerator base, double trialRatio, int trialTypeNumber) {
         this.base = base;
         
         ng = base.getNameGenerator();
         wf = base.getWorldFactory();
         r = base.getRandom();
+        
+        tnum = trialTypeNumber;
         
         this.trialRatio = trialRatio;
         
@@ -72,26 +85,14 @@ public class TrialedRandomWorldGenerator implements RandomWorldGenerator{
     public World generate() {
         TrialedWorld res = (TrialedWorld)base.generate();
         
-        Reflections ref = new Reflections("tosatto.fancyworld.game.world.trials");
-        Set<Class<? extends Trial>> subTypes = ref.getSubTypesOf(Trial.class);
         
-        List<Trial> possibleTrials = new ArrayList<>();
         
-        for (Class<? extends Trial> cls: subTypes)
-        {
-             try {
-                 Trial t = cls.newInstance();
-                 possibleTrials.add(t);
-             } catch (InstantiationException ex) {
-                 Logger.getLogger(TrialedRandomWorldGenerator.class.getName()).log(Level.SEVERE, null, ex);
-             } catch (IllegalAccessException ex) {
-                 Logger.getLogger(TrialedRandomWorldGenerator.class.getName()).log(Level.SEVERE, null, ex);
-             }
-        }
+        List<Trial> possibleTrials = TrialPool.getInstance().getTrials();
+
         
         UniqueRandomGenerator urg = new UniqueRandomGenerator(r);
         
-        for (int  i = 0; i < WORLD_TRIALS_NUMBER; i++)
+        for (int  i = 0; i < tnum; i++)
         {
             int index = urg.getUniqueInt(0, possibleTrials.size());
             

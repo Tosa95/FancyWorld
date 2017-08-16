@@ -5,34 +5,52 @@
         <group>
             <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/src/tosatto/fancyworld/game/world/trials/WordTrial.java</file>
             <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/src/tosatto/fancyworld/game/player/PointedPlayer.java</file>
-            <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/src/fancyworld/FancyWorld.java</file>
+            <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/src/tosatto/fancyworld/game/world/generators/PlaceAction.java</file>
+            <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/src/tosatto/fancyworld/game/world/TrialedWorld.java</file>
+            <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/src/tosatto/fancyworld/game/BaseGame.java</file>
             <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/src/tosatto/fancyworld/game/interactions/trials/SequenceTrialInteraction.java</file>
-            <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/src/tosatto/fancyworld/game/interactions/places/PlaceIntercation.java</file>
-            <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/src/tosatto/fancyworld/game/interactions/trials/TrialInteraction.java</file>
             <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/src/tosatto/fancyworld/game/world/trials/Trial.java</file>
-            <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/src/fancyworld/Prove.java</file>
+            <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/src/tosatto/fancyworld/game/world/generators/TrialedRandomWorldGenerator.java</file>
             <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/src/tosatto/fancyworld/game/interactions/trials/WordTrialInteraction.java</file>
             <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/test/tosatto/fancyworld/game/world/trials/SequenceTrialTest.java</file>
-            <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/test/tosatto/fancyworld/common/UniqueRandomGeneratorTest.java</file>
             <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/src/tosatto/fancyworld/game/interactions/KeyedMainInteraction.java</file>
+            <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/src/tosatto/fancyworld/game/world/factories/KeyedWorldFactory.java</file>
+            <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/src/tosatto/fancyworld/main/bundles/BundleInteraction.java</file>
             <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/src/tosatto/fancyworld/game/world/trials/SequenceTrial.java</file>
-            <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/test/tosatto/fancyworld/game/interactions/trials/SequenceTrialInteractionTest.java</file>
-            <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/src/tosatto/fancyworld/game/player/KeyedPlayer.java</file>
             <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/src/tosatto/fancyworld/game/interactions/trials/FortuneTrialInteraction.java</file>
             <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/src/tosatto/fancyworld/game/world/places/TrialedPlace.java</file>
             <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/src/tosatto/fancyworld/game/interactions/MainInteraction.java</file>
-            <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/src/tosatto/fancyworld/common/UniqueRandomGenerator.java</file>
             <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/src/tosatto/fancyworld/game/world/trials/FortuneTrial.java</file>
             <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/src/tosatto/fancyworld/game/interactions/places/TrialedPlaceInteraction.java</file>
             <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/src/tosatto/fancyworld/game/interactions/places/UniversalPlaceInteraction.java</file>
+            <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/src/tosatto/fancyworld/main/FancyWorld.java</file>
+            <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/src/tosatto/fancyworld/main/bundles/ParametersBundle.java</file>
             <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/src/tosatto/fancyworld/game/world/trials/MaxTrialCountReachedException.java</file>
-            <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/src/tosatto/fancyworld/game/world/generators/Helper.java</file>
             <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/src/tosatto/fancyworld/game/interactions/trials/NoInteractionFoundException.java</file>
+            <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/src/tosatto/fancyworld/game/world/factories/TrialedWorldFactory.java</file>
+            <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/src/tosatto/fancyworld/game/world/places/KeyedPlace.java</file>
+            <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/src/tosatto/fancyworld/IO/ConsoleMessageIO.java</file>
+            <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/src/tosatto/fancyworld/game/info/TrialedGameInfo.java</file>
+            <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/src/tosatto/fancyworld/game/world/generators/KeyedRandomWorldGenerator.java</file>
+            <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/src/tosatto/fancyworld/game/GamePersister.java</file>
+            <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/src/tosatto/fancyworld/game/interactions/places/PlaceIntercation.java</file>
+            <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/src/tosatto/fancyworld/game/interactions/trials/TrialInteraction.java</file>
+            <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/src/fancyworld/Prove.java</file>
+            <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/test/tosatto/fancyworld/common/UniqueRandomGeneratorTest.java</file>
+            <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/src/tosatto/fancyworld/game/info/BaseTrialedGameInfo.java</file>
+            <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/test/tosatto/fancyworld/game/interactions/trials/SequenceTrialInteractionTest.java</file>
+            <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/src/tosatto/fancyworld/game/player/KeyedPlayer.java</file>
+            <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/src/tosatto/fancyworld/common/UniqueRandomGenerator.java</file>
+            <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/src/tosatto/fancyworld/game/world/generators/Helper.java</file>
+            <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/src/tosatto/fancyworld/main/ChooseYourWorldChooser.java</file>
+            <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/src/tosatto/fancyworld/main/WorldChooser.java</file>
             <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/src/tosatto/fancyworld/game/world/trials/Words.java</file>
             <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/src/tosatto/fancyworld/game/interactions/places/KeyedPlaceInteraction.java</file>
-            <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/src/tosatto/fancyworld/game/world/places/KeyedPlace.java</file>
+            <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/src/tosatto/fancyworld/IO/MessageIO.java</file>
             <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/src/tosatto/fancyworld/game/world/KeyedWorld.java</file>
-            <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/src/tosatto/fancyworld/IO/ConsoleMessageIO.java</file>
+            <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/src/tosatto/fancyworld/game/world/NameGenerator.java</file>
+            <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/src/tosatto/fancyworld/main/WorldTopologies.java</file>
+            <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/src/tosatto/fancyworld/main/bundles/StandardBundleInteraction.java</file>
             <file>file:/C:/Users/Davide/Documents/NetBeansProjects/FancyWorld/src/tosatto/fancyworld/game/interactions/trials/UniversalTrialInteraction.java</file>
         </group>
     </open-files>

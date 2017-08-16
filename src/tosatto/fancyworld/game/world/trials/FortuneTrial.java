@@ -6,6 +6,7 @@
 package tosatto.fancyworld.game.world.trials;
 
 import java.util.Random;
+import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Root;
 
 /**
@@ -15,10 +16,23 @@ import org.simpleframework.xml.Root;
 @Root(name = "FortuneTrial")
 public class FortuneTrial implements Trial{
 
+    @Attribute
+    private int value = 2;
+    
     @Override
     public int getValue() {
-        return 2;
+        return value;
     }
+
+    private Random r;
+    
+    public FortuneTrial() {
+        
+        r = new Random();
+    }
+    
+    
+    
 
     @Override
     public String getType() {
@@ -27,12 +41,15 @@ public class FortuneTrial implements Trial{
     
     public int[] extract ()
     {
-        Random r = new Random();
-        
-        int n1 = r.nextInt(7) + 1;
-        int n2 = r.nextInt(7) + 1;
+        int n1 = r.nextInt(6) + 1;
+        int n2 = r.nextInt(6) + 1;
         
         return new int[]{n1, n2};
+    }
+
+    @Override
+    public void setValue(int value) {
+        this.value = value;
     }
     
 }

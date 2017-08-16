@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tosatto.fancyworld.game.world.trials;
+package tosatto.fancyworld.game.info;
 
 /**
  *
  * @author Davide
  */
-public interface Trial {
-    public int getValue();
-    public void setValue(int value);
-    public String getType();
+public interface BundledGameInfo extends TrialedGameInfo{
+    
+    public int getParameterValue (String parameterName);
+    
 }

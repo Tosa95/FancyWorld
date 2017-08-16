@@ -272,7 +272,7 @@ public class KeyedRandomWorldGenerator implements RandomWorldGenerator{
         //Crea chiavi a caso
         for (int i = 0; i < keys; i++)
         {
-            Key k = new Key(ng.getUniqueRandomName(2, 4), r.nextInt(MAX_KEY_WEIGHT + 1));
+            Key k = new Key(ng.getUniqueRandomName(2, 4), 1 + r.nextInt(MAX_KEY_WEIGHT));
             res.addKey(k);
             keyList.add(k);
         }

@@ -34,5 +34,8 @@ public class Key {
         return weight;
     }
     
+    public void setWeight(int newWeight) {
+        this.weight = newWeight;
+    }
     
 }

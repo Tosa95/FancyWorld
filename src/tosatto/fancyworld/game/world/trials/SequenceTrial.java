@@ -6,6 +6,7 @@
 package tosatto.fancyworld.game.world.trials;
 
 import java.util.Random;
+import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Root;
 
 /**
@@ -21,6 +22,9 @@ public class SequenceTrial implements Trial{
     private int sum;
     private int mul;
     private int prevCoeff;
+    
+    @Attribute
+    private int value = 15;
 
     public SequenceTrial() {
     
@@ -32,7 +36,7 @@ public class SequenceTrial implements Trial{
     
     @Override
     public int getValue() {
-        return 25;
+        return value;
     }
 
     @Override
@@ -85,6 +89,11 @@ public class SequenceTrial implements Trial{
      */
     public int getPrevCoeff() {
         return prevCoeff;
+    }
+
+    @Override
+    public void setValue(int value) {
+        this.value = value;
     }
     
     

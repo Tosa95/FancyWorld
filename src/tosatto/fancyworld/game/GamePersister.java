@@ -26,6 +26,7 @@ public class GamePersister{
     
     public GamePersister(Class<?>gameClass, String saveName) {
         this.gameClass = gameClass;
+        this.saveName = saveName;
     }
     
     private String computeFileName (String saveName)

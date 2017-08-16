@@ -8,6 +8,7 @@ package tosatto.fancyworld.game.world.trials;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Root;
 import tosatto.fancyworld.common.UniqueRandomGenerator;
 
@@ -26,9 +27,12 @@ public class WordTrial implements Trial{
     private String extractedWord;
     private String obfuscatedWord;
     
+    @Attribute
+    private int value = 10;
+    
     @Override
     public int getValue() {
-        return 10;
+        return value;
     }
 
     @Override
@@ -99,6 +103,11 @@ public class WordTrial implements Trial{
         } else {
             throw new MaxTrialCountReachedException("Conteggio massimo di tentativi raggiunto");
         }
+    }
+
+    @Override
+    public void setValue(int value) {
+        this.value = value;
     }
     
 }

@@ -1,0 +1,557 @@
+<Game name="Fancy World">
+   <player class="tosatto.fancyworld.game.player.PointedPlayer" name="Granli Brum" place="aveori" points="10">
+      <keys class="java.util.ArrayList">
+         <string>er</string>
+      </keys>
+   </player>
+   <world class="tosatto.fancyworld.game.world.BundledWorld" name="sirfa" start="start">
+      <places>
+         <entry>
+            <string>aveori</string>
+            <Place class="tosatto.fancyworld.game.world.places.TrialedPlace" name="aveori" description="" goal="false" level="4" key="sl" trial="Fortune">
+               <passages>
+                  <entry>
+                     <string>up</string>
+                     <string>mca</string>
+                  </entry>
+                  <entry>
+                     <string>down</string>
+                     <string>vne</string>
+                  </entry>
+               </passages>
+            </Place>
+         </entry>
+         <entry>
+            <string>eteras</string>
+            <Place class="tosatto.fancyworld.game.world.places.TrialedPlace" name="eteras" description="" goal="false" level="3" trial="Sequence">
+               <passages>
+                  <entry>
+                     <string>south</string>
+                     <string>orco</string>
+                  </entry>
+                  <entry>
+                     <string>est</string>
+                     <string>sitpa</string>
+                  </entry>
+                  <entry>
+                     <string>north</string>
+                     <string>clo</string>
+                  </entry>
+                  <entry>
+                     <string>west</string>
+                     <string>ineom</string>
+                  </entry>
+               </passages>
+            </Place>
+         </entry>
+         <entry>
+            <string>aels</string>
+            <Place class="tosatto.fancyworld.game.world.places.TrialedPlace" name="aels" description="" goal="false" level="2" trial="Fortune">
+               <passages>
+                  <entry>
+                     <string>up</string>
+                     <string>vqemi</string>
+                  </entry>
+                  <entry>
+                     <string>down</string>
+                     <string>eitr</string>
+                  </entry>
+               </passages>
+            </Place>
+         </entry>
+         <entry>
+            <string>auloans</string>
+            <Place class="tosatto.fancyworld.game.world.places.TrialedPlace" name="auloans" description="" goal="false" level="1">
+               <passages>
+                  <entry>
+                     <string>south</string>
+                     <string>truit</string>
+                  </entry>
+                  <entry>
+                     <string>north</string>
+                     <string>pdea</string>
+                  </entry>
+                  <entry>
+                     <string>est</string>
+                     <string>sat</string>
+                  </entry>
+                  <entry>
+                     <string>west</string>
+                     <string>sordo</string>
+                  </entry>
+                  <entry>
+                     <string>up</string>
+                     <string>eitr</string>
+                  </entry>
+                  <entry>
+                     <string>down</string>
+                     <string>vdo</string>
+                  </entry>
+               </passages>
+            </Place>
+         </entry>
+         <entry>
+            <string>start</string>
+            <Place class="tosatto.fancyworld.game.world.places.TrialedPlace" name="start" description="" goal="false" level="0">
+               <passages>
+                  <entry>
+                     <string>south</string>
+                     <string>ottas</string>
+                  </entry>
+                  <entry>
+                     <string>est</string>
+                     <string>dateo</string>
+                  </entry>
+                  <entry>
+                     <string>north</string>
+                     <string>cravl</string>
+                  </entry>
+                  <entry>
+                     <string>west</string>
+                     <string>ngite</string>
+                  </entry>
+                  <entry>
+                     <string>up</string>
+                     <string>ramte</string>
+                  </entry>
+               </passages>
+            </Place>
+         </entry>
+         <entry>
+            <string>aemoapu</string>
+            <Place class="tosatto.fancyworld.game.world.places.TrialedPlace" name="aemoapu" description="" goal="false" level="1" trial="Sequence">
+               <passages>
+                  <entry>
+                     <string>south</string>
+                     <string>truit</string>
+                  </entry>
+                  <entry>
+                     <string>north</string>
+                     <string>pdea</string>
+                  </entry>
+                  <entry>
+                     <string>est</string>
+                     <string>pta</string>
+                  </entry>
+                  <entry>
+                     <string>west</string>
+                     <string>sordo</string>
+                  </entry>
+                  <entry>
+                     <string>down</string>
+                     <string>ramte</string>
+                  </entry>
+               </passages>
+            </Place>
+         </entry>
+         <entry>
+            <string>fnoanli</string>
+            <Place class="tosatto.fancyworld.game.world.places.TrialedPlace" name="fnoanli" description="" goal="false" level="5">
+               <passages>
+                  <entry>
+                     <string>est</string>
+                     <string>ill</string>
+                  </entry>
+                  <entry>
+                     <string>west</string>
+                     <string>onoe</string>
+                  </entry>
+               </passages>
+            </Place>
+         </entry>
+         <entry>
+            <string>pciec</string>
+            <Place class="tosatto.fancyworld.game.world.places.TrialedPlace" name="pciec" description="" goal="false" level="3" trial="Sequence">
+               <passages>
+                  <entry>
+                     <string>south</string>
+                     <string>stoa</string>
+                  </entry>
+                  <entry>
+                     <string>est</string>
+                     <string>sitpa</string>
+                  </entry>
+                  <entry>
+                     <string>north</string>
+                     <string>ineom</string>
+                  </entry>
+                  <entry>
+                     <string>west</string>
+                     <string>lialb</string>
+                  </entry>
+                  <entry>
+                     <string>down</string>
+                     <string>vqemi</string>
+                  </entry>
+               </passages>
+            </Place>
+         </entry>
+         <entry>
+            <string>mtia</string>
+            <Place class="tosatto.fancyworld.game.world.places.TrialedPlace" name="mtia" description="" goal="false" level="5">
+               <passages>
+                  <entry>
+                     <string>south</string>
+                     <string>saet</string>
+                  </entry>
+                  <entry>
+                     <string>est</string>
+                     <string>rin</string>
+                  </entry>
+                  <entry>
+                     <string>north</string>
+                     <string>onoe</string>
+                  </entry>
+                  <entry>
+                     <string>west</string>
+                     <string>ldave</string>
+                  </entry>
+                  <entry>
+                     <string>down</string>
+                     <string>mca</string>
+                  </entry>
+               </passages>
+            </Place>
+         </entry>
+         <entry>
+            <string>secto</string>
+            <Place class="tosatto.fancyworld.game.world.places.TrialedPlace" name="secto" description="" goal="true" level="5">
+               <passages>
+                  <entry>
+                     <string>south</string>
+                     <string>rin</string>
+                  </entry>
+                  <entry>
+                     <string>est</string>
+                     <string>saet</string>
+                  </entry>
+                  <entry>
+                     <string>north</string>
+                     <string>ldave</string>
+                  </entry>
+                  <entry>
+                     <string>west</string>
+                     <string>ill</string>
+                  </entry>
+               </passages>
+            </Place>
+         </entry>
+         <entry>
+            <string>ivre</string>
+            <Place class="tosatto.fancyworld.game.world.places.TrialedPlace" name="ivre" description="" goal="false" level="0">
+               <passages>
+                  <entry>
+                     <string>south</string>
+                     <string>cravl</string>
+                  </entry>
+                  <entry>
+                     <string>est</string>
+                     <string>rari</string>
+                  </entry>
+                  <entry>
+                     <string>north</string>
+                     <string>ngite</string>
+                  </entry>
+                  <entry>
+                     <string>west</string>
+                     <string>sraca</string>
+                  </entry>
+                  <entry>
+                     <string>up</string>
+                     <string>vdo</string>
+                  </entry>
+               </passages>
+            </Place>
+         </entry>
+         <entry>
+            <string>pmeatal</string>
+            <Place class="tosatto.fancyworld.game.world.places.TrialedPlace" name="pmeatal" description="" goal="false" level="1">
+               <passages>
+                  <entry>
+                     <string>south</string>
+                     <string>pta</string>
+                  </entry>
+                  <entry>
+                     <string>west</string>
+                     <string>sat</string>
+                  </entry>
+                  <entry>
+                     <string>down</string>
+                     <string>ahte</string>
+                  </entry>
+               </passages>
+            </Place>
+         </entry>
+         <entry>
+            <string>bagmo</string>
+            <Place class="tosatto.fancyworld.game.world.places.TrialedPlace" name="bagmo" description="" goal="false" level="3" trial="Sequence">
+               <passages>
+                  <entry>
+                     <string>south</string>
+                     <string>orco</string>
+                  </entry>
+                  <entry>
+                     <string>north</string>
+                     <string>stoa</string>
+                  </entry>
+                  <entry>
+                     <string>est</string>
+                     <string>clo</string>
+                  </entry>
+                  <entry>
+                     <string>west</string>
+                     <string>lialb</string>
+                  </entry>
+                  <entry>
+                     <string>up</string>
+                     <string>vne</string>
+                  </entry>
+               </passages>
+            </Place>
+         </entry>
+         <entry>
+            <string>cdue</string>
+            <Place class="tosatto.fancyworld.game.world.places.TrialedPlace" name="cdue" description="" goal="false" level="0">
+               <passages>
+                  <entry>
+                     <string>south</string>
+                     <string>rari</string>
+                  </entry>
+                  <entry>
+                     <string>est</string>
+                     <string>sraca</string>
+                  </entry>
+                  <entry>
+                     <string>north</string>
+                     <string>dateo</string>
+                  </entry>
+                  <entry>
+                     <string>west</string>
+                     <string>ottas</string>
+                  </entry>
+                  <entry>
+                     <string>up</string>
+                     <string>ahte</string>
+                  </entry>
+               </passages>
+            </Place>
+         </entry>
+      </places>
+      <levels>
+         <entry>
+            <integer>0</integer>
+            <Level id="0" name="lvl0" description=""/>
+         </entry>
+         <entry>
+            <integer>1</integer>
+            <Level id="1" name="lvl1" description=""/>
+         </entry>
+         <entry>
+            <integer>2</integer>
+            <Level id="2" name="lvl2" description=""/>
+         </entry>
+         <entry>
+            <integer>3</integer>
+            <Level id="3" name="lvl3" description=""/>
+         </entry>
+         <entry>
+            <integer>4</integer>
+            <Level id="4" name="lvl4" description=""/>
+         </entry>
+         <entry>
+            <integer>5</integer>
+            <Level id="5" name="lvl5" description=""/>
+         </entry>
+      </levels>
+      <passages>
+         <entry>
+            <string>vdo</string>
+            <passage class="tosatto.fancyworld.game.world.passages.KeyedPassage" name="vdo" p1="auloans" p2="ivre" opened="false" neededKey="tdi"/>
+         </entry>
+         <entry>
+            <string>onoe</string>
+            <passage class="tosatto.fancyworld.game.world.passages.KeyedPassage" name="onoe" p1="mtia" p2="fnoanli" opened="false" neededKey="sl"/>
+         </entry>
+         <entry>
+            <string>stoa</string>
+            <passage class="tosatto.fancyworld.game.world.passages.KeyedPassage" name="stoa" p1="pciec" p2="bagmo" opened="false" neededKey="nue"/>
+         </entry>
+         <entry>
+            <string>ineom</string>
+            <passage class="tosatto.fancyworld.game.world.passages.KeyedPassage" name="ineom" p1="eteras" p2="pciec" opened="false" neededKey="tdi"/>
+         </entry>
+         <entry>
+            <string>saet</string>
+            <passage class="tosatto.fancyworld.game.world.passages.KeyedPassage" name="saet" p1="mtia" p2="secto" opened="false" neededKey="er"/>
+         </entry>
+         <entry>
+            <string>sitpa</string>
+            <passage class="tosatto.fancyworld.game.world.passages.KeyedPassage" name="sitpa" p1="pciec" p2="eteras" opened="false" neededKey="er"/>
+         </entry>
+         <entry>
+            <string>sraca</string>
+            <passage class="tosatto.fancyworld.game.world.passages.KeyedPassage" name="sraca" p1="cdue" p2="ivre" opened="false" neededKey="sl"/>
+         </entry>
+         <entry>
+            <string>mca</string>
+            <passage class="tosatto.fancyworld.game.world.passages.KeyedPassage" name="mca" p1="aveori" p2="mtia" opened="false"/>
+         </entry>
+         <entry>
+            <string>eitr</string>
+            <passage class="tosatto.fancyworld.game.world.passages.KeyedPassage" name="eitr" p1="aels" p2="auloans" opened="false"/>
+         </entry>
+         <entry>
+            <string>rari</string>
+            <passage class="tosatto.fancyworld.game.world.passages.KeyedPassage" name="rari" p1="ivre" p2="cdue" opened="false" neededKey="tdi"/>
+         </entry>
+         <entry>
+            <string>vqemi</string>
+            <passage class="tosatto.fancyworld.game.world.passages.KeyedPassage" name="vqemi" p1="aels" p2="pciec" opened="false"/>
+         </entry>
+         <entry>
+            <string>rin</string>
+            <passage class="tosatto.fancyworld.game.world.passages.KeyedPassage" name="rin" p1="mtia" p2="secto" opened="false" neededKey="tdi"/>
+         </entry>
+         <entry>
+            <string>lialb</string>
+            <passage class="tosatto.fancyworld.game.world.passages.KeyedPassage" name="lialb" p1="bagmo" p2="pciec" opened="false"/>
+         </entry>
+         <entry>
+            <string>pta</string>
+            <passage class="tosatto.fancyworld.game.world.passages.KeyedPassage" name="pta" p1="pmeatal" p2="aemoapu" opened="false" neededKey="tdi"/>
+         </entry>
+         <entry>
+            <string>cravl</string>
+            <passage class="tosatto.fancyworld.game.world.passages.KeyedPassage" name="cravl" p1="ivre" p2="start" opened="false" neededKey="nue"/>
+         </entry>
+         <entry>
+            <string>pdea</string>
+            <passage class="tosatto.fancyworld.game.world.passages.KeyedPassage" name="pdea" p1="auloans" p2="aemoapu" opened="false" neededKey="nue"/>
+         </entry>
+         <entry>
+            <string>sat</string>
+            <passage class="tosatto.fancyworld.game.world.passages.KeyedPassage" name="sat" p1="auloans" p2="pmeatal" opened="false" neededKey="sl"/>
+         </entry>
+         <entry>
+            <string>clo</string>
+            <passage class="tosatto.fancyworld.game.world.passages.KeyedPassage" name="clo" p1="bagmo" p2="eteras" opened="false" neededKey="tdi"/>
+         </entry>
+         <entry>
+            <string>ill</string>
+            <passage class="tosatto.fancyworld.game.world.passages.KeyedPassage" name="ill" p1="fnoanli" p2="secto" opened="false" neededKey="er"/>
+         </entry>
+         <entry>
+            <string>sordo</string>
+            <passage class="tosatto.fancyworld.game.world.passages.KeyedPassage" name="sordo" p1="auloans" p2="aemoapu" opened="false" neededKey="sl"/>
+         </entry>
+         <entry>
+            <string>vne</string>
+            <passage class="tosatto.fancyworld.game.world.passages.KeyedPassage" name="vne" p1="aveori" p2="bagmo" opened="false"/>
+         </entry>
+         <entry>
+            <string>dateo</string>
+            <passage class="tosatto.fancyworld.game.world.passages.KeyedPassage" name="dateo" p1="cdue" p2="start" opened="false" neededKey="er"/>
+         </entry>
+         <entry>
+            <string>ottas</string>
+            <passage class="tosatto.fancyworld.game.world.passages.KeyedPassage" name="ottas" p1="start" p2="cdue" opened="false" neededKey="rti"/>
+         </entry>
+         <entry>
+            <string>ahte</string>
+            <passage class="tosatto.fancyworld.game.world.passages.KeyedPassage" name="ahte" p1="cdue" p2="pmeatal" opened="false" neededKey="tdi"/>
+         </entry>
+         <entry>
+            <string>ldave</string>
+            <passage class="tosatto.fancyworld.game.world.passages.KeyedPassage" name="ldave" p1="mtia" p2="secto" opened="false"/>
+         </entry>
+         <entry>
+            <string>truit</string>
+            <passage class="tosatto.fancyworld.game.world.passages.KeyedPassage" name="truit" p1="auloans" p2="aemoapu" opened="false"/>
+         </entry>
+         <entry>
+            <string>ramte</string>
+            <passage class="tosatto.fancyworld.game.world.passages.KeyedPassage" name="ramte" p1="aemoapu" p2="start" opened="false"/>
+         </entry>
+         <entry>
+            <string>orco</string>
+            <passage class="tosatto.fancyworld.game.world.passages.KeyedPassage" name="orco" p1="bagmo" p2="eteras" opened="false" neededKey="sl"/>
+         </entry>
+         <entry>
+            <string>ngite</string>
+            <passage class="tosatto.fancyworld.game.world.passages.KeyedPassage" name="ngite" p1="start" p2="ivre" opened="false" neededKey="sl"/>
+         </entry>
+      </passages>
+      <keys>
+         <entry>
+            <string>rti</string>
+            <Key name="rti" weight="1"/>
+         </entry>
+         <entry>
+            <string>tdi</string>
+            <Key name="tdi" weight="14"/>
+         </entry>
+         <entry>
+            <string>sl</string>
+            <Key name="sl" weight="1"/>
+         </entry>
+         <entry>
+            <string>er</string>
+            <Key name="er" weight="17"/>
+         </entry>
+         <entry>
+            <string>nue</string>
+            <Key name="nue" weight="22"/>
+         </entry>
+      </keys>
+      <trials class="java.util.HashMap">
+         <entry>
+            <string>Word</string>
+            <trial class="tosatto.fancyworld.game.world.trials.WordTrial" value="10"/>
+         </entry>
+         <entry>
+            <string>Fortune</string>
+            <trial class="tosatto.fancyworld.game.world.trials.FortuneTrial" value="2"/>
+         </entry>
+         <entry>
+            <string>Sequence</string>
+            <trial class="tosatto.fancyworld.game.world.trials.SequenceTrial" value="25"/>
+         </entry>
+      </trials>
+      <bundle>
+         <bundle class="java.util.HashMap">
+            <entry>
+               <string>TRIAL_TYPES_NUMBER</string>
+               <integer>3</integer>
+            </entry>
+            <entry>
+               <string>KEY_TYPE_NUMBER</string>
+               <integer>5</integer>
+            </entry>
+            <entry>
+               <string>MAX_KEYRING_WEIGHT</string>
+               <integer>50</integer>
+            </entry>
+            <entry>
+               <string>MAX_KEYRING_SIZE</string>
+               <integer>1</integer>
+            </entry>
+            <entry>
+               <string>INITIAL_POINTS</string>
+               <integer>10</integer>
+            </entry>
+            <entry>
+               <string>MAX_TRIAL_VALUE</string>
+               <integer>20</integer>
+            </entry>
+            <entry>
+               <string>MAX_KEY_WEIGHT</string>
+               <integer>25</integer>
+            </entry>
+            <entry>
+               <string>GOAL_POINTS</string>
+               <integer>100</integer>
+            </entry>
+         </bundle>
+      </bundle>
+   </world>
+</Game>

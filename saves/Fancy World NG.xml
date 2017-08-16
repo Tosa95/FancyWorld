@@ -1,10 +1,10 @@
-<Game name="Game">
-   <player class="tosatto.fancyworld.game.player.PointedPlayer" name="Granli Brum" place="telbu" points="10">
+<Game name="Fancy World NG">
+   <player class="tosatto.fancyworld.game.player.PointedPlayer" name="Granli Brum" place="nare" points="13">
       <keys class="java.util.ArrayList">
-         <string>psi</string>
+         <string>pti</string>
       </keys>
    </player>
-   <world class="tosatto.fancyworld.game.world.TrialedWorld" name="ireageod" start="start">
+   <world class="tosatto.fancyworld.game.world.BundledWorld" name="ireageod" start="start">
       <places>
          <entry>
             <string>oars</string>
@@ -31,7 +31,7 @@
          </entry>
          <entry>
             <string>levoern</string>
-            <Place class="tosatto.fancyworld.game.world.places.TrialedPlace" name="levoern" description="" goal="false" level="2" trial="Fortune">
+            <Place class="tosatto.fancyworld.game.world.places.TrialedPlace" name="levoern" description="" goal="false" level="2">
                <passages>
                   <entry>
                      <string>south</string>
@@ -62,7 +62,7 @@
          </entry>
          <entry>
             <string>eatab</string>
-            <Place class="tosatto.fancyworld.game.world.places.TrialedPlace" name="eatab" description="" goal="false" level="0" key="old" trial="Sequence">
+            <Place class="tosatto.fancyworld.game.world.places.TrialedPlace" name="eatab" description="" goal="false" level="0">
                <passages>
                   <entry>
                      <string>south</string>
@@ -89,7 +89,7 @@
          </entry>
          <entry>
             <string>conina</string>
-            <Place class="tosatto.fancyworld.game.world.places.TrialedPlace" name="conina" description="" goal="false" level="1" trial="Word">
+            <Place class="tosatto.fancyworld.game.world.places.TrialedPlace" name="conina" description="" goal="false" level="1">
                <passages>
                   <entry>
                      <string>south</string>
@@ -147,7 +147,7 @@
          </entry>
          <entry>
             <string>aevoi</string>
-            <Place class="tosatto.fancyworld.game.world.places.TrialedPlace" name="aevoi" description="" goal="false" level="2" key="ci">
+            <Place class="tosatto.fancyworld.game.world.places.TrialedPlace" name="aevoi" description="" goal="false" level="2" key="inc">
                <passages>
                   <entry>
                      <string>south</string>
@@ -174,7 +174,7 @@
          </entry>
          <entry>
             <string>lini</string>
-            <Place class="tosatto.fancyworld.game.world.places.TrialedPlace" name="lini" description="" goal="false" level="3" key="on" trial="Sequence">
+            <Place class="tosatto.fancyworld.game.world.places.TrialedPlace" name="lini" description="" goal="false" level="3">
                <passages>
                   <entry>
                      <string>south</string>
@@ -236,7 +236,7 @@
          </entry>
          <entry>
             <string>assitio</string>
-            <Place class="tosatto.fancyworld.game.world.places.TrialedPlace" name="assitio" description="" goal="false" level="4" key="psi">
+            <Place class="tosatto.fancyworld.game.world.places.TrialedPlace" name="assitio" description="" goal="false" level="4">
                <passages>
                   <entry>
                      <string>south</string>
@@ -282,7 +282,7 @@
          </entry>
          <entry>
             <string>aegpae</string>
-            <Place class="tosatto.fancyworld.game.world.places.TrialedPlace" name="aegpae" description="" goal="false" level="4" key="int">
+            <Place class="tosatto.fancyworld.game.world.places.TrialedPlace" name="aegpae" description="" goal="false" level="4">
                <passages>
                   <entry>
                      <string>south</string>
@@ -309,7 +309,7 @@
          </entry>
          <entry>
             <string>nare</string>
-            <Place class="tosatto.fancyworld.game.world.places.TrialedPlace" name="nare" description="" goal="false" level="2">
+            <Place class="tosatto.fancyworld.game.world.places.TrialedPlace" name="nare" description="" goal="false" level="2" trial="Sequence">
                <passages>
                   <entry>
                      <string>south</string>
@@ -359,7 +359,7 @@
          </entry>
          <entry>
             <string>lsad</string>
-            <Place class="tosatto.fancyworld.game.world.places.TrialedPlace" name="lsad" description="" goal="false" level="1" trial="Fortune">
+            <Place class="tosatto.fancyworld.game.world.places.TrialedPlace" name="lsad" description="" goal="false" level="1">
                <passages>
                   <entry>
                      <string>south</string>
@@ -390,7 +390,7 @@
          </entry>
          <entry>
             <string>ueneoll</string>
-            <Place class="tosatto.fancyworld.game.world.places.TrialedPlace" name="ueneoll" description="" goal="false" level="4" trial="Fortune">
+            <Place class="tosatto.fancyworld.game.world.places.TrialedPlace" name="ueneoll" description="" goal="false" level="4" key="lv" trial="Word">
                <passages>
                   <entry>
                      <string>south</string>
@@ -413,7 +413,7 @@
          </entry>
          <entry>
             <string>telbu</string>
-            <Place class="tosatto.fancyworld.game.world.places.TrialedPlace" name="telbu" description="" goal="false" level="0" trial="Fortune">
+            <Place class="tosatto.fancyworld.game.world.places.TrialedPlace" name="telbu" description="" goal="false" level="0" key="inc">
                <passages>
                   <entry>
                      <string>south</string>
@@ -436,7 +436,7 @@
          </entry>
          <entry>
             <string>lsiost</string>
-            <Place class="tosatto.fancyworld.game.world.places.TrialedPlace" name="lsiost" description="" goal="false" level="4" key="noe">
+            <Place class="tosatto.fancyworld.game.world.places.TrialedPlace" name="lsiost" description="" goal="false" level="4" trial="Fortune">
                <passages>
                   <entry>
                      <string>south</string>
@@ -487,75 +487,75 @@
       <passages>
          <entry>
             <string>eanit</string>
-            <passage class="tosatto.fancyworld.game.world.passages.KeyedPassage" name="eanit" p1="levoern" p2="conina" opened="false" neededKey="on"/>
+            <passage class="tosatto.fancyworld.game.world.passages.KeyedPassage" name="eanit" p1="levoern" p2="conina" opened="false" neededKey="inc"/>
          </entry>
          <entry>
             <string>citoa</string>
-            <passage class="tosatto.fancyworld.game.world.passages.KeyedPassage" name="citoa" p1="aegpae" p2="ariata" opened="false" neededKey="pt"/>
+            <passage class="tosatto.fancyworld.game.world.passages.KeyedPassage" name="citoa" p1="aegpae" p2="ariata" opened="false" neededKey="int"/>
          </entry>
          <entry>
             <string>aofa</string>
-            <passage class="tosatto.fancyworld.game.world.passages.KeyedPassage" name="aofa" p1="levoern" p2="nare" opened="false" neededKey="oda"/>
+            <passage class="tosatto.fancyworld.game.world.passages.KeyedPassage" name="aofa" p1="levoern" p2="nare" opened="false" neededKey="pti"/>
          </entry>
          <entry>
             <string>titp</string>
-            <passage class="tosatto.fancyworld.game.world.passages.KeyedPassage" name="titp" p1="ltea" p2="lsiost" opened="false" neededKey="cn"/>
+            <passage class="tosatto.fancyworld.game.world.passages.KeyedPassage" name="titp" p1="ltea" p2="lsiost" opened="false" neededKey="int"/>
          </entry>
          <entry>
             <string>qnod</string>
-            <passage class="tosatto.fancyworld.game.world.passages.KeyedPassage" name="qnod" p1="oars" p2="ueneoll" opened="false" neededKey="int"/>
+            <passage class="tosatto.fancyworld.game.world.passages.KeyedPassage" name="qnod" p1="oars" p2="ueneoll" opened="false" neededKey="psi"/>
          </entry>
          <entry>
             <string>ogin</string>
-            <passage class="tosatto.fancyworld.game.world.passages.KeyedPassage" name="ogin" p1="lsad" p2="conina" opened="false" neededKey="noe"/>
+            <passage class="tosatto.fancyworld.game.world.passages.KeyedPassage" name="ogin" p1="lsad" p2="conina" opened="false" neededKey="int"/>
          </entry>
          <entry>
             <string>tbaem</string>
-            <passage class="tosatto.fancyworld.game.world.passages.KeyedPassage" name="tbaem" p1="ariata" p2="lini" opened="false" neededKey="psi"/>
+            <passage class="tosatto.fancyworld.game.world.passages.KeyedPassage" name="tbaem" p1="ariata" p2="lini" opened="false" neededKey="pti"/>
          </entry>
          <entry>
             <string>ume</string>
-            <passage class="tosatto.fancyworld.game.world.passages.KeyedPassage" name="ume" p1="nare" p2="aevoi" opened="false" neededKey="old"/>
+            <passage class="tosatto.fancyworld.game.world.passages.KeyedPassage" name="ume" p1="nare" p2="aevoi" opened="false" neededKey="pti"/>
          </entry>
          <entry>
             <string>iemo</string>
-            <passage class="tosatto.fancyworld.game.world.passages.KeyedPassage" name="iemo" p1="ueneoll" p2="assitio" opened="false" neededKey="pt"/>
+            <passage class="tosatto.fancyworld.game.world.passages.KeyedPassage" name="iemo" p1="ueneoll" p2="assitio" opened="false" neededKey="psi"/>
          </entry>
          <entry>
             <string>oihr</string>
-            <passage class="tosatto.fancyworld.game.world.passages.KeyedPassage" name="oihr" p1="ueneoll" p2="assitio" opened="false" neededKey="old"/>
+            <passage class="tosatto.fancyworld.game.world.passages.KeyedPassage" name="oihr" p1="ueneoll" p2="assitio" opened="false" neededKey="inc"/>
          </entry>
          <entry>
             <string>eime</string>
-            <passage class="tosatto.fancyworld.game.world.passages.KeyedPassage" name="eime" p1="levoern" p2="nare" opened="false" neededKey="pt"/>
+            <passage class="tosatto.fancyworld.game.world.passages.KeyedPassage" name="eime" p1="levoern" p2="nare" opened="false" neededKey="int"/>
          </entry>
          <entry>
             <string>iet</string>
-            <passage class="tosatto.fancyworld.game.world.passages.KeyedPassage" name="iet" p1="telbu" p2="start" opened="false" neededKey="eg"/>
+            <passage class="tosatto.fancyworld.game.world.passages.KeyedPassage" name="iet" p1="telbu" p2="start" opened="false" neededKey="lv"/>
          </entry>
          <entry>
             <string>niemi</string>
-            <passage class="tosatto.fancyworld.game.world.passages.KeyedPassage" name="niemi" p1="lpol" p2="oars" opened="false" neededKey="on"/>
+            <passage class="tosatto.fancyworld.game.world.passages.KeyedPassage" name="niemi" p1="lpol" p2="oars" opened="false" neededKey="inc"/>
          </entry>
          <entry>
             <string>rleri</string>
-            <passage class="tosatto.fancyworld.game.world.passages.KeyedPassage" name="rleri" p1="start" p2="eatab" opened="false" neededKey="pti"/>
+            <passage class="tosatto.fancyworld.game.world.passages.KeyedPassage" name="rleri" p1="start" p2="eatab" opened="false" neededKey="lv"/>
          </entry>
          <entry>
             <string>tai</string>
-            <passage class="tosatto.fancyworld.game.world.passages.KeyedPassage" name="tai" p1="assitio" p2="ltea" opened="false" neededKey="cn"/>
+            <passage class="tosatto.fancyworld.game.world.passages.KeyedPassage" name="tai" p1="assitio" p2="ltea" opened="false" neededKey="lv"/>
          </entry>
          <entry>
             <string>loczu</string>
-            <passage class="tosatto.fancyworld.game.world.passages.KeyedPassage" name="loczu" p1="lsiost" p2="ueneoll" opened="false" neededKey="inc"/>
+            <passage class="tosatto.fancyworld.game.world.passages.KeyedPassage" name="loczu" p1="lsiost" p2="ueneoll" opened="false" neededKey="psi"/>
          </entry>
          <entry>
             <string>epi</string>
-            <passage class="tosatto.fancyworld.game.world.passages.KeyedPassage" name="epi" p1="conina" p2="start" opened="false" neededKey="oda"/>
+            <passage class="tosatto.fancyworld.game.world.passages.KeyedPassage" name="epi" p1="conina" p2="start" opened="false" neededKey="lv"/>
          </entry>
          <entry>
             <string>naq</string>
-            <passage class="tosatto.fancyworld.game.world.passages.KeyedPassage" name="naq" p1="aevoi" p2="ariata" opened="false" neededKey="inc"/>
+            <passage class="tosatto.fancyworld.game.world.passages.KeyedPassage" name="naq" p1="aevoi" p2="ariata" opened="false" neededKey="int"/>
          </entry>
          <entry>
             <string>arouc</string>
@@ -567,27 +567,27 @@
          </entry>
          <entry>
             <string>nesl</string>
-            <passage class="tosatto.fancyworld.game.world.passages.KeyedPassage" name="nesl" p1="lsiost" p2="aegpae" opened="false" neededKey="inc"/>
+            <passage class="tosatto.fancyworld.game.world.passages.KeyedPassage" name="nesl" p1="lsiost" p2="aegpae" opened="false" neededKey="lv"/>
          </entry>
          <entry>
             <string>tnid</string>
-            <passage class="tosatto.fancyworld.game.world.passages.KeyedPassage" name="tnid" p1="lini" p2="ariata" opened="false" neededKey="cn"/>
+            <passage class="tosatto.fancyworld.game.world.passages.KeyedPassage" name="tnid" p1="lini" p2="ariata" opened="false" neededKey="lv"/>
          </entry>
          <entry>
             <string>ieng</string>
-            <passage class="tosatto.fancyworld.game.world.passages.KeyedPassage" name="ieng" p1="start" p2="eatab" opened="false" neededKey="pt"/>
+            <passage class="tosatto.fancyworld.game.world.passages.KeyedPassage" name="ieng" p1="start" p2="eatab" opened="false" neededKey="pti"/>
          </entry>
          <entry>
             <string>ietl</string>
-            <passage class="tosatto.fancyworld.game.world.passages.KeyedPassage" name="ietl" p1="levoern" p2="aevoi" opened="false" neededKey="pt"/>
+            <passage class="tosatto.fancyworld.game.world.passages.KeyedPassage" name="ietl" p1="levoern" p2="aevoi" opened="false" neededKey="pti"/>
          </entry>
          <entry>
             <string>cpom</string>
-            <passage class="tosatto.fancyworld.game.world.passages.KeyedPassage" name="cpom" p1="ariata" p2="lini" opened="false" neededKey="on"/>
+            <passage class="tosatto.fancyworld.game.world.passages.KeyedPassage" name="cpom" p1="ariata" p2="lini" opened="false" neededKey="pti"/>
          </entry>
          <entry>
             <string>rti</string>
-            <passage class="tosatto.fancyworld.game.world.passages.KeyedPassage" name="rti" p1="ariata" p2="lini" opened="false" neededKey="int"/>
+            <passage class="tosatto.fancyworld.game.world.passages.KeyedPassage" name="rti" p1="ariata" p2="lini" opened="false" neededKey="pti"/>
          </entry>
          <entry>
             <string>itt</string>
@@ -611,7 +611,7 @@
          </entry>
          <entry>
             <string>esa</string>
-            <passage class="tosatto.fancyworld.game.world.passages.KeyedPassage" name="esa" p1="conina" p2="lsad" opened="false" neededKey="pt"/>
+            <passage class="tosatto.fancyworld.game.world.passages.KeyedPassage" name="esa" p1="conina" p2="lsad" opened="false" neededKey="lv"/>
          </entry>
          <entry>
             <string>mdi</string>
@@ -619,7 +619,7 @@
          </entry>
          <entry>
             <string>thi</string>
-            <passage class="tosatto.fancyworld.game.world.passages.KeyedPassage" name="thi" p1="aegpae" p2="lpol" opened="false" neededKey="psi"/>
+            <passage class="tosatto.fancyworld.game.world.passages.KeyedPassage" name="thi" p1="aegpae" p2="lpol" opened="false" neededKey="int"/>
          </entry>
          <entry>
             <string>gavd</string>
@@ -627,7 +627,7 @@
          </entry>
          <entry>
             <string>ssao</string>
-            <passage class="tosatto.fancyworld.game.world.passages.KeyedPassage" name="ssao" p1="eatab" p2="telbu" opened="false" neededKey="inc"/>
+            <passage class="tosatto.fancyworld.game.world.passages.KeyedPassage" name="ssao" p1="eatab" p2="telbu" opened="false" neededKey="int"/>
          </entry>
          <entry>
             <string>ipae</string>
@@ -639,7 +639,7 @@
          </entry>
          <entry>
             <string>aso</string>
-            <passage class="tosatto.fancyworld.game.world.passages.KeyedPassage" name="aso" p1="assitio" p2="oars" opened="false" neededKey="old"/>
+            <passage class="tosatto.fancyworld.game.world.passages.KeyedPassage" name="aso" p1="assitio" p2="oars" opened="false" neededKey="int"/>
          </entry>
          <entry>
             <string>aomo</string>
@@ -647,84 +647,84 @@
          </entry>
          <entry>
             <string>sias</string>
-            <passage class="tosatto.fancyworld.game.world.passages.KeyedPassage" name="sias" p1="conina" p2="lsad" opened="false" neededKey="ci"/>
+            <passage class="tosatto.fancyworld.game.world.passages.KeyedPassage" name="sias" p1="conina" p2="lsad" opened="false" neededKey="inc"/>
          </entry>
          <entry>
             <string>incio</string>
-            <passage class="tosatto.fancyworld.game.world.passages.KeyedPassage" name="incio" p1="conina" p2="lsad" opened="false" neededKey="ci"/>
+            <passage class="tosatto.fancyworld.game.world.passages.KeyedPassage" name="incio" p1="conina" p2="lsad" opened="false" neededKey="psi"/>
          </entry>
       </passages>
       <keys>
          <entry>
-            <string>eg</string>
-            <Key name="eg" weight="0"/>
-         </entry>
-         <entry>
             <string>pti</string>
-            <Key name="pti" weight="20"/>
-         </entry>
-         <entry>
-            <string>pt</string>
-            <Key name="pt" weight="21"/>
-         </entry>
-         <entry>
-            <string>noe</string>
-            <Key name="noe" weight="8"/>
-         </entry>
-         <entry>
-            <string>old</string>
-            <Key name="old" weight="2"/>
-         </entry>
-         <entry>
-            <string>ci</string>
-            <Key name="ci" weight="16"/>
+            <Key name="pti" weight="13"/>
          </entry>
          <entry>
             <string>psi</string>
-            <Key name="psi" weight="10"/>
+            <Key name="psi" weight="9"/>
          </entry>
          <entry>
             <string>lv</string>
-            <Key name="lv" weight="11"/>
-         </entry>
-         <entry>
-            <string>cn</string>
-            <Key name="cn" weight="0"/>
-         </entry>
-         <entry>
-            <string>oda</string>
-            <Key name="oda" weight="23"/>
+            <Key name="lv" weight="13"/>
          </entry>
          <entry>
             <string>int</string>
-            <Key name="int" weight="9"/>
-         </entry>
-         <entry>
-            <string>vot</string>
-            <Key name="vot" weight="23"/>
+            <Key name="int" weight="7"/>
          </entry>
          <entry>
             <string>inc</string>
-            <Key name="inc" weight="25"/>
-         </entry>
-         <entry>
-            <string>on</string>
-            <Key name="on" weight="5"/>
+            <Key name="inc" weight="10"/>
          </entry>
       </keys>
       <trials class="java.util.HashMap">
          <entry>
             <string>Word</string>
-            <trial class="tosatto.fancyworld.game.world.trials.WordTrial"/>
+            <trial class="tosatto.fancyworld.game.world.trials.WordTrial" value="10"/>
          </entry>
          <entry>
             <string>Fortune</string>
-            <trial class="tosatto.fancyworld.game.world.trials.FortuneTrial"/>
+            <trial class="tosatto.fancyworld.game.world.trials.FortuneTrial" value="20"/>
          </entry>
          <entry>
             <string>Sequence</string>
-            <trial class="tosatto.fancyworld.game.world.trials.SequenceTrial"/>
+            <trial class="tosatto.fancyworld.game.world.trials.SequenceTrial" value="13"/>
          </entry>
       </trials>
+      <bundle>
+         <bundle class="java.util.HashMap">
+            <entry>
+               <string>TRIAL_TYPES_NUMBER</string>
+               <integer>3</integer>
+            </entry>
+            <entry>
+               <string>KEY_TYPE_NUMBER</string>
+               <integer>5</integer>
+            </entry>
+            <entry>
+               <string>MAX_KEYRING_WEIGHT</string>
+               <integer>50</integer>
+            </entry>
+            <entry>
+               <string>MAX_KEYRING_SIZE</string>
+               <integer>5</integer>
+            </entry>
+            <entry>
+               <string>INITIAL_POINTS</string>
+               <integer>10</integer>
+            </entry>
+            <entry>
+               <string>MAX_TRIAL_VALUE</string>
+               <integer>20</integer>
+            </entry>
+            <entry>
+               <string>MAX_KEY_WEIGHT</string>
+               <integer>25</integer>
+            </entry>
+            <entry>
+               <string>GOAL_POINTS</string>
+               <integer>1</integer>
+            </entry>
+         </bundle>
+      </bundle>
    </world>
 </Game>

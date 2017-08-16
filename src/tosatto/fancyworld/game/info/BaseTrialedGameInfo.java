@@ -15,7 +15,7 @@ import tosatto.fancyworld.game.world.KeyedWorld;
  */
 public class BaseTrialedGameInfo implements TrialedGameInfo{
 
-    private BaseGame g;
+    protected BaseGame g;
     private KeyedPlayer kp;
     private KeyedWorld kw;
     

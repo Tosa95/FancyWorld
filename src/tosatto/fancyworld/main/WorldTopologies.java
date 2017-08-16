@@ -6,7 +6,9 @@
 package tosatto.fancyworld.main;
 
 import com.google.common.collect.HashBiMap;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import org.simpleframework.xml.ElementMap;
@@ -44,11 +46,12 @@ public class WorldTopologies {
         
         seeds.put("Fancy World", 101274981236489263L);
         seeds.put("Fancy World NG", 101274981236489267L);
+        seeds.put("Another one", 666666666666666666L);
     }
     
-    public Set<String> getWorldTopologiesNames()
+    public List<String> getWorldTopologiesNames()
     {
-        return seeds.keySet();
+        return new ArrayList<>(seeds.keySet());
     }
     
     public long getTopologySeed(String topologyName)

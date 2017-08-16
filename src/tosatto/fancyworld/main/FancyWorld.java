@@ -13,6 +13,7 @@ import tosatto.fancyworld.IO.MessageIO;
 import tosatto.fancyworld.game.BaseGame;
 import tosatto.fancyworld.game.Game;
 import tosatto.fancyworld.game.GamePersister;
+import tosatto.fancyworld.game.checkers.PointBasedWinChecker;
 import tosatto.fancyworld.game.info.BaseTrialedGameInfo;
 import tosatto.fancyworld.game.info.KeyedGameInfo;
 import tosatto.fancyworld.game.interactions.KeyedMainInteraction;
@@ -51,55 +52,57 @@ public class FancyWorld {
 //        
 //        io.presentMenu("Prova", new String[]{"ciao", "come", "va"});
 
-        GamePersister gp = new GamePersister(BaseGame.class, "Fancy Worls NG");
-        io = new ConsoleMessageIO();
-        
-        boolean load = false;
-        
-        if (gp.existsFile())
-        {
-            int resp = io.ask("C'è una partita salvata, vuoi caricarla?", new String[]{"si", "no"});
-            
-            if (resp == 0)
-                load = true;
-        }
+//        GamePersister gp = new GamePersister(BaseGame.class, "Fancy Worls NG");
+//        io = new ConsoleMessageIO();
+//        
+//        boolean load = false;
+//        
+//        if (gp.existsFile())
+//        {
+//            int resp = io.ask("C'è una partita salvata, vuoi caricarla?", new String[]{"si", "no"});
+//            
+//            if (resp == 0)
+//                load = true;
+//        }
+//
+//        BaseGame g  = null;
+//        
+//        if (load)
+//        {
+//            try {
+//                g = (BaseGame)gp.load();
+//            } catch (Exception ex) {
+//                Logger.getLogger(FancyWorld.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+//        } else {
+//            //101274981236489263L
+//            BasicRandomWorldGenerator brwg = new BasicRandomWorldGenerator(new Random(101274981236489267L), new TrialedWorldFactory(), 5, 10, 10, 20, 1);
+//
+//            //KeyedRandomWorldGenerator krwg = new KeyedRandomWorldGenerator(brwg, 10, 15, 0.3, 1);
+//            KeyedRandomWorldGenerator krwg = new KeyedRandomWorldGenerator(brwg, 10, 15, 0.3, 1);
+//            
+//            TrialedRandomWorldGenerator trwg = new TrialedRandomWorldGenerator(krwg, 0.4);
+//
+//            PointedPlayer p = new PointedPlayer("Granli Brum");
+//            p.setPoints(10);
+//            TrialedWorld w = (TrialedWorld)trwg.generate();
+//
+//            g = new BaseGame(p, w, "Game");
+//            
+//            p.setPlace(w.getStartPlace());
+//        }
+//        
+//        PointedPlayer kp = (PointedPlayer)g.getPlayer();
+//        KeyedWorld kw = (KeyedWorld)g.getWorld();
+//        
 
-        BaseGame g  = null;
+        WorldChooser chooser = new ChooseYourWorldChooser();
         
-        if (load)
-        {
-            try {
-                g = (BaseGame)gp.load();
-            } catch (Exception ex) {
-                Logger.getLogger(FancyWorld.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        } else {
-            //101274981236489263L
-            BasicRandomWorldGenerator brwg = new BasicRandomWorldGenerator(new Random(101274981236489267L), new TrialedWorldFactory(), 5, 10, 10, 20, 1);
-
-            //KeyedRandomWorldGenerator krwg = new KeyedRandomWorldGenerator(brwg, 10, 15, 0.3, 1);
-            KeyedRandomWorldGenerator krwg = new KeyedRandomWorldGenerator(brwg, 10, 15, 0.3, 1);
-            
-            TrialedRandomWorldGenerator trwg = new TrialedRandomWorldGenerator(krwg, 0.4);
-
-            PointedPlayer p = new PointedPlayer("Granli Brum");
-            p.setPoints(10);
-            TrialedWorld w = (TrialedWorld)trwg.generate();
-
-            g = new BaseGame(p, w, "Game");
-            
-            p.setPlace(w.getStartPlace());
-        }
-        
-        PointedPlayer kp = (PointedPlayer)g.getPlayer();
-        KeyedWorld kw = (KeyedWorld)g.getWorld();
-        
-        g.setGameInfo(new BaseTrialedGameInfo(g));
-        
+        BaseGame g = (BaseGame)chooser.choose(io);
         
         g.setIo(io);
         g.setInteractions(new KeyedPassageInteraction(), new UniversalPlaceInteraction(), new KeyedMainInteraction());
-        g.play();
+        g.play(new PointBasedWinChecker());
     }
     
 }

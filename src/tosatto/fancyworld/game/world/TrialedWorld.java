@@ -5,6 +5,7 @@
  */
 package tosatto.fancyworld.game.world;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import org.simpleframework.xml.Attribute;
@@ -40,6 +41,11 @@ public class TrialedWorld extends KeyedWorld{
         }
         
         return trials.get(type);
+    }
+    
+    public Collection<Trial> getTrials ()
+    {
+        return trials.values();
     }
     
 }

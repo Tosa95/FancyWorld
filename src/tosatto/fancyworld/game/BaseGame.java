@@ -14,6 +14,7 @@ import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
 import tosatto.fancyworld.IO.MessageIO;
+import tosatto.fancyworld.game.checkers.WinChecker;
 import tosatto.fancyworld.game.interactions.MainInteraction;
 import tosatto.fancyworld.game.interactions.PassageInteraction;
 import tosatto.fancyworld.game.interactions.places.PlaceIntercation;
@@ -54,8 +55,6 @@ public class BaseGame extends Game{
     @Attribute (name = "name")
     private String name;
     
-    private static int GOAL_WIN_POINTS = 100;
-    
     private PassageInteraction passInt;
     
     private PlaceIntercation placeInt;
@@ -70,6 +69,11 @@ public class BaseGame extends Game{
     {
         this.player = player;
         this.world = world;
+        this.name = name;
+    }
+    
+    public void setName(String name)
+    {
         this.name = name;
     }
 
@@ -90,7 +94,7 @@ public class BaseGame extends Game{
     }
     
     @Override
-    public void play()
+    public void play(WinChecker check)
     {
         io.inform("Welcome to Fancy World");
         
@@ -114,10 +118,10 @@ public class BaseGame extends Game{
                 {
                     io.inform("Attenzione!!! Hai raggiunto il luogo goal!!!");
                     
-                    if (((PointedPlayer)player).getPoints() < GOAL_WIN_POINTS)
+                    if (!check.wins(this))
                     {
                         io.inform("Purtroppo hai solo " + ((PointedPlayer)player).getPoints() +
-                                " punti, ma te ne servono " + GOAL_WIN_POINTS + " torna quando li avrai");
+                                " punti, ma te ne servono " + check.pointsToWin(this) + " torna quando li avrai");
                         
                     }else{
                         break;
@@ -143,7 +147,7 @@ public class BaseGame extends Game{
             
             if (resp == 0)
             {
-                GamePersister gp = new GamePersister(BaseGame.class, "Fancy World NG");
+                GamePersister gp = new GamePersister(BaseGame.class, this.name);
                 
                 try {
                     gp.save(this);

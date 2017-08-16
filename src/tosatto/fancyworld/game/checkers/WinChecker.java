@@ -3,14 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tosatto.fancyworld.game.world.trials;
+package tosatto.fancyworld.game.checkers;
+
+import tosatto.fancyworld.game.Game;
 
 /**
  *
  * @author Davide
  */
-public interface Trial {
-    public int getValue();
-    public void setValue(int value);
-    public String getType();
+public interface WinChecker {
+    
+    public boolean wins (Game g);
+    
+    public int pointsToWin (Game g);
+    
 }

@@ -5,6 +5,7 @@
  */
 package tosatto.fancyworld.game;
 
+import tosatto.fancyworld.game.checkers.WinChecker;
 import tosatto.fancyworld.game.info.GameInfo;
 import tosatto.fancyworld.game.player.Player;
 import tosatto.fancyworld.game.world.World;
@@ -20,6 +21,6 @@ public abstract class Game {
      public abstract String getName();
      public abstract Player getPlayer();
      public abstract World getWorld();
-     public abstract void play();
+     public abstract void play(WinChecker check);
      public abstract void setGameInfo(GameInfo gi);
 }
