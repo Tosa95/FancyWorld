@@ -317,7 +317,11 @@ public class BasicRandomWorldGenerator implements RandomWorldGenerator{
     }
     
     /**
-     * Connette due nodi. DEVONO ESSERE DIRETTAMENTE COLLEGABILI
+     * Connette due nodi.
+     * 
+     * Precondizione: i due nodi devono essere direttamente collegati
+     * Postcondizione: i due nodi passati sono collegati
+     * 
      * @param w
      * @param p1
      * @param p2 
@@ -372,7 +376,11 @@ public class BasicRandomWorldGenerator implements RandomWorldGenerator{
     
     /**
      * Genera un nuovo mondo casuale
-     * @return 
+     * 
+     * Postcondizione: il mondo ritornato è connesso, ossia presa una qualsiasi coppia di posti,
+     * esiste un cammino che li unisce
+     * 
+     * @return Il mondo generato
      */
     public World generate()
     {

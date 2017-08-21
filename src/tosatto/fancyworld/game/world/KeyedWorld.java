@@ -13,7 +13,11 @@ import org.simpleframework.xml.ElementMap;
 import tosatto.fancyworld.game.world.keys.Key;
 
 /**
- *
+ * Rappresenta un mondo dotato di chiavi
+ * 
+ * Invariante:
+ *  - per ogni possibile nome (tipo), esso identifica al massimo una chiave (il nome (tipo) di una chiave la identifica univocamente)
+ * 
  * @author davide
  */
 public class KeyedWorld extends World{
@@ -26,10 +30,23 @@ public class KeyedWorld extends World{
         super(name, startPlace);
     }
 
+    /**
+     * Ritorna tutte le chiavi facenti parte del mondo
+     * @return 
+     */
     public Map<String, Key> getKeys() {
         return Collections.unmodifiableMap(keys);
     }
     
+    /**
+     * Permette di accedere ad una chiave, dato il suo nome (ossia la sua tipologia)
+     * 
+     * Precondizione:
+     *  - name identifica una chiave facente parte del mondo
+     * 
+     * @param name
+     * @return 
+     */
     public Key getKey(String name)
     {
         if (!keys.containsKey(name))
@@ -40,6 +57,10 @@ public class KeyedWorld extends World{
         return keys.get(name);
     }
     
+    /**
+     * Aggiunge una chiave al mondo
+     * @param k 
+     */
     public void addKey (Key k)
     {
         keys.put(k.getName(), k);

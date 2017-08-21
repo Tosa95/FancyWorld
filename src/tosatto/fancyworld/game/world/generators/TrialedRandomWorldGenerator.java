@@ -41,7 +41,7 @@ public class TrialedRandomWorldGenerator implements RandomWorldGenerator{
      * Inizializza il generatore casuale di un mondo con prove.
      * 
      * Precondizione: trialTypeNumber deve essere inferiore o uguale al numero di prove
-     * effettivamente definite nell'apposito package. Se non rispettata il risultato sarà
+     * effettivamente definite nell'apposito package. Se non rispettata, il risultato sarà
      * un ciclo infinito
      * 
      * @param base
@@ -86,12 +86,13 @@ public class TrialedRandomWorldGenerator implements RandomWorldGenerator{
         TrialedWorld res = (TrialedWorld)base.generate();
         
         
-        
+        //Carico la lista di prove definite nell'apposito package
         List<Trial> possibleTrials = TrialPool.getInstance().getTrials();
 
         
         UniqueRandomGenerator urg = new UniqueRandomGenerator(r);
         
+        //Ciclo per decidere quali tipologie di prove ci saranno nel mondo        
         for (int  i = 0; i < tnum; i++)
         {
             int index = urg.getUniqueInt(0, possibleTrials.size());
@@ -99,6 +100,10 @@ public class TrialedRandomWorldGenerator implements RandomWorldGenerator{
             res.addTrial(possibleTrials.get(index));
         }
         
+        //Pongo come prove possibili le sole prove selezionate per il mondo corrente
+        possibleTrials = new ArrayList<>(res.getTrials());
+        
+        //Aggiungo prove ai posti in base alla probabilità trialRatio
         for (Place p:res.getPlaces())
         {
             

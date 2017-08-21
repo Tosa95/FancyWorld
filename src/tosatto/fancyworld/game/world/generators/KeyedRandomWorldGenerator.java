@@ -126,6 +126,13 @@ public class KeyedRandomWorldGenerator implements RandomWorldGenerator{
     /**
      * Versione modificata dell'algoritmo di Djikstra per calcolare le chiavi effettivamente
      * possibili da avere in ogni posto.
+     * 
+     * Precondizioni: 
+     *  - sctPlace è un luogo facente parte di w
+     *  - hm != null
+     *  - availKeys != null
+     *  - w != null
+     * 
      * @param w Mondo in esame
      * @param actPlace Posto attuale
      * @param availKeys Chiavi che si possono avere con il cammino in esame
@@ -204,7 +211,7 @@ public class KeyedRandomWorldGenerator implements RandomWorldGenerator{
      * Permette di visitare il grafo dei posti con le regole del giocatore, ossia si
      * visiteranno solo i posti effettivamente raggiungibili.
      * 
-     * Non è garantito che si visiti una sola volta ogni posto
+     * NON è garantito che si visiti una sola volta ogni posto
      * @param w Il mondo da visitare
      * @param pa L'azione da compiere ad ogni posto
      */

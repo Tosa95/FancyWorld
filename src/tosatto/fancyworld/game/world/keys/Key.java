@@ -1,15 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package tosatto.fancyworld.game.world.keys;
 
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Root;
 
 /**
- *
+ * Rappresenta una chiave
+ * 
  * @author davide
  */
 @Root (name = "Key")
@@ -26,14 +22,26 @@ public class Key {
         this.weight = weight;
     }
 
+    /**
+     * Ritorna il nome della chiave
+     * @return 
+     */
     public String getName() {
         return name;
     }
     
+    /**
+     * Ritorna il peso della chiave
+     * @return 
+     */
     public int getWeight() {
         return weight;
     }
     
+    /**
+     * Imposta il peso della chiave
+     * @param newWeight 
+     */
     public void setWeight(int newWeight) {
         this.weight = newWeight;
     }

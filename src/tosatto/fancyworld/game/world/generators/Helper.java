@@ -12,6 +12,17 @@ import java.util.Random;
  * @author davide
  */
 public class Helper {
+    
+    /**
+     * Ritorna un intero casuale contenuto in [min,max[
+     * 
+     * Precondizione: max > min
+     * 
+     * @param r 
+     * @param min
+     * @param max
+     * @return 
+     */    
     public static int boundRnd (Random r, int min, int max)
     {
         
