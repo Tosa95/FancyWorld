@@ -32,12 +32,10 @@ import tosatto.fancyworld.game.world.trials.Trial;
 import tosatto.fancyworld.main.bundles.StandardBundleInteraction;
 
 /**
- *
+ * Rappresenta un oggetto in grado di guidare l'utente nella scelta di un mondo in cui giocare
  * @author Davide
  */
 public class ChooseYourWorldChooser implements WorldChooser{
-
-    //TODO: Factory pattern
     
     
     private String[] prepareTopologyMenuEntries ()

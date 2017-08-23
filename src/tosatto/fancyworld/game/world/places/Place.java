@@ -17,6 +17,8 @@ import tosatto.fancyworld.game.world.passages.Passage;
 
 /**
  *
+ * Rappresenta un luogo
+ * 
  * @author Davide
  */
 @Root(name = "Place")
@@ -50,25 +52,51 @@ public class Place {
         this.level = level;
     }
 
+    /**
+     * Imposta un oggetto di tipo GameInfo per permettere di accedere ad alcune delle funzionalità del 
+     * gioco senza generare una dipendenza ciclica
+     * @param gi 
+     */
     public void setGi(GameInfo gi) {
         this.gi = gi;
     }
     
+    /**
+     * Ritorna il nome del luogo
+     * @return 
+     */
     public String getName ()
     {
         return name;
     }
     
+    /**
+     * Ritorna la descrizione del luogo
+     * @return 
+     */
     public String getDescription()
     {
         return description;
     }
     
+    /**
+     * Ritorna tutti i passaggi uscenti dal luogo
+     * @return 
+     */
     public Map<String, String> getPassages ()
     {
         return (Map<String,String>)passages.clone();
     }
 
+    /**
+     * Ritorna un passaggio data la direzione
+     * 
+     * Precondizione:
+     *  - Esiste un passaggio nella direzione indicata
+     * 
+     * @param direction
+     * @return 
+     */
     public String getPassage (String direction)
     {
         if (passages.containsKey(direction))
@@ -77,16 +105,32 @@ public class Place {
             return null;
     }
     
+    /**
+     * Aggiunge un passaggio al luogo in una certa direzione (attraverso identificativo stringa)
+     * 
+     * Precondizione: p deve identificare un passaggio facente parte del mondo
+     * 
+     * @param direction
+     * @param p 
+     */
     public void addPassage (String direction, String p)
     {
         passages.put(direction, p);
     }
     
+    /**
+     * Ritorna l'idfentificativo del livello in cui il luogo si trova
+     * @return 
+     */
     public int getLevel ()
     {
         return level;
     }
     
+    /**
+     * Dice se il luogo è goal o meno
+     * @return 
+     */
     public boolean isGoal ()
     {
         return goal;

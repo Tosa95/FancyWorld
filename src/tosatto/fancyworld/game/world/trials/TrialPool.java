@@ -14,7 +14,7 @@ import org.reflections.Reflections;
 import tosatto.fancyworld.game.world.generators.TrialedRandomWorldGenerator;
 
 /**
- *
+ * Contenitore delle prove definite all'interno del package
  * @author Davide
  */
 public class TrialPool {
@@ -36,8 +36,14 @@ public class TrialPool {
         return pool;
     }
     
+    /**
+     * Ritorna la lista di tutte le prove definite nel package
+     * @return 
+     */
     public List<Trial> getTrials ()
     {
+        //Utilizza la reflection per raccogliere automaticamente tutte le prove definite,
+        //senza bisogno di alcuna modifica da parte del programmatore
         Reflections ref = new Reflections("tosatto.fancyworld.game.world.trials");
         Set<Class<? extends Trial>> subTypes = ref.getSubTypesOf(Trial.class);
         
@@ -46,6 +52,7 @@ public class TrialPool {
         for (Class<? extends Trial> cls: subTypes)
         {
              try {
+                 //TUTTE le prove definite devono avere un costruttore senza parametri
                  Trial t = cls.newInstance();
                  possibleTrials.add(t);
              } catch (InstantiationException ex) {

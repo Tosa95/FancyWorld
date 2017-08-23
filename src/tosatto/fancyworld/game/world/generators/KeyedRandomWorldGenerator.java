@@ -26,7 +26,10 @@ import tosatto.fancyworld.game.world.places.KeyedPlace;
 import tosatto.fancyworld.game.world.places.Place;
 
 /**
- *
+ * Genera la disposizione di chiavi e passaggi chiusi all'interno di un mondo.
+ * 
+ * Funge da decorator per un altro RandomWorldGenerator.
+ * 
  * @author davide
  */
 public class KeyedRandomWorldGenerator implements RandomWorldGenerator{
@@ -253,6 +256,14 @@ public class KeyedRandomWorldGenerator implements RandomWorldGenerator{
         return map.containsKey(goal);
     }
     
+    /**
+     * Genera un mondo dotato di chiavi e di passaggi chiusi a chiave
+     * 
+     * Postcondizione:
+     *  - il luogo goal è raggiubngibile anche tenendo conto delle chiavi ottenibili e dei passaggi chiusi a chiave
+     * 
+     * @return 
+     */
     @Override
     public World generate() {
         

@@ -23,7 +23,10 @@ import tosatto.fancyworld.game.world.trials.Trial;
 import tosatto.fancyworld.game.world.trials.TrialPool;
 
 /**
- *
+ * Genera la disposizione di prove all'interno di un mondo.
+ * 
+ * Funge da decorastor per un KeyedRandomWporldGenerator
+ * 
  * @author Davide
  */
 public class TrialedRandomWorldGenerator implements RandomWorldGenerator{
@@ -61,6 +64,11 @@ public class TrialedRandomWorldGenerator implements RandomWorldGenerator{
         
     }
     
+    /**
+     * Dice se almeno una prova è raggiungibile(condizione sufficiente per rendere possibile la vittoria)
+     * @param w
+     * @return 
+     */
     private boolean canReachATrial (World w)
     {
         Boolean reachable[] = new Boolean[] {false};
@@ -81,6 +89,14 @@ public class TrialedRandomWorldGenerator implements RandomWorldGenerator{
         return reachable[0];
     }
     
+    /**
+     * Genera un mondo dotato di prove.
+     * 
+     * Postcondizione:
+     *  - Almeno una prova è raggiungibile (condizione sufficiente per rendere possibile la vittoria)
+     * 
+     * @return 
+     */
     @Override
     public World generate() {
         TrialedWorld res = (TrialedWorld)base.generate();

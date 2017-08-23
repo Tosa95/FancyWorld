@@ -10,7 +10,8 @@ import org.simpleframework.xml.Element;
 import tosatto.fancyworld.main.bundles.ParametersBundle;
 
 /**
- *
+ * Rappresenta un mondo dotato di un bundle di parametri
+ * 
  * @author Davide
  */
 public class BundledWorld extends TrialedWorld{
@@ -23,11 +24,19 @@ public class BundledWorld extends TrialedWorld{
         super(name, startPlace);
     }
     
+    /**
+     * Imposta il bundle di parametri
+     * @param pb 
+     */
     public void setBundle (ParametersBundle pb)
     {
         bundle = pb;
     }
     
+    /**
+     * Recupera il bundle di parametri
+     * @return 
+     */
     public ParametersBundle getBundle ()
     {
         return bundle;

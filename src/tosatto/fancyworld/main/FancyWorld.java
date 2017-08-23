@@ -35,7 +35,7 @@ import tosatto.fancyworld.game.world.generators.KeyedRandomWorldGenerator;
 import tosatto.fancyworld.game.world.generators.TrialedRandomWorldGenerator;
 
 /**
- *
+ * Punto d'ingresso del software
  * @author Davide
  */
 public class FancyWorld {

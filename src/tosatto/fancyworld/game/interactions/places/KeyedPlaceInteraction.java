@@ -16,7 +16,7 @@ import tosatto.fancyworld.game.world.places.KeyedPlace;
 import tosatto.fancyworld.game.world.places.Place;
 
 /**
- *
+ * Interagisce con posti di tipo keyed
  * @author Davide
  */
 public class KeyedPlaceInteraction implements PlaceIntercation{

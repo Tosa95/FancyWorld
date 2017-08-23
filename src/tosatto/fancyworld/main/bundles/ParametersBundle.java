@@ -11,7 +11,7 @@ import java.util.Set;
 import org.simpleframework.xml.ElementMap;
 
 /**
- *
+ * Rappresenta un contenitore per parametri interi
  * @author Davide
  */
 public class ParametersBundle {
@@ -23,26 +23,54 @@ public class ParametersBundle {
         bundle = new HashMap<>();
     }
     
+    /**
+     * Aggiunge un parametro
+     * @param name
+     * @param value 
+     */
     public void addParameter(String name, int value)
     {
         bundle.put(name, value);
     }
     
+    /**
+     * Imposta il valore di un parametro
+     * @param name
+     * @param value 
+     */
     public void setParameter(String name, int value)
     {
         addParameter(name, value);
     }
     
+    /**
+     * Ritorna il valore di un parametro
+     * 
+     * Precondizione:
+     *  - name deve identificare un parametro effettivamente presente nel bundle
+     * 
+     * @param name
+     * @return 
+     */
     public int getParameter(String name)
     {
         return bundle.get(name);
     }
     
+    /**
+     * Dice se un parametro è contenuto nel bundle
+     * @param name
+     * @return 
+     */
     public boolean hasParameter(String name)
     {
         return bundle.containsKey(name);
     }
     
+    /**
+     * Ritorna i nomi di tutti i parametri contenuti nel bundle
+     * @return 
+     */
     public Set<String> getParameterNames ()
     {
         return bundle.keySet();

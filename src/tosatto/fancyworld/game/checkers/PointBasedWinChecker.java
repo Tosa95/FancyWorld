@@ -12,7 +12,7 @@ import tosatto.fancyworld.game.world.BundledWorld;
 import tosatto.fancyworld.main.bundles.StandardBundleInteraction;
 
 /**
- *
+ * Determina la vittoria del giocatore in base ai punti accumulati e al suo posizionamento nel luogo goal
  * @author Davide
  */
 public class PointBasedWinChecker implements WinChecker{

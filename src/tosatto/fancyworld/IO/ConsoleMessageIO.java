@@ -11,7 +11,8 @@ import java.util.Scanner;
 import java.util.StringJoiner;
 
 /**
- *
+ * Implementa tutti i metodi di MessageIO in modo da ridirezionare tutte le interazioni
+ * con l'utente verso la console
  * @author Davide
  */
 public class ConsoleMessageIO implements MessageIO{

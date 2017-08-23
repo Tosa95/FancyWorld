@@ -9,6 +9,8 @@ import org.simpleframework.xml.Attribute;
 
 /**
  *
+ * Rappresenta un luogo eventualmente dotato di chiave
+ * 
  * @author davide
  */
 public class KeyedPlace extends Place{
@@ -23,14 +25,30 @@ public class KeyedPlace extends Place{
         super(name, description, goal, level);
     }
 
+    /**
+     * Imposta il tipo di chiave presente nel luogo
+     * 
+     * Precondizione: 
+     *  - il tipo di chiave passato fa parte del mondo
+     * 
+     * @param key 
+     */
     public void setKey(String key) {
         this.key = key;
     }
 
+    /**
+     * Ritorna il tipo di chiave presente nel luogo (null se non presente)
+     * @return 
+     */
     public String getKey() {
         return key;
     }
     
+    /**
+     * Dice se il luogo possiede una chiave
+     * @return 
+     */
     public boolean hasKey ()
     {
         return key!=null;

@@ -10,7 +10,8 @@ import tosatto.fancyworld.game.player.KeyedPlayer;
 import tosatto.fancyworld.game.world.KeyedWorld;
 
 /**
- *
+ * Implementa l'interfaccia TrialedGameInfo e ne implementa tutti i metodi 
+ * con accesso diretto al mondo di gioco
  * @author Davide
  */
 public class BaseTrialedGameInfo implements TrialedGameInfo{
@@ -19,6 +20,15 @@ public class BaseTrialedGameInfo implements TrialedGameInfo{
     private KeyedPlayer kp;
     private KeyedWorld kw;
     
+    /**
+     * Inizializza l'oggetto
+     * 
+     * Precondizione:
+     *  - g deve possedere un mondo di tipo KeyedWorld
+     *  - g deve possedere un giocatore di tipo KeyedPlayer
+     * 
+     * @param g 
+     */
     public BaseTrialedGameInfo (BaseGame g)
     {
         this.g = g;

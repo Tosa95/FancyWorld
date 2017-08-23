@@ -9,7 +9,7 @@ import org.simpleframework.xml.Attribute;
 import tosatto.fancyworld.game.world.trials.Trial;
 
 /**
- *
+ * Rappresenta un luogo con prova
  * @author Davide
  */
 public class TrialedPlace extends KeyedPlace{
@@ -26,16 +26,28 @@ public class TrialedPlace extends KeyedPlace{
         
     }
     
+    /**
+     * Imposta il tipo di prova
+     * @param trial 
+     */
     public void setTrial (String trial)
     {
         this.trial = trial;
     }
     
+    /**
+     * Ritorma il tipo di prova (null se il luogo non ha una prova)
+     * @return 
+     */
     public String getTrial ()
     {
         return this.trial;
     }
     
+    /**
+     * Dice se il luogo ha una prova
+     * @return 
+     */
     public boolean hasTrial()
     {
         return !(trial == null);

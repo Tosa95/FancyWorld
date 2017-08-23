@@ -16,6 +16,9 @@ import tosatto.fancyworld.game.world.places.TrialedPlace;
 
 /**
  *
+ * Factory che serve a creare un mondo dotato di chiavi, prove e di un bundle di
+ * parametri impostabili
+ * 
  * @author Davide
  */
 public class BundledWorldFactory implements WorldFactory{

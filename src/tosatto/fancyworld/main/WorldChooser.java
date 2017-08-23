@@ -9,7 +9,7 @@ import tosatto.fancyworld.IO.MessageIO;
 import tosatto.fancyworld.game.Game;
 
 /**
- *
+ * Rappresenta un oggetto in grado di guidare l'utente nella scelta di un mondo in cui giocare
  * @author Davide
  */
 public interface WorldChooser {

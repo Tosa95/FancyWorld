@@ -21,7 +21,7 @@ import tosatto.fancyworld.game.world.places.Directions;
 import tosatto.fancyworld.game.world.places.Place;
 
 /**
- *
+ * Genera la topologia base di un mondo, senza aggiungere ne chiavi ne prove
  * @author Davide
  */
 public class BasicRandomWorldGenerator implements RandomWorldGenerator{

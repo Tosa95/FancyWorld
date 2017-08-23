@@ -9,11 +9,20 @@ import tosatto.fancyworld.game.BaseGame;
 import tosatto.fancyworld.game.world.BundledWorld;
 
 /**
- *
+ * Implementa l'interfaccia BundledGameInfo e ne implementa tutti i metodi 
+ * con accesso diretto al mondo di gioco
  * @author Davide
  */
 public class BaseBundledGameInfo extends BaseTrialedGameInfo implements BundledGameInfo{
     
+    /**
+     * Inizizza l'oggetto
+     * 
+     * Precondizione: 
+     *  - g deve possedere un mondo di tipo BundledWorld
+     * 
+     * @param g 
+     */
     public BaseBundledGameInfo(BaseGame g) {
         super(g);
     }

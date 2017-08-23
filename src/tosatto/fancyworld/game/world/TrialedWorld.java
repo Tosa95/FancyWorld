@@ -13,7 +13,11 @@ import org.simpleframework.xml.ElementMap;
 import tosatto.fancyworld.game.world.trials.Trial;
 
 /**
- *
+ * Rappresenta un mondo dotato di prove.
+ * 
+ * Invariante:
+ *  - Ogni possibile tipo di prova identifica al massimo una prova (il tipo identifica univocamente una prova)
+ * 
  * @author Davide
  */
 public class TrialedWorld extends KeyedWorld{
@@ -27,11 +31,20 @@ public class TrialedWorld extends KeyedWorld{
         trials = new HashMap<>();
     }
     
+    /**
+     * Aggiunge una prova al mondo
+     * @param t 
+     */
     public void addTrial (Trial t)
     {
         trials.put(t.getType(), t);
     }
     
+    /**
+     * Ritorna una prova dato il tipo
+     * @param type
+     * @return 
+     */
     public Trial getTrial (String type)
     {
         if (!trials.containsKey(type))
@@ -43,6 +56,10 @@ public class TrialedWorld extends KeyedWorld{
         return trials.get(type);
     }
     
+    /**
+     * Ritorna tutte le prove facenti parte del mondo
+     * @return 
+     */
     public Collection<Trial> getTrials ()
     {
         return trials.values();

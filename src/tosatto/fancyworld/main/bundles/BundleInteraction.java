@@ -8,7 +8,7 @@ package tosatto.fancyworld.main.bundles;
 import tosatto.fancyworld.IO.MessageIO;
 
 /**
- *
+ * Rappresenta un oggetto in grado di guidare l'interazione tra un giocatore e un bundle di parametri
  * @author Davide
  */
 public interface BundleInteraction {

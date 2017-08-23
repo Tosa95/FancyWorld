@@ -7,6 +7,8 @@ package tosatto.fancyworld.game.info;
 
 /**
  *
+ * Interfaccia inserita nella release 4, ma poi non arricchita di nuovi metodi
+ * 
  * @author Davide
  */
 public interface TrialedGameInfo extends KeyedGameInfo{

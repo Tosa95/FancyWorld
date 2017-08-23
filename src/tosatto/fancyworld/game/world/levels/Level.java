@@ -11,7 +11,7 @@ import tosatto.fancyworld.game.BaseGame;
 import tosatto.fancyworld.game.info.GameInfo;
 
 /**
- *
+ * Rappresentas un livello
  * @author Davide
  */
 @Root (name = "Level")
@@ -37,20 +37,36 @@ public class Level {
         this.name = name;
     }
 
+    /**
+     * Imposta un oggetto di tipo GameInfo per permettere di accedere ad alcune delle funzionalità del 
+     * gioco senza generare una dipendenza ciclica
+     * @param gi 
+     */
     public void setGi(GameInfo gi) {
         this.gi = gi;
     }
     
+    /**
+     * Ritorna la descrizione del livello
+     * @return 
+     */
     public String getDescription() {
         return description;
     }
 
+    /**
+     * Ritorna il nonme del livello
+     * @return 
+     */
     public String getName() {
         return name;
     }
 
     
-
+    /**
+     * Ritorna l'identificativo del livello
+     * @return 
+     */
     public int getId() {
         return id;
     }

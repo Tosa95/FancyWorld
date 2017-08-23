@@ -13,7 +13,7 @@ import tosatto.fancyworld.game.world.passages.exceptions.PassageException;
 import tosatto.fancyworld.game.world.places.Place;
 
 /**
- *
+ * Rappresenta un passaggio aperto
  * @author Davide
  */
 @Root

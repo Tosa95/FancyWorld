@@ -14,11 +14,13 @@ import tosatto.fancyworld.game.world.World;
 
 
 /**
- *
+ * Rappresenta un oggetto in grado di salvare una partita
  * @author Davide
  */
 public class GamePersister{
 
+    //Serve per fare sapere alla libreria di caricamento da file xml che tipo esatto
+    //di oggetto attendersi.
     private Class<?> gameClass;
     private String saveName;
     
@@ -29,6 +31,11 @@ public class GamePersister{
         this.saveName = saveName;
     }
     
+    /**
+     * Calcola il nome del file di salvataggio
+     * @param saveName
+     * @return 
+     */
     private String computeFileName (String saveName)
     {
         Path path = Paths.get(SAVE_DIRECTORY, saveName + ".xml");
@@ -36,6 +43,11 @@ public class GamePersister{
         return path.toString();
     }
     
+    /**
+     * Salva un Game
+     * @param g
+     * @throws Exception 
+     */
     public void save(Game g) throws Exception
     {
         Persister p = new Persister();
@@ -43,6 +55,11 @@ public class GamePersister{
         p.write(g, new File(computeFileName(saveName)));
     }
     
+    /**
+     * Carica un Game
+     * @return
+     * @throws Exception 
+     */
     public Game load() throws Exception
     {
         Persister p = new Persister();
@@ -52,6 +69,10 @@ public class GamePersister{
         return g;
     }
     
+    /**
+     * Dice se esiste un salvataggio per il nome indicato nel costruttore
+     * @return 
+     */
     public boolean existsFile()
     {
         File f = new File(computeFileName(saveName));

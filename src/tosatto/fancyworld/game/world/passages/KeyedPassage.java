@@ -12,7 +12,7 @@ import tosatto.fancyworld.game.world.passages.exceptions.NoKeyPassageException;
 import tosatto.fancyworld.game.world.passages.exceptions.PassageException;
 
 /**
- *
+ * Rappresenta un passaggio chiuso a chiave
  * @author davide
  */
 @Root (name = "KeyedPassage")
@@ -29,7 +29,11 @@ public class KeyedPassage extends OpenPassage{
                         @Attribute(name="p2") String p2) {
         super(name, p1, p2);
     }
-
+    
+    /**
+     * Imposta il tipo di chiave necessario per passare
+     * @param neededKey 
+     */
     public void setKey(String neededKey) {
         this.neededKey = neededKey;
     }
@@ -45,6 +49,10 @@ public class KeyedPassage extends OpenPassage{
             throw new NoKeyPassageException();
     }
     
+    /**
+     * Dice se il passaggio è chiuso o meno
+     * @return 
+     */
     public boolean isClosed ()
     {
         
@@ -52,6 +60,12 @@ public class KeyedPassage extends OpenPassage{
         return neededKey!=null && !opened;
     }
     
+    /**
+     * Apre il passaggio
+     * 
+     * Precondizione:
+     *  - Il giocatore ha la chiave per passare
+     */
     public void open()
     {
         KeyedGameInfo kgi = (KeyedGameInfo)gi;
@@ -62,6 +76,10 @@ public class KeyedPassage extends OpenPassage{
         }
     }
     
+    /**
+     * Ritorna il tipo della chiave necessaria per passare
+     * @return 
+     */
     public String requiredKey ()
     {
         return neededKey;

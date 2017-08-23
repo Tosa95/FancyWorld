@@ -14,7 +14,7 @@ import tosatto.fancyworld.game.world.places.KeyedPlace;
 import tosatto.fancyworld.game.world.places.Place;
 
 /**
- *
+ * Factory che serve per la creazione di un mondo dotato solo di chiavi
  * @author davide
  */
 public class KeyedWorldFactory implements WorldFactory{

@@ -11,7 +11,8 @@ import tosatto.fancyworld.IO.MessageIO;
 import tosatto.fancyworld.game.world.trials.TrialPool;
 
 /**
- *
+ * Definisce l'interazione con un bundle standard, ossia quello contenente i parametri
+ * descritti nel documento contenente le richieste per il progetto
  * @author Davide
  */
 public class StandardBundleInteraction implements BundleInteraction{

@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Random;
 
 /**
- *
+ * Classe helper utile per generare numeri casuali univoci
  * @author Davide
  */
 public class UniqueRandomGenerator {
@@ -49,11 +49,24 @@ public class UniqueRandomGenerator {
         return res;
     }
     
+    /**
+     * Ritorna un intero NON unico tra min(inclso) e max(escluso) 
+     * @param min
+     * @param max
+     * @return 
+     */
     public int getInt (int min, int max)
     {
         return min + r.nextInt(max-min);
     }
     
+    /**
+     * Ritorna un boolean.
+     * 
+     * 
+     * @param p Probabilità che sia vero
+     * @return 
+     */
     public boolean getRandomBooleanWithProbability(double p)
     {
         int res = getInt(0, 1000);

@@ -10,7 +10,8 @@ import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Root;
 
 /**
- *
+ * Rappresenta una prova di tipo Fortune, ossia in cui il giocatore deve indovinare
+ * la somma dei numeri estratti da due dadi
  * @author Davide
  */
 @Root(name = "FortuneTrial")
@@ -39,6 +40,10 @@ public class FortuneTrial implements Trial{
         return "Fortune";
     }
     
+    /**
+     * Ritorna 2 numeri estratti in modo pseudocasuale tra 1 e 6 (estremi inclusi)
+     * @return 
+     */
     public int[] extract ()
     {
         int n1 = r.nextInt(6) + 1;

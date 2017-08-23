@@ -28,18 +28,11 @@ import tosatto.fancyworld.game.player.PointedPlayer;
 import tosatto.fancyworld.game.world.World;
 
 /**
- * Classe Game.
  * 
- * Fa da contesto per tutta l'applicazione. Viene passata in modo ramificato a
- * tutti i componenti del mondo e a player, in modo che tutti possano avere 
- * informazioni sul mondo e sul player (utile, per esempio, per fare il controllo
- * delle chiavi in maniera "pulita" all'interno dei passaggi con chiave).
+ * Continene l'intero stato dell'applicazione e, dato ciò, viene utilizzata come classe
+ * per il salvataggio della partita.
  * 
- * 
- * E' inioltre la classe per il salvataggio delle partite in quanto contiene tutto
- * lo stato del'applicazione.
- * 
- * Contiene la logica del gioco.
+ * Contiene inoltre la logica del gioco.
  * 
  * @author Davide
  */
@@ -72,15 +65,29 @@ public class BaseGame extends Game{
         this.name = name;
     }
     
+    /**
+     * Imposta il nome della partita
+     * @param name 
+     */
     public void setName(String name)
     {
         this.name = name;
     }
 
+    /**
+     * Imposta l'oggetto da usare come per eseguire operazioni di input - output
+     * @param io 
+     */
     public void setIo(MessageIO io) {
         this.io = io;
     }
     
+    /**
+     * Imposta gli oggetti da usare per gestire alcune interazioni con l'utente
+     * @param passInt
+     * @param placeInt
+     * @param mainInt 
+     */
     public void setInteractions (PassageInteraction passInt, PlaceIntercation placeInt, MainInteraction mainInt)
     {
         this.passInt = passInt;
@@ -88,6 +95,11 @@ public class BaseGame extends Game{
         this.mainInt = mainInt;
     }
     
+    /**
+     * Controlla se la scelta dell'utente equivale ad uscire
+     * @param choice
+     * @return 
+     */
     private boolean exit (int choice)
     {
         return choice == Directions.DIRECTIONS.length;
@@ -182,16 +194,16 @@ public class BaseGame extends Game{
         return name;
     }
 
+    /**
+     * Imposta (in modo ramificato) un oggetto di tipo GameInfo a tutti gli oggetti
+     * facenti parte del gioco in modo che possano accedere ad alcune delle funzionalità
+     * fornite dalla classe game e/o da altri componenti del gioco.
+     * @param gi 
+     */
     public void setGameInfo(GameInfo gi) {
         world.setGi(gi);
         player.setGi(gi);
     }
     
-    
-    
-    public class BaseGameInfo implements GameInfo
-    {
-        
-    }
     
 }

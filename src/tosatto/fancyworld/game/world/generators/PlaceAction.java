@@ -8,7 +8,7 @@ package tosatto.fancyworld.game.world.generators;
 import tosatto.fancyworld.game.world.places.Place;
 
 /**
- *
+ * Interfaccia utilizzata per la creazione di una verisione generica dell'algoritmo di visita del mondo
  * @author Davide
  */
 public interface PlaceAction {

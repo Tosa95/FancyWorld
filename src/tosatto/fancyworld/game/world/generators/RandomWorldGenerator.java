@@ -11,13 +11,32 @@ import tosatto.fancyworld.game.world.World;
 import tosatto.fancyworld.game.world.factories.WorldFactory;
 
 /**
- *
+ * Interfaccia che rappresenta un oggetto in grado di generare un mondo
  * @author davide
  */
 public interface RandomWorldGenerator {
+    
+    /**
+     * Ritorna un nuovo mondo
+     * @return 
+     */
     public World generate();
     
+    /**
+     * Ritorna l'oggetto random utilizzato per la generazione casuale di numeri
+     * @return 
+     */
     public Random getRandom();
+    
+    /**
+     * Ritorna l'oggetto utilizzato per generare i nomi
+     * @return 
+     */
     public NameGenerator getNameGenerator();
+    
+    /**
+     * Ritorna la factory utilizzata per la creazione di tutti gli oggetti costituenti il mondo
+     * @return 
+     */
     public WorldFactory getWorldFactory ();
 }

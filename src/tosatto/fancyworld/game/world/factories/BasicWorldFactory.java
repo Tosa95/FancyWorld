@@ -12,7 +12,7 @@ import tosatto.fancyworld.game.world.passages.Passage;
 import tosatto.fancyworld.game.world.places.Place;
 
 /**
- *
+ * Factory che serve a creare un mondo privo sia di chiavi che di prove
  * @author davide
  */
 public class BasicWorldFactory implements WorldFactory{

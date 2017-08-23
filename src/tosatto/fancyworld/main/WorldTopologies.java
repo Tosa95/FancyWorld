@@ -16,7 +16,7 @@ import tosatto.fancyworld.game.BaseGame;
 import tosatto.fancyworld.game.GamePersister;
 
 /**
- *
+ * Contiene i seed delle topologie di mondo selezionabili. Implementa pattern Singleton
  * @author Davide
  */
 public class WorldTopologies {

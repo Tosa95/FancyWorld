@@ -8,7 +8,11 @@ package tosatto.fancyworld.game.player;
 import org.simpleframework.xml.Attribute;
 
 /**
- *
+ * Rappresenta un giocatore dotato di punti.
+ * 
+ * Invariante:
+ *  - il numero di punti è sempre >= 0
+ * 
  * @author Davide
  */
 public class PointedPlayer extends KeyedPlayer {
@@ -23,16 +27,31 @@ public class PointedPlayer extends KeyedPlayer {
         points = 0;
     }
     
+    /**
+     * Ritorna il numero di punti attualmente posseduti dal giocatore
+     * @return 
+     */
     public int getPoints()
     {
         return points;
     }
     
+    /**
+     * Imposta il numero di punti posseduti dal giocatore
+     * @param pt 
+     */
     public void setPoints(int pt)
     {
         this.points = pt;
     }
     
+    /**
+     * Aumenta i punti del giocatore di delta.
+     * 
+     * Nota: per diminuire i punti è sufficiente usare un delta negativo
+     * 
+     * @param delta 
+     */
     public void applyDeltaPoints (int delta)
     {
         points += delta;

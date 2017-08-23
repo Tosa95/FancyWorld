@@ -6,7 +6,7 @@
 package tosatto.fancyworld.game.world.places;
 
 /**
- *
+ * Rasppresenta le direzioni che è possibile intraprendere
  * @author Davide
  */
 public class Directions {

@@ -15,6 +15,8 @@ import tosatto.fancyworld.game.world.places.TrialedPlace;
 
 /**
  *
+ * Interagisce con posti di tipo trialed
+ * 
  * @author Davide
  */
 public class TrialedPlaceInteraction implements PlaceIntercation{

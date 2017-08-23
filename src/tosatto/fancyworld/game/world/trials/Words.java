@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Random;
 
 /**
- *
+ * Oggetto che ha il compito di fornire parole della lingua italiana
  * @author Davide
  */
 public class Words {
@@ -25,7 +25,12 @@ public class Words {
     private List<String> words = new ArrayList<>();
 
     private static Words instance = null;
-    
+   
+    /**
+     * Pattern singleton, ritorna l'unica istanza
+     * @return
+     * @throws IOException 
+     */
     public static Words getInstance() throws IOException
     {
         if (instance == null)
@@ -36,6 +41,11 @@ public class Words {
         return instance;
     }
     
+    /**
+     * Costruttore privato per pattern singleton
+     * @throws FileNotFoundException
+     * @throws IOException 
+     */
     private Words() throws FileNotFoundException, IOException {
         
         try(BufferedReader br = new BufferedReader(
@@ -51,6 +61,11 @@ public class Words {
     
     }
     
+    /**
+     * Ritorna una parola a caso tra quelle disponibili
+     * @param minLen
+     * @return 
+     */
     public String getRandomWord (int minLen)
     {
         String res = "";
