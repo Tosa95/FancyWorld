@@ -121,5 +121,24 @@ public class ConsoleMessageIO implements MessageIO{
         
         return res;
     }
+
+    @Override
+    public int askForPositiveInteger(String msg, String errorMsg) {
+    
+        int res = 0;
+        
+        do
+        {
+            res = askForInteger(msg, errorMsg);
+            
+            if (res <= 0)
+            {
+                System.out.println(errorMsg);
+            }
+        } while(res<=0);
+        
+        return res;
+    
+    }
     
 }

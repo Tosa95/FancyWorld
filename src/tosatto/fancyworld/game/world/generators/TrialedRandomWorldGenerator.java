@@ -125,7 +125,7 @@ public class TrialedRandomWorldGenerator implements RandomWorldGenerator{
             
             if (urg.getRandomBooleanWithProbability(trialRatio) && !p.getName().equals(res.getStartPlace()) && !p.isGoal())
             {
-                System.out.println("Trial added in " + p.getName());
+                //System.out.println("Trial added in " + p.getName());
                 TrialedPlace tp = (TrialedPlace)p;
 
                 tp.setTrial(possibleTrials.get(urg.getInt(0, possibleTrials.size())).getType());
@@ -137,7 +137,7 @@ public class TrialedRandomWorldGenerator implements RandomWorldGenerator{
         //Mi assicuro che almeno una prova sia raggiungibile in modo da poter effettivamente completare il gioco
         while (! canReachATrial(res))
         {
-            System.out.println("TRIAL NOT REACHABLE!!!");
+            //System.out.println("TRIAL NOT REACHABLE!!!");
             TrialedPlace tp = (TrialedPlace)places.get(urg.getInt(0, places.size()));
             tp.setTrial(possibleTrials.get(urg.getInt(0, possibleTrials.size())).getType());
         }

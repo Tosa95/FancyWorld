@@ -44,9 +44,9 @@ public class KeyedRandomWorldGenerator implements RandomWorldGenerator{
     
     private double keyPlaceProb, keyPassageProb;
     
-    private final static int MAX_KEY_WEIGHT = 25;
+    private int maxKeyWeight;
     
-    public KeyedRandomWorldGenerator(RandomWorldGenerator rwg, int minKeys, int maxKeys, double keyPlaceProb, double keyPassageProb)
+    public KeyedRandomWorldGenerator(RandomWorldGenerator rwg, int minKeys, int maxKeys, int maxKeyWeight, double keyPlaceProb, double keyPassageProb)
     {
         this.rwg = rwg;
         
@@ -56,6 +56,7 @@ public class KeyedRandomWorldGenerator implements RandomWorldGenerator{
         
         this.minKeys = minKeys;
         this.maxKeys = maxKeys;
+        this.maxKeyWeight = maxKeyWeight;
         
         this.keyPlaceProb = keyPlaceProb;
         this.keyPassageProb = keyPassageProb;
@@ -290,7 +291,7 @@ public class KeyedRandomWorldGenerator implements RandomWorldGenerator{
         //Crea chiavi a caso
         for (int i = 0; i < keys; i++)
         {
-            Key k = new Key(ng.getUniqueRandomName(2, 4), 1 + r.nextInt(MAX_KEY_WEIGHT));
+            Key k = new Key(ng.getUniqueRandomName(2, 4), 1 + r.nextInt(maxKeyWeight));
             res.addKey(k);
             keyList.add(k);
         }
@@ -306,7 +307,7 @@ public class KeyedRandomWorldGenerator implements RandomWorldGenerator{
             //Lo chiude se il numero estratto è sotto alla probabilità prescelta
             if (r.nextDouble()<keyPassageProb)
             {
-                System.out.println("K");
+                //System.out.println("K");
                 
                 //Sceglie una chiave a caso
                 Key k = keyList.get(r.nextInt(keyList.size()));
@@ -316,7 +317,7 @@ public class KeyedRandomWorldGenerator implements RandomWorldGenerator{
                 
                 //Controlla che il goal sia ancora raggiungibile
                 if (!canReachGoal(res)){
-                    System.out.println("NC");
+                    //System.out.println("NC");
                     //Se non è raggiungibile, riapre il passaggio
                     kp.setKey(null);
                 }

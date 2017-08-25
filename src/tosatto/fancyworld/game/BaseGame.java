@@ -163,6 +163,7 @@ public class BaseGame extends Game{
                 
                 try {
                     gp.save(this);
+                    io.inform("Salvataggio effettuato. Arrivederci!");
                 } catch (Exception ex) {
                     Logger.getLogger(BaseGame.class.getName()).log(Level.SEVERE, null, ex);
                 }

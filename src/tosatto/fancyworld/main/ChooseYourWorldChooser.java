@@ -25,6 +25,7 @@ import tosatto.fancyworld.game.world.TrialedWorld;
 import tosatto.fancyworld.game.world.factories.BundledWorldFactory;
 import tosatto.fancyworld.game.world.factories.TrialedWorldFactory;
 import tosatto.fancyworld.game.world.generators.BasicRandomWorldGenerator;
+import tosatto.fancyworld.game.world.generators.BundledRandomWorldGenerator;
 import tosatto.fancyworld.game.world.generators.KeyedRandomWorldGenerator;
 import tosatto.fancyworld.game.world.generators.TrialedRandomWorldGenerator;
 import tosatto.fancyworld.game.world.keys.Key;
@@ -84,11 +85,12 @@ public class ChooseYourWorldChooser implements WorldChooser{
             
             if (response < w.getKeys().size())
             {
-                int newVal = io.askForInteger("Inserisci il nuovo peso della chiave", "Devi inserire un numero intero!");
+                int newVal = io.askForPositiveInteger("Inserisci il nuovo peso della chiave", "Devi inserire un numero intero positivo!");
                 
                 if (newVal <= maxKeyWeight)
                 {
                     keyList.get(response).setWeight(newVal);
+                    io.inform("Peso della chiave selezionata correttamente modificato");
                 } else {
                     io.inform("Le chiavi non possono avere peso superiore a " + Integer.toString(maxKeyWeight));
                 }
@@ -128,11 +130,12 @@ public class ChooseYourWorldChooser implements WorldChooser{
             
             if (response < w.getTrials().size())
             {
-                int newVal = io.askForInteger("Inserisci il nuovo valore della prova", "Devi inserire un numero intero!");
+                int newVal = io.askForPositiveInteger("Inserisci il nuovo valore della prova", "Devi inserire un numero intero positivo!");
                 
                 if (newVal <= maxTrialValue)
                 {
                     trials.get(response).setValue(newVal);
+                    io.inform("Il valore della prova selezionata è stato modificato con successo");
                 } else {
                     io.inform("Le prove non possono avere valore superiore a " + Integer.toString(maxTrialValue));
                 }
@@ -192,13 +195,15 @@ public class ChooseYourWorldChooser implements WorldChooser{
            BasicRandomWorldGenerator brwg = new BasicRandomWorldGenerator(new Random(WorldTopologies.getInstance().getTopologySeed(selectedTopology))
                    , new BundledWorldFactory(), 5, 10, 10, 20, 1);
 
-           KeyedRandomWorldGenerator krwg = new KeyedRandomWorldGenerator(brwg, pb.getParameter(sbp.KEY_TYPE_NUMBER), pb.getParameter(sbp.KEY_TYPE_NUMBER)+1, 0.3, 1);
+           KeyedRandomWorldGenerator krwg = new KeyedRandomWorldGenerator(brwg, pb.getParameter(sbp.KEY_TYPE_NUMBER), pb.getParameter(sbp.MAX_KEY_WEIGHT),  pb.getParameter(sbp.KEY_TYPE_NUMBER)+1, 0.3, 1);
 
            TrialedRandomWorldGenerator trwg = new TrialedRandomWorldGenerator(krwg, 0.4, pb.getParameter(sbp.TRIAL_TYPES_NUMBER));
 
+           BundledRandomWorldGenerator bundrwg = new BundledRandomWorldGenerator(trwg, pb);
+           
            PointedPlayer p = new PointedPlayer("Granli Brum");
            p.setPoints(pb.getParameter(sbp.INITIAL_POINTS));
-           BundledWorld w = (BundledWorld)trwg.generate();
+           BundledWorld w = (BundledWorld)bundrwg.generate();
 
            w.setBundle(pb);
            

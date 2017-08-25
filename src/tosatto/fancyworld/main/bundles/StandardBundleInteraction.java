@@ -107,6 +107,8 @@ public class StandardBundleInteraction implements BundleInteraction{
                     
                     b.setParameter(pars.get(response), oldVal);
                     
+                } else {
+                    io.inform("Modifica effettuiata!!!");
                 }
             }
             
