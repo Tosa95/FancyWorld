@@ -54,6 +54,15 @@ public class WorldTopologies {
         return new ArrayList<>(seeds.keySet());
     }
     
+    /**
+     * Ritorna il seed associato alla topologia indicata da topologyName
+     * 
+     * Precondizione:
+     *  - topologyName deve effettivamente essere presente nell'oggetto
+     * 
+     * @param topologyName
+     * @return 
+     */
     public long getTopologySeed(String topologyName)
     {
         return seeds.get(topologyName);
