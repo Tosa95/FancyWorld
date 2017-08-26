@@ -12,6 +12,7 @@ import tosatto.fancyworld.game.world.generators.BundledRandomWorldGenerator;
 import tosatto.fancyworld.game.world.generators.KeyedRandomWorldGenerator;
 import tosatto.fancyworld.game.world.generators.RandomWorldGenerator;
 import tosatto.fancyworld.game.world.generators.TrialedRandomWorldGenerator;
+import tosatto.fancyworld.game.world.generators.algorithms.BaseWorldTraveler;
 import tosatto.fancyworld.main.WorldTopologies;
 import tosatto.fancyworld.main.bundles.ParametersBundle;
 import tosatto.fancyworld.main.bundles.StandardBundleParametersNames;
@@ -38,8 +39,10 @@ public class StandardWorldGeneratorStackFactory implements WorldGeneratorStackFa
     @Override
     public RandomWorldGenerator create(ParametersBundle bundle, String topology) 
     {
+        BaseWorldTraveler bwt = new BaseWorldTraveler();
+        
         BasicRandomWorldGenerator brwg = new BasicRandomWorldGenerator(new Random(WorldTopologies.getInstance().getTopologySeed(topology))
-                   , new BundledWorldFactory(), MIN_LVL, MAX_LVL, MIN_PLACES, MAX_PLACES, DIFFICULTY);
+                   , new BundledWorldFactory(), MIN_LVL, MAX_LVL, MIN_PLACES, MAX_PLACES, DIFFICULTY, bwt, bwt);
 
         int ktp = bundle.getParameter(StandardBundleParametersNames.KEY_TYPE_NUMBER);
            

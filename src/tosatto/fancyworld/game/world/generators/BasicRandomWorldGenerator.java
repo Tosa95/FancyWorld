@@ -13,6 +13,8 @@ import java.util.logging.Logger;
 import tosatto.fancyworld.game.world.NameGenerator;
 import tosatto.fancyworld.game.world.World;
 import tosatto.fancyworld.game.world.factories.WorldFactory;
+import tosatto.fancyworld.game.world.generators.algorithms.PlaceConnectionChecker;
+import tosatto.fancyworld.game.world.generators.algorithms.WorldConnectionChecker;
 import tosatto.fancyworld.game.world.levels.Level;
 import tosatto.fancyworld.game.world.passages.OpenPassage;
 import tosatto.fancyworld.game.world.passages.Passage;
@@ -35,6 +37,9 @@ public class BasicRandomWorldGenerator implements RandomWorldGenerator{
 
     private int minLvl, maxLvl, minPlaces, maxPlaces, difficulty;
     
+    private PlaceConnectionChecker pcc;
+    private WorldConnectionChecker wcc;
+    
     /**
      * Inizializza il generatore.
      * 
@@ -52,7 +57,9 @@ public class BasicRandomWorldGenerator implements RandomWorldGenerator{
                                 int maxLvl, 
                                 int minPlaces, 
                                 int maxPlaces, 
-                                int difficulty) {
+                                int difficulty,
+                                PlaceConnectionChecker pcc,
+                                WorldConnectionChecker wcc) {
         
         this.r = r;
         ng = new NameGenerator(r);
@@ -65,15 +72,9 @@ public class BasicRandomWorldGenerator implements RandomWorldGenerator{
         this.maxPlaces = maxPlaces;
         
         this.difficulty = difficulty;
-    }
-
-    public BasicRandomWorldGenerator(WorldFactory wf,
-                                int minLvl, 
-                                int maxLvl, 
-                                int minPlaces, 
-                                int maxPlaces, 
-                                int difficulty) {
-        this(new Random(), wf, minLvl, maxLvl, minPlaces, maxPlaces, difficulty);
+        
+        this.pcc = pcc;
+        this.wcc = wcc;
     }
     
     
@@ -90,73 +91,7 @@ public class BasicRandomWorldGenerator implements RandomWorldGenerator{
         return Helper.boundRnd(r, min, max);
     }
     
-    /**
-     * Dice se due posti sono direttamente connessi o no
-     * @param p1
-     * @param p2
-     * @return 
-     */
-    private boolean directlyConnected (World w, Place p1, Place p2)
-    {
-        
-        for (Passage pass: w.getAllPassages(p1.getPassages().values()))
-        {
-            try {
-                if (pass.next(p1.getName()).equals(p2.getName()))
-                {
-                    return true;
-                }
-            } catch (PassageException ex) {
-                
-            }
-        }
-        
-        return false;
-    }
     
-    /**
-     * Dice se due posti sono connessi
-     * @param w
-     * @param p1
-     * @param p2
-     * @param visited Lista dei posti già visitati. Deve essere vuota all'inizio
-     * @return 
-     */
-    private boolean connected (World w, String p1, String p2, List<String> visited)
-    {
-        Place pl1 = w.getPlace(p1);
-        Place pl2 = w.getPlace(p2);
-        
-        if (p1.equals(p2))
-        {
-            return true;
-        }
-        else if (directlyConnected(w, pl1, pl2))
-        {
-            return true;
-        } else {
-            visited.add(p1);
-            
-            for (Passage pass: w.getAllPassages(pl1.getPassages().values()))
-            {
-                try {
-                    String nxt = pass.next(p1);
-                    
-                    if (!visited.contains(nxt) && connected(w, nxt, p2, visited))
-                    {
-                        return true;
-                    }
-                    
-                } catch (PassageException ex) {
-                    
-                }
-                
-            }
-            
-            return false;
-        }
-    }
-
     @Override
     public Random getRandom() {
         return r;
@@ -170,6 +105,104 @@ public class BasicRandomWorldGenerator implements RandomWorldGenerator{
     @Override
     public WorldFactory getWorldFactory() {
         return wf;
+    }
+
+    /**
+     * @return the minLvl
+     */
+    public int getMinLvl() {
+        return minLvl;
+    }
+
+    /**
+     * @param minLvl the minLvl to set
+     */
+    public void setMinLvl(int minLvl) {
+        this.minLvl = minLvl;
+    }
+
+    /**
+     * @return the maxLvl
+     */
+    public int getMaxLvl() {
+        return maxLvl;
+    }
+
+    /**
+     * @param maxLvl the maxLvl to set
+     */
+    public void setMaxLvl(int maxLvl) {
+        this.maxLvl = maxLvl;
+    }
+
+    /**
+     * @return the minPlaces
+     */
+    public int getMinPlaces() {
+        return minPlaces;
+    }
+
+    /**
+     * @param minPlaces the minPlaces to set
+     */
+    public void setMinPlaces(int minPlaces) {
+        this.minPlaces = minPlaces;
+    }
+
+    /**
+     * @return the maxPlaces
+     */
+    public int getMaxPlaces() {
+        return maxPlaces;
+    }
+
+    /**
+     * @param maxPlaces the maxPlaces to set
+     */
+    public void setMaxPlaces(int maxPlaces) {
+        this.maxPlaces = maxPlaces;
+    }
+
+    /**
+     * @return the difficulty
+     */
+    public int getDifficulty() {
+        return difficulty;
+    }
+
+    /**
+     * @param difficulty the difficulty to set
+     */
+    public void setDifficulty(int difficulty) {
+        this.difficulty = difficulty;
+    }
+
+    /**
+     * @return the pcc
+     */
+    public PlaceConnectionChecker getPcc() {
+        return pcc;
+    }
+
+    /**
+     * @param pcc the pcc to set
+     */
+    public void setPcc(PlaceConnectionChecker pcc) {
+        this.pcc = pcc;
+    }
+
+    /**
+     * @return the wcc
+     */
+    public WorldConnectionChecker getWcc() {
+        return wcc;
+    }
+
+    /**
+     * @param wcc the wcc to set
+     */
+    public void setWcc(WorldConnectionChecker wcc) {
+        this.wcc = wcc;
     }
     
     /**
@@ -186,32 +219,6 @@ public class BasicRandomWorldGenerator implements RandomWorldGenerator{
         
         
      }
-    
-    /**
-     * Dice se il grafo dei posti di un mondo è connesso o meno
-     * @param w
-     * @return 
-     */
-    private boolean connected (World w)
-    {
-        
-        Place[] places = w.getPlaces().toArray(new Place[w.getPlaces().size()]);
-        
-        int pNum = places.length;
-        
-        for (int i = 0; i < pNum; i++)
-        {
-            for (int j = 0; j < pNum; j++)
-            {
-                if (! connected(w, places[i].getName(), places[j].getName(), new ArrayList<>()))
-                {
-                    return false;
-                }
-            }
-        }
-        
-        return true;
-    }
     
     /**
      * Dice se due posti possono essere connessi direttamente.
@@ -271,7 +278,7 @@ public class BasicRandomWorldGenerator implements RandomWorldGenerator{
      */
     private PlacePair pickRandomUnconnectedPair (World w)
     {
-        if (connected(w))
+        if (wcc.isConnected(w))
             //Se il grafo è connesso, non è possibile trovare una coppia di posti non connessi
             return null;
         
@@ -279,7 +286,7 @@ public class BasicRandomWorldGenerator implements RandomWorldGenerator{
         {
             PlacePair res = pickPair(w);
             
-            if (!connected(w, res.p1, res.p2, new ArrayList<>()) )
+            if (!pcc.arePlacesConnected(w, res.p1, res.p2) )
             {
                 if (canBeDirectlyConnected(w, w.getPlace(res.p1), w.getPlace(res.p2)))
                 {
@@ -287,8 +294,6 @@ public class BasicRandomWorldGenerator implements RandomWorldGenerator{
                 }
                     
             }
-            
-            connected(w);
         }
     }
     
@@ -398,10 +403,10 @@ public class BasicRandomWorldGenerator implements RandomWorldGenerator{
         final String startName = "start";
         
         //Sceglie un numero di livelli
-        int lvls = boundRnd(minLvl, maxLvl);
+        int lvls = boundRnd(getMinLvl(), getMaxLvl());
 
         //Sceglie un numero di posti
-        int places = boundRnd(minPlaces, maxPlaces);
+        int places = boundRnd(getMinPlaces(), getMaxPlaces());
         
         if (places<lvls)
             places = lvls + 2;
@@ -432,7 +437,7 @@ public class BasicRandomWorldGenerator implements RandomWorldGenerator{
         res.addPlace(wf.getPlace(goalName, "", true, boundRnd(0, lvls)));
         
         //Aggiunge link fino ad ottenere un grafo connesso
-        while (!connected(res))
+        while (!wcc.isConnected(res))
         {
             //Per creare un grafo minimo, connette solo posti non già connessi
             PlacePair pair = pickRandomUnconnectedPair(res);
@@ -444,10 +449,10 @@ public class BasicRandomWorldGenerator implements RandomWorldGenerator{
         
         
         //Evita divby0
-        if (difficulty == 0)
-            difficulty = 1;
+        if (getDifficulty() == 0)
+            setDifficulty(1);
         
-        int trials = r.nextInt(((100 * places * lvls)/difficulty)+1);
+        int trials = r.nextInt(((100 * places * lvls)/getDifficulty())+1);
         
         
         //Aggiunge altri collegamenti tra nodi, in numero inversamente proporzionale alla difficoltà
@@ -464,21 +469,4 @@ public class BasicRandomWorldGenerator implements RandomWorldGenerator{
         return res;
     }
     
-    public void test ()
-    {
-        World w = new World("prova", "start");
-        
-        Place start = new Place("start", "", false, 0);
-        Place p2 = new Place("p2", "", false, 0);
-        
-        w.addLevel(new Level(0, "", ""));
-        
-        w.addPlace(start);
-        w.addPlace(p2);
-        
-        connect(ng, w, "start", "p2");
-        
-        if (!directlyConnected(w, start, p2))
-            throw new IllegalAccessError("Errore. Dovrebbero essere connessi!");
-    }
 }
