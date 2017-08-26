@@ -8,7 +8,10 @@ package tosatto.fancyworld.main.bundles;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
+import org.simpleframework.xml.Element;
 import org.simpleframework.xml.ElementMap;
+import tosatto.fancyworld.main.bundles.check.BundleChecker;
+import tosatto.fancyworld.main.bundles.check.CheckResult;
 
 /**
  * Rappresenta un contenitore per parametri interi
@@ -18,9 +21,13 @@ public class ParametersBundle {
     
     @ElementMap (name = "bundle")
     private Map<String, Integer> bundle;
+    
+    @Element (name="checker")
+    private BundleChecker checker;
 
-    public ParametersBundle() {
+    public ParametersBundle(BundleChecker checker) {
         bundle = new HashMap<>();
+        this.checker = checker;
     }
     
     /**
@@ -74,5 +81,14 @@ public class ParametersBundle {
     public Set<String> getParameterNames ()
     {
         return bundle.keySet();
+    }
+    
+    /**
+     * Controlla la validità del bundle
+     * @return 
+     */
+    public CheckResult check()
+    {
+        return checker.check(this);
     }
 }

@@ -7,9 +7,10 @@ package tosatto.fancyworld.game.checkers;
 
 import tosatto.fancyworld.game.BaseGame;
 import tosatto.fancyworld.game.Game;
+import tosatto.fancyworld.game.info.BundledGameInfo;
 import tosatto.fancyworld.game.player.PointedPlayer;
 import tosatto.fancyworld.game.world.BundledWorld;
-import tosatto.fancyworld.main.bundles.StandardBundleInteraction;
+import tosatto.fancyworld.main.bundles.BaseBundleInteraction;
 
 /**
  * Determina la vittoria del giocatore in base ai punti accumulati e al suo posizionamento nel luogo goal
@@ -25,7 +26,7 @@ public class PointBasedWinChecker implements WinChecker{
         
         PointedPlayer pp = (PointedPlayer)bg.getPlayer();
         
-        if (bw.getPlace(pp.getPlace()).isGoal() && pp.getPoints() >= bw.getBundle().getParameter(StandardBundleInteraction.GOAL_POINTS))
+        if (bw.getPlace(pp.getPlace()).isGoal() && pp.getPoints() >= pointsToWin(g))
         {
             return true;
         }
@@ -39,7 +40,9 @@ public class PointBasedWinChecker implements WinChecker{
         
         BundledWorld bw = (BundledWorld)bg.getWorld();
         
-        return bw.getBundle().getParameter(StandardBundleInteraction.GOAL_POINTS);
+        BundledGameInfo bgi = (BundledGameInfo)bw.getGi();
+        
+        return bgi.getPointsToWin();
 
     }
     

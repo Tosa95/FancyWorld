@@ -9,58 +9,15 @@ import java.util.ArrayList;
 import java.util.List;
 import tosatto.fancyworld.IO.MessageIO;
 import tosatto.fancyworld.game.world.trials.TrialPool;
+import tosatto.fancyworld.main.bundles.check.CheckResult;
 
 /**
  * Definisce l'interazione con un bundle standard, ossia quello contenente i parametri
  * descritti nel documento contenente le richieste per il progetto
  * @author Davide
  */
-public class StandardBundleInteraction implements BundleInteraction{
+public class BaseBundleInteraction implements BundleInteraction{
 
-    public static final String GOAL_POINTS = "GOAL_POINTS";
-    public static final String INITIAL_POINTS = "INITIAL_POINTS";
-    public static final String MAX_TRIAL_VALUE = "MAX_TRIAL_VALUE";
-    public static final String TRIAL_TYPES_NUMBER = "TRIAL_TYPES_NUMBER";
-    public static final String MAX_KEY_WEIGHT = "MAX_KEY_WEIGHT";
-    public static final String MAX_KEYRING_SIZE = "MAX_KEYRING_SIZE";
-    public static final String MAX_KEYRING_WEIGHT = "MAX_KEYRING_WEIGHT";
-    public static final String KEY_TYPE_NUMBER = "KEY_TYPE_NUMBER";
-    
-    //TODO: Strategy pattern
-    private boolean checkBundleValidity (ParametersBundle b)
-    {
-        for (String par : b.getParameterNames())
-        {
-            if (b.getParameter(par) <= 0)
-                return false;
-        }
-        
-        if (b.getParameter(MAX_KEY_WEIGHT) > b.getParameter(MAX_KEYRING_WEIGHT) )
-            return false;
-        
-        int maxPossibleTrials = TrialPool.getInstance().getTrials().size();
-        
-        if (b.getParameter(TRIAL_TYPES_NUMBER) > maxPossibleTrials)
-            return false;
-        
-        return true;
-    }
-    
-    public ParametersBundle getStandardBundle ()
-    {
-        ParametersBundle res = new ParametersBundle();
-        
-        res.addParameter(KEY_TYPE_NUMBER, 5);
-        res.addParameter(MAX_KEYRING_WEIGHT, 50);
-        res.addParameter(MAX_KEYRING_SIZE, 5);
-        res.addParameter(MAX_KEY_WEIGHT, 25);
-        res.addParameter(TRIAL_TYPES_NUMBER, 3);
-        res.addParameter(MAX_TRIAL_VALUE, 20);
-        res.addParameter(INITIAL_POINTS, 10);
-        res.addParameter(GOAL_POINTS, 100);
-        
-        return res;
-    }
     
     
     private String[] prepareParameterModificationMenuEntry (ParametersBundle b, List<String> pars)
@@ -101,14 +58,17 @@ public class StandardBundleInteraction implements BundleInteraction{
                 
                 b.setParameter(pars.get(response), newVal);
                 
-                if (!checkBundleValidity(b))
+                CheckResult cr = b.check();
+                
+                if (!cr.getResult())
                 {
-                    io.inform("Le modifiche apportate non soddisfano i vincoli imposti sui parametri. Modifica annullata");
+                    io.inform(cr.getMessage());
+                    io.inform("Modifica annullata");
                     
                     b.setParameter(pars.get(response), oldVal);
                     
                 } else {
-                    io.inform("Modifica effettuiata!!!");
+                    io.inform("Modifica effettuata!!!");
                 }
             }
             

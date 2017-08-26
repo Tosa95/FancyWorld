@@ -13,7 +13,8 @@ import tosatto.fancyworld.game.world.factories.WorldFactory;
 import tosatto.fancyworld.game.world.keys.Key;
 import tosatto.fancyworld.game.world.trials.Trial;
 import tosatto.fancyworld.main.bundles.ParametersBundle;
-import tosatto.fancyworld.main.bundles.StandardBundleInteraction;
+import tosatto.fancyworld.main.bundles.BaseBundleInteraction;
+import tosatto.fancyworld.main.bundles.StandardBundleParametersNames;
 
 /**
  *
@@ -42,9 +43,9 @@ public class BundledRandomWorldGenerator implements RandomWorldGenerator{
     {
         for (Key k : w.getKeys().values())
         {
-            if (k.getWeight() >= b.getParameter(StandardBundleInteraction.MAX_KEY_WEIGHT))
+            if (k.getWeight() >= b.getParameter(StandardBundleParametersNames.MAX_KEY_WEIGHT))
             {
-                k.setWeight(b.getParameter(StandardBundleInteraction.MAX_KEY_WEIGHT));
+                k.setWeight(b.getParameter(StandardBundleParametersNames.MAX_KEY_WEIGHT));
             }
         }
     }
@@ -62,9 +63,9 @@ public class BundledRandomWorldGenerator implements RandomWorldGenerator{
     {
         for (Trial t : w.getTrials())
         {
-            if (t.getValue() >= b.getParameter(StandardBundleInteraction.MAX_TRIAL_VALUE))
+            if (t.getValue() >= b.getParameter(StandardBundleParametersNames.MAX_TRIAL_VALUE))
             {
-                t.setValue(b.getParameter(StandardBundleInteraction.MAX_TRIAL_VALUE));
+                t.setValue(b.getParameter(StandardBundleParametersNames.MAX_TRIAL_VALUE));
             }
         }
     }

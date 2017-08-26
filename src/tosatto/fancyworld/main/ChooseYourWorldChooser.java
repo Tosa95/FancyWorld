@@ -30,7 +30,10 @@ import tosatto.fancyworld.game.world.generators.KeyedRandomWorldGenerator;
 import tosatto.fancyworld.game.world.generators.TrialedRandomWorldGenerator;
 import tosatto.fancyworld.game.world.keys.Key;
 import tosatto.fancyworld.game.world.trials.Trial;
-import tosatto.fancyworld.main.bundles.StandardBundleInteraction;
+import tosatto.fancyworld.main.bundles.BaseBundleInteraction;
+import tosatto.fancyworld.main.bundles.StandardBundleParametersNames;
+import tosatto.fancyworld.main.bundles.factories.BundleFactory;
+import tosatto.fancyworld.main.bundles.factories.StandardBundleFactory;
 
 /**
  * Rappresenta un oggetto in grado di guidare l'utente nella scelta di un mondo in cui giocare
@@ -184,25 +187,27 @@ public class ChooseYourWorldChooser implements WorldChooser{
        {
            io.inform("Ora verrà creata una nuova sessione.");
            
+           BundleFactory factory = new StandardBundleFactory();
            
+           BaseBundleInteraction bbp = new BaseBundleInteraction();
            
-           StandardBundleInteraction sbp = new StandardBundleInteraction();
+           ParametersBundle pb = factory.create();
            
-           ParametersBundle pb = sbp.getStandardBundle();
-           
-           sbp.interact(pb, io);
+           bbp.interact(pb, io);
            
            BasicRandomWorldGenerator brwg = new BasicRandomWorldGenerator(new Random(WorldTopologies.getInstance().getTopologySeed(selectedTopology))
                    , new BundledWorldFactory(), 5, 10, 10, 20, 1);
 
-           KeyedRandomWorldGenerator krwg = new KeyedRandomWorldGenerator(brwg, pb.getParameter(sbp.KEY_TYPE_NUMBER), pb.getParameter(sbp.MAX_KEY_WEIGHT),  pb.getParameter(sbp.KEY_TYPE_NUMBER)+1, 0.3, 1);
+           int ktp = pb.getParameter(StandardBundleParametersNames.KEY_TYPE_NUMBER);
+           
+           KeyedRandomWorldGenerator krwg = new KeyedRandomWorldGenerator(brwg, pb.getParameter(StandardBundleParametersNames.KEY_TYPE_NUMBER), pb.getParameter(StandardBundleParametersNames.KEY_TYPE_NUMBER)+1, pb.getParameter(StandardBundleParametersNames.MAX_KEY_WEIGHT), 0.3, 1);
 
-           TrialedRandomWorldGenerator trwg = new TrialedRandomWorldGenerator(krwg, 0.4, pb.getParameter(sbp.TRIAL_TYPES_NUMBER));
+           TrialedRandomWorldGenerator trwg = new TrialedRandomWorldGenerator(krwg, 0.4, pb.getParameter(StandardBundleParametersNames.TRIAL_TYPES_NUMBER));
 
            BundledRandomWorldGenerator bundrwg = new BundledRandomWorldGenerator(trwg, pb);
            
            PointedPlayer p = new PointedPlayer("Granli Brum");
-           p.setPoints(pb.getParameter(sbp.INITIAL_POINTS));
+           p.setPoints(pb.getParameter(StandardBundleParametersNames.INITIAL_POINTS));
            BundledWorld w = (BundledWorld)bundrwg.generate();
 
            w.setBundle(pb);
@@ -213,8 +218,8 @@ public class ChooseYourWorldChooser implements WorldChooser{
 
            p.setPlace(w.getStartPlace());
            
-           setKeyWeights(w, io, pb.getParameter(StandardBundleInteraction.MAX_KEY_WEIGHT));
-           setTrialsValues(w, io, pb.getParameter(StandardBundleInteraction.MAX_TRIAL_VALUE));
+           setKeyWeights(w, io, pb.getParameter(StandardBundleParametersNames.MAX_KEY_WEIGHT));
+           setTrialsValues(w, io, pb.getParameter(StandardBundleParametersNames.MAX_TRIAL_VALUE));
            
            game.setName(selectedTopology);
        }

@@ -7,6 +7,7 @@ package tosatto.fancyworld.game.world;
 
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
+import tosatto.fancyworld.game.info.GameInfo;
 import tosatto.fancyworld.main.bundles.ParametersBundle;
 
 /**
@@ -42,5 +43,9 @@ public class BundledWorld extends TrialedWorld{
         return bundle;
     }
     
+    public GameInfo getGi()
+    {
+        return super.gi;
+    }
         
 }

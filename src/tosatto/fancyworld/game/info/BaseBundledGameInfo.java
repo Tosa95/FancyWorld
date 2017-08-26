@@ -7,6 +7,7 @@ package tosatto.fancyworld.game.info;
 
 import tosatto.fancyworld.game.BaseGame;
 import tosatto.fancyworld.game.world.BundledWorld;
+import tosatto.fancyworld.main.bundles.StandardBundleParametersNames;
 
 /**
  * Implementa l'interfaccia BundledGameInfo e ne implementa tutti i metodi 
@@ -32,6 +33,21 @@ public class BaseBundledGameInfo extends BaseTrialedGameInfo implements BundledG
         BundledWorld bw = (BundledWorld)g.getWorld();
         
         return bw.getBundle().getParameter(parameterName);
+    }
+
+    @Override
+    public int getMaxKeyringWeight() {
+        return getParameterValue(StandardBundleParametersNames.MAX_KEYRING_WEIGHT);
+    }
+
+    @Override
+    public int getMaxKeyringSize() {
+       return getParameterValue(StandardBundleParametersNames.MAX_KEYRING_SIZE);
+    }
+
+    @Override
+    public int getPointsToWin() {
+        return getParameterValue(StandardBundleParametersNames.GOAL_POINTS);
     }
     
 }

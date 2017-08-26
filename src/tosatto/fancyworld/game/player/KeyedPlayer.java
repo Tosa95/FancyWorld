@@ -16,7 +16,7 @@ import tosatto.fancyworld.game.info.BundledGameInfo;
 import tosatto.fancyworld.game.info.GameInfo;
 import tosatto.fancyworld.game.info.KeyedGameInfo;
 import tosatto.fancyworld.game.player.exceptions.UnableToPickUpKeyException;
-import tosatto.fancyworld.main.bundles.StandardBundleInteraction;
+import tosatto.fancyworld.main.bundles.BaseBundleInteraction;
 
 /**
  * Rappresenta un giocatore dotato di chiavi
@@ -86,12 +86,12 @@ public class KeyedPlayer extends Player{
      */
     public void addKey (String keyName) throws UnableToPickUpKeyException
     {
-        if ((getKeyringWeight() + bgi.getKeyWeight(keyName)) > bgi.getParameterValue(StandardBundleInteraction.MAX_KEYRING_WEIGHT))
+        if ((getKeyringWeight() + bgi.getKeyWeight(keyName)) > bgi.getMaxKeyringWeight())
         {
             throw new UnableToPickUpKeyException("Impossibile raccogliere chiave in quanto supera il peso massimo trasportabile");
         }
         
-        if ((keys.size() + 1) > bgi.getParameterValue(StandardBundleInteraction.MAX_KEYRING_SIZE))
+        if ((keys.size() + 1) > bgi.getMaxKeyringSize())
         {
             throw new UnableToPickUpKeyException("Impossibile raccogliere chiave. Numero massimo raggiunto");
         }

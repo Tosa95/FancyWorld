@@ -37,7 +37,7 @@ import tosatto.fancyworld.game.world.trials.Words;
 import tosatto.fancyworld.main.ChooseYourWorldChooser;
 import tosatto.fancyworld.main.bundles.BundleInteraction;
 import tosatto.fancyworld.main.bundles.ParametersBundle;
-import tosatto.fancyworld.main.bundles.StandardBundleInteraction;
+import tosatto.fancyworld.main.bundles.BaseBundleInteraction;
 
 /**
  *
@@ -121,19 +121,7 @@ public class Prove {
 //        
 //        cywc.choose(new ConsoleMessageIO());
 
-        ParametersBundle res = new ParametersBundle();
-        
-        res.addParameter("KEY_TYPE_NUMBER", 5);
-        res.addParameter("MAX_KEYRING_WEIGHT", 50);
-        res.addParameter("MAX_KEYRING_SIZE", 5);
-        res.addParameter("MAX_KEY_WEIGHT", 25);
-        res.addParameter("TRIAL_TYPES_NUMBER", 3);
-        res.addParameter("MAX_TRIAL_VALUE", 20);
-        res.addParameter("INITIAL_POINTS", 10);
-        res.addParameter("GOAL_POINTS", 100);
-        
-        BundleInteraction bi = new StandardBundleInteraction();
-        
-        bi.interact(res, new ConsoleMessageIO());
+//1
+
     }
 }

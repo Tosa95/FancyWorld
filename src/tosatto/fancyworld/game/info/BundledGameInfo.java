@@ -23,4 +23,24 @@ public interface BundledGameInfo extends TrialedGameInfo{
      */
     public int getParameterValue (String parameterName);
     
+    /**
+     * Ritorna il peso massimo trasportabile.
+     * 
+     * @return 
+     */
+    public int getMaxKeyringWeight ();
+    
+    /**
+     * Ritorna il numero massimo di chiavi trasportabili.
+     * 
+     * @return 
+     */
+    public int getMaxKeyringSize ();
+    
+    /**
+     * Ritorna i punti necessari per vincere
+     * @return 
+     */
+    public int getPointsToWin ();
+    
 }
