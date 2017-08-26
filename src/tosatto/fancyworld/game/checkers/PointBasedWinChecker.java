@@ -10,7 +10,7 @@ import tosatto.fancyworld.game.Game;
 import tosatto.fancyworld.game.info.BundledGameInfo;
 import tosatto.fancyworld.game.player.PointedPlayer;
 import tosatto.fancyworld.game.world.BundledWorld;
-import tosatto.fancyworld.main.bundles.BaseBundleInteraction;
+import tosatto.fancyworld.main.interactions.bundles.BaseBundleInteraction;
 
 /**
  * Determina la vittoria del giocatore in base ai punti accumulati e al suo posizionamento nel luogo goal

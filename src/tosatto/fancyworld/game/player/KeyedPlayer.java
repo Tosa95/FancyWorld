@@ -16,7 +16,7 @@ import tosatto.fancyworld.game.info.BundledGameInfo;
 import tosatto.fancyworld.game.info.GameInfo;
 import tosatto.fancyworld.game.info.KeyedGameInfo;
 import tosatto.fancyworld.game.player.exceptions.UnableToPickUpKeyException;
-import tosatto.fancyworld.main.bundles.BaseBundleInteraction;
+import tosatto.fancyworld.main.interactions.bundles.BaseBundleInteraction;
 
 /**
  * Rappresenta un giocatore dotato di chiavi

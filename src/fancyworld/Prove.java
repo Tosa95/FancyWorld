@@ -35,9 +35,9 @@ import tosatto.fancyworld.game.world.trials.Trial;
 import tosatto.fancyworld.game.world.trials.WordTrial;
 import tosatto.fancyworld.game.world.trials.Words;
 import tosatto.fancyworld.main.ChooseYourWorldChooser;
-import tosatto.fancyworld.main.bundles.BundleInteraction;
+import tosatto.fancyworld.main.interactions.bundles.BundleInteraction;
 import tosatto.fancyworld.main.bundles.ParametersBundle;
-import tosatto.fancyworld.main.bundles.BaseBundleInteraction;
+import tosatto.fancyworld.main.interactions.bundles.BaseBundleInteraction;
 
 /**
  *

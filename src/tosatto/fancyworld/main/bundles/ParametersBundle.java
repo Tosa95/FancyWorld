@@ -25,7 +25,7 @@ public class ParametersBundle {
     @Element (name="checker")
     private BundleChecker checker;
 
-    public ParametersBundle(BundleChecker checker) {
+    public ParametersBundle(@Element(name="checker")BundleChecker checker) {
         bundle = new HashMap<>();
         this.checker = checker;
     }

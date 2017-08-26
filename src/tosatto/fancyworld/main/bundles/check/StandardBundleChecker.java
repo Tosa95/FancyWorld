@@ -5,6 +5,7 @@
  */
 package tosatto.fancyworld.main.bundles.check;
 
+import org.simpleframework.xml.Root;
 import tosatto.fancyworld.game.world.trials.TrialPool;
 import tosatto.fancyworld.main.bundles.ParametersBundle;
 import tosatto.fancyworld.main.bundles.StandardBundleParametersNames;
@@ -13,6 +14,7 @@ import tosatto.fancyworld.main.bundles.StandardBundleParametersNames;
  *
  * @author Davide
  */
+@Root
 public class StandardBundleChecker implements BundleChecker{
 
     @Override

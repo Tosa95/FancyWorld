@@ -33,6 +33,10 @@ import tosatto.fancyworld.game.world.factories.KeyedWorldFactory;
 import tosatto.fancyworld.game.world.factories.TrialedWorldFactory;
 import tosatto.fancyworld.game.world.generators.KeyedRandomWorldGenerator;
 import tosatto.fancyworld.game.world.generators.TrialedRandomWorldGenerator;
+import tosatto.fancyworld.game.world.generators.factories.StandardWorldGeneratorStackFactory;
+import tosatto.fancyworld.main.interactions.keysettings.StandardKeySettingsInteraction;
+import tosatto.fancyworld.main.interactions.newsession.StandardNewSessionInteraction;
+import tosatto.fancyworld.main.interactions.trialsettings.StandardTrialsSettingsInteraction;
 
 /**
  * Punto d'ingresso del software
@@ -96,7 +100,8 @@ public class FancyWorld {
 //        KeyedWorld kw = (KeyedWorld)g.getWorld();
 //        
 
-        WorldChooser chooser = new ChooseYourWorldChooser();
+        WorldChooser chooser = new ChooseYourWorldChooser(new StandardNewSessionInteraction(new StandardTrialsSettingsInteraction(), 
+                new StandardKeySettingsInteraction(), new StandardWorldGeneratorStackFactory()));
         
         BaseGame g = (BaseGame)chooser.choose(io);
         

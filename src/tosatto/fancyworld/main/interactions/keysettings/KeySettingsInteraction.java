@@ -3,16 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tosatto.fancyworld.main.bundles;
+package tosatto.fancyworld.main.interactions.keysettings;
 
 import tosatto.fancyworld.IO.MessageIO;
+import tosatto.fancyworld.game.world.BundledWorld;
+import tosatto.fancyworld.game.world.World;
 
 /**
- * Rappresenta un oggetto in grado di guidare l'interazione tra un giocatore e un bundle di parametri
+ *
  * @author Davide
  */
-public interface BundleInteraction {
+public interface KeySettingsInteraction {
     
-    public void interact (ParametersBundle b, MessageIO io);
+    public void interact(World w, MessageIO io);
     
 }

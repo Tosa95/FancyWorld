@@ -46,7 +46,18 @@ public class KeyedRandomWorldGenerator implements RandomWorldGenerator{
     
     private int maxKeyWeight;
     
-    public KeyedRandomWorldGenerator(RandomWorldGenerator rwg, int minKeys, int maxKeys, int maxKeyWeight, double keyPlaceProb, double keyPassageProb)
+    /**
+     * Inizializza il generatore
+     * @param rwg Generatore base
+     * @param minKeys Minimo numero di tipi di chiave
+     * @param maxKeys Massimo numero di tipi di chiave
+     * @param maxKeyWeight Masimo peso di una chiave (minimo 1)
+     * @param keyPlaceProb Probabilità del posizionamento di una chiave in un posto
+     * @param keyPassageProb Probabilità della chiusura a chiave di un passaggio
+     */
+    public KeyedRandomWorldGenerator(RandomWorldGenerator rwg, int minKeys, 
+            int maxKeys, int maxKeyWeight,
+            double keyPlaceProb, double keyPassageProb)
     {
         this.rwg = rwg;
         

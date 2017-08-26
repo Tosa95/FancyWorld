@@ -13,7 +13,7 @@ import tosatto.fancyworld.game.world.factories.WorldFactory;
 import tosatto.fancyworld.game.world.keys.Key;
 import tosatto.fancyworld.game.world.trials.Trial;
 import tosatto.fancyworld.main.bundles.ParametersBundle;
-import tosatto.fancyworld.main.bundles.BaseBundleInteraction;
+import tosatto.fancyworld.main.interactions.bundles.BaseBundleInteraction;
 import tosatto.fancyworld.main.bundles.StandardBundleParametersNames;
 
 /**

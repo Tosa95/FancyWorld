@@ -30,16 +30,24 @@ import tosatto.fancyworld.game.world.generators.KeyedRandomWorldGenerator;
 import tosatto.fancyworld.game.world.generators.TrialedRandomWorldGenerator;
 import tosatto.fancyworld.game.world.keys.Key;
 import tosatto.fancyworld.game.world.trials.Trial;
-import tosatto.fancyworld.main.bundles.BaseBundleInteraction;
+import tosatto.fancyworld.main.interactions.bundles.BaseBundleInteraction;
 import tosatto.fancyworld.main.bundles.StandardBundleParametersNames;
 import tosatto.fancyworld.main.bundles.factories.BundleFactory;
 import tosatto.fancyworld.main.bundles.factories.StandardBundleFactory;
+import tosatto.fancyworld.main.interactions.newsession.NewSessionInteraction;
 
 /**
  * Rappresenta un oggetto in grado di guidare l'utente nella scelta di un mondo in cui giocare
  * @author Davide
  */
 public class ChooseYourWorldChooser implements WorldChooser{
+    
+    private NewSessionInteraction newSessInt;
+
+    public ChooseYourWorldChooser(NewSessionInteraction newSessInt) {
+        this.newSessInt = newSessInt;
+    }
+    
     
     
     private String[] prepareTopologyMenuEntries ()
@@ -54,97 +62,6 @@ public class ChooseYourWorldChooser implements WorldChooser{
          String res[] = new String[entries.size()];
          
          return entries.toArray(res);
-    }
-    
-    private String[] prepareKeySettingsMenuEntries (List<Key> l)
-    {
-        List<String> entries = new ArrayList<>();
-         
-         for (Key k : l)
-         {
-             entries.add(k.getName() + ": " + k.getWeight());
-         }
-         
-         entries.add("continua");
-         
-         String res[] = new String[entries.size()];
-         
-         return entries.toArray(res);
-    }
-    
-    private void setKeyWeights (KeyedWorld w, MessageIO io, int maxKeyWeight)
-    {
-        
-        io.inform("Puoi impostare il peso delle chiavi: ");
-        
-        int response = 0;
-        
-        do
-        {
-            
-           List<Key> keyList = new ArrayList<>(w.getKeys().values());
-            
-           response = io.showMenu("Seleziona quale peso modificare", prepareKeySettingsMenuEntries(keyList));
-            
-            if (response < w.getKeys().size())
-            {
-                int newVal = io.askForPositiveInteger("Inserisci il nuovo peso della chiave", "Devi inserire un numero intero positivo!");
-                
-                if (newVal <= maxKeyWeight)
-                {
-                    keyList.get(response).setWeight(newVal);
-                    io.inform("Peso della chiave selezionata correttamente modificato");
-                } else {
-                    io.inform("Le chiavi non possono avere peso superiore a " + Integer.toString(maxKeyWeight));
-                }
-            }
-            
-        }while(response < w.getKeys().size());
-        
-    }
-    
-    private String[] prepareTrialValueSettingMenu (List<Trial> l)
-    {
-        List<String> entries = new ArrayList<>();
-         
-         for (Trial t : l)
-         {
-             entries.add(t.getType() + ": " + t.getValue());
-         }
-         
-         entries.add("continua");
-         
-         String res[] = new String[entries.size()];
-         
-         return entries.toArray(res);
-    }
-    
-    private void setTrialsValues (TrialedWorld w, MessageIO io, int maxTrialValue)
-    {
-        io.inform("Puoi impostare il valore delle prove: ");
-        
-        int response = 0;
-        
-        do
-        {
-            List<Trial> trials = new ArrayList<>(w.getTrials());
-            
-            response = io.showMenu("Seleziona quale valore modificare", prepareTrialValueSettingMenu(trials));
-            
-            if (response < w.getTrials().size())
-            {
-                int newVal = io.askForPositiveInteger("Inserisci il nuovo valore della prova", "Devi inserire un numero intero positivo!");
-                
-                if (newVal <= maxTrialValue)
-                {
-                    trials.get(response).setValue(newVal);
-                    io.inform("Il valore della prova selezionata è stato modificato con successo");
-                } else {
-                    io.inform("Le prove non possono avere valore superiore a " + Integer.toString(maxTrialValue));
-                }
-            }
-            
-        }while(response < w.getTrials().size());
     }
     
     @Override
@@ -185,43 +102,7 @@ public class ChooseYourWorldChooser implements WorldChooser{
        
        if (newInstance)
        {
-           io.inform("Ora verrà creata una nuova sessione.");
-           
-           BundleFactory factory = new StandardBundleFactory();
-           
-           BaseBundleInteraction bbp = new BaseBundleInteraction();
-           
-           ParametersBundle pb = factory.create();
-           
-           bbp.interact(pb, io);
-           
-           BasicRandomWorldGenerator brwg = new BasicRandomWorldGenerator(new Random(WorldTopologies.getInstance().getTopologySeed(selectedTopology))
-                   , new BundledWorldFactory(), 5, 10, 10, 20, 1);
-
-           int ktp = pb.getParameter(StandardBundleParametersNames.KEY_TYPE_NUMBER);
-           
-           KeyedRandomWorldGenerator krwg = new KeyedRandomWorldGenerator(brwg, pb.getParameter(StandardBundleParametersNames.KEY_TYPE_NUMBER), pb.getParameter(StandardBundleParametersNames.KEY_TYPE_NUMBER)+1, pb.getParameter(StandardBundleParametersNames.MAX_KEY_WEIGHT), 0.3, 1);
-
-           TrialedRandomWorldGenerator trwg = new TrialedRandomWorldGenerator(krwg, 0.4, pb.getParameter(StandardBundleParametersNames.TRIAL_TYPES_NUMBER));
-
-           BundledRandomWorldGenerator bundrwg = new BundledRandomWorldGenerator(trwg, pb);
-           
-           PointedPlayer p = new PointedPlayer("Granli Brum");
-           p.setPoints(pb.getParameter(StandardBundleParametersNames.INITIAL_POINTS));
-           BundledWorld w = (BundledWorld)bundrwg.generate();
-
-           w.setBundle(pb);
-           
-           game = new BaseGame(p, w, "Game");
-           
-           
-
-           p.setPlace(w.getStartPlace());
-           
-           setKeyWeights(w, io, pb.getParameter(StandardBundleParametersNames.MAX_KEY_WEIGHT));
-           setTrialsValues(w, io, pb.getParameter(StandardBundleParametersNames.MAX_TRIAL_VALUE));
-           
-           game.setName(selectedTopology);
+           game = (BaseGame)newSessInt.interact(selectedTopology, io);
        }
        
        game.setGameInfo(new BaseBundledGameInfo(game));

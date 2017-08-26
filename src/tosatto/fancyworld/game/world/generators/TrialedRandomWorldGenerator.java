@@ -48,8 +48,8 @@ public class TrialedRandomWorldGenerator implements RandomWorldGenerator{
      * un ciclo infinito
      * 
      * @param base
-     * @param trialRatio
-     * @param trialTypeNumber 
+     * @param trialRatio Probabilità che in un posto venga piazzata una chiave
+     * @param trialTypeNumber Numero di tipi di prova desiderati
      */
     public TrialedRandomWorldGenerator(KeyedRandomWorldGenerator base, double trialRatio, int trialTypeNumber) {
         this.base = base;

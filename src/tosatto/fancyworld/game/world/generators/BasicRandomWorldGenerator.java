@@ -35,6 +35,17 @@ public class BasicRandomWorldGenerator implements RandomWorldGenerator{
 
     private int minLvl, maxLvl, minPlaces, maxPlaces, difficulty;
     
+    /**
+     * Inizializza il generatore.
+     * 
+     * @param r Oggetto Random usato per la generazione casuale di numeri
+     * @param wf Factory usata per la creazione di ogni oggetto facente parte del mondo
+     * @param minLvl Minimo numero di livelli
+     * @param maxLvl Massimo numero di livelli
+     * @param minPlaces Minimo numero di posti
+     * @param maxPlaces Massimo numero di posti
+     * @param difficulty Parametro che decide quanti collegamenti ci siano tra i posti. Più è elevato, meno collegamenti ci saranno
+     */
     public BasicRandomWorldGenerator(Random r, 
                                 WorldFactory wf,
                                 int minLvl, 

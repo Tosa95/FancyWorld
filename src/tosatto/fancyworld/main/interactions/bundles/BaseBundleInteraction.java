@@ -3,12 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tosatto.fancyworld.main.bundles;
+package tosatto.fancyworld.main.interactions.bundles;
 
 import java.util.ArrayList;
 import java.util.List;
 import tosatto.fancyworld.IO.MessageIO;
 import tosatto.fancyworld.game.world.trials.TrialPool;
+import tosatto.fancyworld.main.bundles.ParametersBundle;
 import tosatto.fancyworld.main.bundles.check.CheckResult;
 
 /**
