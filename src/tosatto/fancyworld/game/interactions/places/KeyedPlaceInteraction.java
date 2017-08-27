@@ -19,7 +19,7 @@ import tosatto.fancyworld.game.world.places.Place;
  * Interagisce con posti di tipo keyed
  * @author Davide
  */
-public class KeyedPlaceInteraction implements PlaceIntercation{
+public class KeyedPlaceInteraction implements PlaceInteraction{
 
     @Override
     public void interact(MessageIO io, Game g, Place p) {

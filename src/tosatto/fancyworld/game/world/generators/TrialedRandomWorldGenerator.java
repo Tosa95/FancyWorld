@@ -17,6 +17,8 @@ import tosatto.fancyworld.game.world.NameGenerator;
 import tosatto.fancyworld.game.world.TrialedWorld;
 import tosatto.fancyworld.game.world.World;
 import tosatto.fancyworld.game.world.factories.WorldFactory;
+import tosatto.fancyworld.game.world.generators.algorithms.PlaceIterator;
+import tosatto.fancyworld.game.world.generators.algorithms.PlaceVisitor;
 import tosatto.fancyworld.game.world.places.Place;
 import tosatto.fancyworld.game.world.places.TrialedPlace;
 import tosatto.fancyworld.game.world.trials.Trial;
@@ -35,10 +37,15 @@ public class TrialedRandomWorldGenerator implements RandomWorldGenerator{
     private WorldFactory wf;
     private Random r;
     
-    private KeyedRandomWorldGenerator base;
+    private RandomWorldGenerator base;
     private double trialRatio;
+   
+    private int trialTypeNumber;
     
-    private int tnum;
+    private static double DEFAULT_TRIAL_PLACE_PROBABILITY = 0.4;
+    private static int DEFAULT_TRIAL_TYPE_NUMBER = 3;
+    
+    private PlaceIterator pi;
     
     /**
      * Inizializza il generatore casuale di un mondo con prove.
@@ -51,17 +58,24 @@ public class TrialedRandomWorldGenerator implements RandomWorldGenerator{
      * @param trialRatio Probabilità che in un posto venga piazzata una chiave
      * @param trialTypeNumber Numero di tipi di prova desiderati
      */
-    public TrialedRandomWorldGenerator(KeyedRandomWorldGenerator base, double trialRatio, int trialTypeNumber) {
+    public TrialedRandomWorldGenerator(RandomWorldGenerator base, double trialRatio, int trialTypeNumber, PlaceIterator pi) {
         this.base = base;
         
         ng = base.getNameGenerator();
         wf = base.getWorldFactory();
         r = base.getRandom();
         
-        tnum = trialTypeNumber;
+        trialTypeNumber = trialTypeNumber;
         
         this.trialRatio = trialRatio;
         
+        this.pi = pi;
+        
+    }
+    
+    public TrialedRandomWorldGenerator(RandomWorldGenerator base, PlaceIterator pi)
+    {
+        this(base, DEFAULT_TRIAL_PLACE_PROBABILITY, DEFAULT_TRIAL_TYPE_NUMBER, pi);
     }
     
     /**
@@ -73,9 +87,9 @@ public class TrialedRandomWorldGenerator implements RandomWorldGenerator{
     {
         Boolean reachable[] = new Boolean[] {false};
         
-        base.visitGraph(w, new PlaceAction() {
+        pi.visitAllReachablePlaces(w, new PlaceVisitor() {
             @Override
-            public void interact(Place p) {
+            public void visit(Place p) {
                 if (p instanceof TrialedPlace)
                 {
                     TrialedPlace tp = (TrialedPlace)p;
@@ -109,7 +123,7 @@ public class TrialedRandomWorldGenerator implements RandomWorldGenerator{
         UniqueRandomGenerator urg = new UniqueRandomGenerator(r);
         
         //Ciclo per decidere quali tipologie di prove ci saranno nel mondo        
-        for (int  i = 0; i < tnum; i++)
+        for (int  i = 0; i < getTrialTypeNumber(); i++)
         {
             int index = urg.getUniqueInt(0, possibleTrials.size());
             
@@ -123,7 +137,7 @@ public class TrialedRandomWorldGenerator implements RandomWorldGenerator{
         for (Place p:res.getPlaces())
         {
             
-            if (urg.getRandomBooleanWithProbability(trialRatio) && !p.getName().equals(res.getStartPlace()) && !p.isGoal())
+            if (urg.getRandomBooleanWithProbability(getTrialRatio()) && !p.getName().equals(res.getStartPlace()) && !p.isGoal())
             {
                 //System.out.println("Trial added in " + p.getName());
                 TrialedPlace tp = (TrialedPlace)p;
@@ -158,6 +172,34 @@ public class TrialedRandomWorldGenerator implements RandomWorldGenerator{
     @Override
     public WorldFactory getWorldFactory() {
         return wf;
+    }
+
+    /**
+     * @return the trialRatio
+     */
+    public double getTrialRatio() {
+        return trialRatio;
+    }
+
+    /**
+     * @param trialRatio the trialRatio to set
+     */
+    public void setTrialRatio(double trialRatio) {
+        this.trialRatio = trialRatio;
+    }
+
+    /**
+     * @return the trialTypeNumber
+     */
+    public int getTrialTypeNumber() {
+        return trialTypeNumber;
+    }
+
+    /**
+     * @param trialTypeNumber the trialTypeNumber to set
+     */
+    public void setTrialTypeNumber(int trialTypeNumber) {
+        this.trialTypeNumber = trialTypeNumber;
     }
     
 }

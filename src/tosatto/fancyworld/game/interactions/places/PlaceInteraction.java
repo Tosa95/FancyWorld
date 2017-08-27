@@ -13,7 +13,7 @@ import tosatto.fancyworld.game.world.places.Place;
  * Astrae un'interazione tra il giocatore e un luogo
  * @author Davide
  */
-public interface PlaceIntercation {
+public interface PlaceInteraction {
     
     /**
      * Interagisce con il giocatore per permettergli di gestire le risorse presenti nel luogo

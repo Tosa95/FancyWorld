@@ -16,13 +16,13 @@ import tosatto.fancyworld.game.world.places.Place;
  * Interagisce con più tipi di posti
  * @author Davide
  */
-public class UniversalPlaceInteraction implements PlaceIntercation{
+public class UniversalPlaceInteraction implements PlaceInteraction{
 
     
     /*
     * Contiene una lista di PlaceInteractions conosciute
     */
-    private List<PlaceIntercation> interactions = new ArrayList<>();
+    private List<PlaceInteraction> interactions = new ArrayList<>();
 
     public UniversalPlaceInteraction() {
          //TODO: portare fuori dal costruttore e passare la lista
@@ -50,7 +50,7 @@ public class UniversalPlaceInteraction implements PlaceIntercation{
         * l'interazione di tipo keyed (dato che TrialedPlace è derivato da KeyedPlace) e
         * poi quella di tipo trialed
         */
-        for (PlaceIntercation pi : interactions)
+        for (PlaceInteraction pi : interactions)
         {
             Class<?> c = pi.type();
             if (c.isAssignableFrom(p.getClass()))

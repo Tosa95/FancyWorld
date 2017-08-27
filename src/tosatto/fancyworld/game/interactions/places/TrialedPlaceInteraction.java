@@ -19,7 +19,7 @@ import tosatto.fancyworld.game.world.places.TrialedPlace;
  * 
  * @author Davide
  */
-public class TrialedPlaceInteraction implements PlaceIntercation{
+public class TrialedPlaceInteraction implements PlaceInteraction{
 
     @Override
     public void interact(MessageIO io, Game g, Place p) {

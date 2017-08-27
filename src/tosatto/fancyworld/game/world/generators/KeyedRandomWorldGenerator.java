@@ -18,6 +18,7 @@ import tosatto.fancyworld.game.world.KeyedWorld;
 import tosatto.fancyworld.game.world.NameGenerator;
 import tosatto.fancyworld.game.world.World;
 import tosatto.fancyworld.game.world.factories.WorldFactory;
+import tosatto.fancyworld.game.world.generators.algorithms.GoalReachableChecker;
 import tosatto.fancyworld.game.world.keys.Key;
 import tosatto.fancyworld.game.world.passages.KeyedPassage;
 import tosatto.fancyworld.game.world.passages.Passage;
@@ -46,8 +47,21 @@ public class KeyedRandomWorldGenerator implements RandomWorldGenerator{
     
     private int maxKeyWeight;
     
+    private GoalReachableChecker grc;
+    
+    
+    private static double DEFAULT_KEY_PLACE_PROBABILITY = 0.3;
+    private static double DEFAULT_KEY_PASSAGE_PROBABILITY = 1;
+    private static int DEFAULT_MAX_KEY_WEIGHT = 20;
+    private static int DEFAULT_MIN_KEYS = 5;
+    private static int DEFAULT_MAX_KEYS = 10;
+    
     /**
      * Inizializza il generatore
+     * 
+     * Precondizione:
+     *  - maxKeys > minKeys
+     * 
      * @param rwg Generatore base
      * @param minKeys Minimo numero di tipi di chiave
      * @param maxKeys Massimo numero di tipi di chiave
@@ -57,7 +71,7 @@ public class KeyedRandomWorldGenerator implements RandomWorldGenerator{
      */
     public KeyedRandomWorldGenerator(RandomWorldGenerator rwg, int minKeys, 
             int maxKeys, int maxKeyWeight,
-            double keyPlaceProb, double keyPassageProb)
+            double keyPlaceProb, double keyPassageProb, GoalReachableChecker grc)
     {
         this.rwg = rwg;
         
@@ -71,8 +85,15 @@ public class KeyedRandomWorldGenerator implements RandomWorldGenerator{
         
         this.keyPlaceProb = keyPlaceProb;
         this.keyPassageProb = keyPassageProb;
+        
+        this.grc = grc;
     }
 
+    public KeyedRandomWorldGenerator(RandomWorldGenerator rwg, GoalReachableChecker grc)
+    {
+        this(rwg, DEFAULT_MIN_KEYS, DEFAULT_MAX_KEYS, DEFAULT_MAX_KEY_WEIGHT, DEFAULT_KEY_PLACE_PROBABILITY, DEFAULT_KEY_PASSAGE_PROBABILITY, grc);
+    }
+    
     private void placeRandomKeys (KeyedWorld w)
     {   
         String[] keys = w.getKeys().keySet().toArray(new String[w.getKeys().keySet().size()]);
@@ -83,189 +104,10 @@ public class KeyedRandomWorldGenerator implements RandomWorldGenerator{
             {
                 KeyedPlace kp = (KeyedPlace) p;
 
-                if (r.nextDouble()<keyPlaceProb)
+                if (r.nextDouble()<getKeyPlaceProb())
                     kp.setKey(keys[r.nextInt(keys.length)]);
             }
         }
-    }
-    
-    /**
-     * Unisce due mappe nomePosto:insiemeChiavi
-     * @param h1 Prima mappa, contiene anche il risultato
-     * @param h2 Seconda mappa
-     */
-    private void mergeHM (HashMap <String, Set<String>> h1, HashMap <String, Set<String>> h2)
-    {
-        HashMap <String, Set<String>> res = new HashMap<>(h1);
-        
-        for (String key : h2.keySet())
-        {
-            if (h1.containsKey(key) /*Il posto c'è in entrambe le mappe*/)
-            {
-                Set<String> merged = new HashSet<>(h1.get(key));
-                
-                merged.addAll(h2.get(key)); /*unisce le chiavi*/
-                
-                res.put(key, merged);
-            }else{
-                res.put(key, h2.get(key));
-            }
-        }
-        
-        h1.clear();
-        h1.putAll(res);
-    }
-    
-    /**
-     * Controlla se s1 contiene s2
-     * @param s1 Primo insieme
-     * @param s2 Secondo insieme
-     * @return true: s2 <- s1, false altrimenti
-     */
-    private boolean includeSet (Set<String> s1, Set<String> s2)
-    {
-        
-        for (String str : s2)
-        {
-            if (!s1.contains(str))
-            {
-                return false;
-            }
-        }
-        
-        return true;
-    }
-    
-    private int callCount = 0;
-    
-    /**
-     * Versione modificata dell'algoritmo di Djikstra per calcolare le chiavi effettivamente
-     * possibili da avere in ogni posto.
-     * 
-     * Precondizioni: 
-     *  - sctPlace è un luogo facente parte di w
-     *  - hm != null
-     *  - availKeys != null
-     *  - w != null
-     * 
-     * @param w Mondo in esame
-     * @param actPlace Posto attuale
-     * @param availKeys Chiavi che si possono avere con il cammino in esame
-     * @param hm Risultato, mappa [nomeposto, lista chiavi]
-     */
-    private void getAvailableKeysAtPlaces (World w, String actPlace, Set<String> availKeys, HashMap <String, Set<String>> hm, PlaceAction pa)
-    {
-        //System.out.println ("Visiting " + actPlace);
-        
-        //System.out.println("Begun " + actPlace + "   " + Integer.toString(callCount));
-        
-        //callCount++;
-        
-        if (pa != null)
-            pa.interact(w.getPlace(actPlace));
-        
-        HashMap<String, Set<String>> temp = new HashMap<>();
-        
-        availKeys = new HashSet<>(availKeys);
-        
-        KeyedPlace pl = (KeyedPlace)w.getPlace(actPlace);
-        
-        if (pl.hasKey() && !availKeys.contains(pl.getKey()))
-            availKeys.add(pl.getKey());
-
-        if (hm.containsKey(actPlace) /*sono già passato di qua*/ && 
-                includeSet(hm.get(actPlace), availKeys) /*il percorso attuale non 
-                aggiunge chiavi a quelle già ottenibili nel posto*/)
-        {
-             return;
-        }
-        
-        //Se arrivo qua significa che con il percorso attuale sto aggiungendo chiavi
-        //a quelle ottenibili dal posto, quindi devo rivalutare tutti gli altri posti
-        //collegati per vedere se aggiungo anche a loro
-        
-        temp.put(actPlace, availKeys);
-        mergeHM(hm, temp); //Aggiungo le info sulle chiavi ottenibili alla mappa principale
-        
-        
-        for (Passage p : w.getAllPassages(w.getPlace(actPlace).getPassages().values()))
-        {
-            KeyedPassage kp = (KeyedPassage)p;
-            
-            try {
-                String nextPlace = w.getPlace(p.next(actPlace)).getName();
-                
-                if (!kp.isClosed()/*se è un passaggio aperto*/||availKeys.contains(kp.requiredKey())/*oppure ho la chiave*/ )
-                {
-                    /*provo a passare, se era murato, mi da eccezione*/
-                    getAvailableKeysAtPlaces(w, nextPlace, availKeys, hm, pa);
-                }
-            } catch (PassageException ex) {
-                //Ok, passaggio murato
-            }
-            
-        }
-        
-        //System.out.println("Done " + actPlace + "   " + Integer.toString(callCount));
-        //callCount--;
-    }
-    
-    /**
-     * Wrapper per getAvailableKeysAtPlaces con più parametri, in modo da semplificare la chiamata
-     * @param w Il mondo 
-     * @return la mappa contenente le chiavi ottenibili in ogni posto
-     */
-    private HashMap <String, Set<String>> getAvailableKeysAtPlaces (World w)
-    {
-        HashMap <String, Set<String>> res = new HashMap<>();
-        getAvailableKeysAtPlaces(w, w.getStartPlace(), new HashSet<>(), res, null);
-        return res;
-    }
-    
-    /**
-     * Permette di visitare il grafo dei posti con le regole del giocatore, ossia si
-     * visiteranno solo i posti effettivamente raggiungibili.
-     * 
-     * NON è garantito che si visiti una sola volta ogni posto
-     * @param w Il mondo da visitare
-     * @param pa L'azione da compiere ad ogni posto
-     */
-    public void visitGraph (World w, PlaceAction pa)
-    {
-        HashMap <String, Set<String>> res = new HashMap<>();
-        getAvailableKeysAtPlaces(w, w.getStartPlace(), new HashSet<>(), res, pa);
-    }
-    
-    /**
-     * Dice se è possibile raggiungere tutti i posti, tenendo in considerazione anche
-     * le chiavi 
-     * @param w
-     * @return 
-     */
-    public boolean connected (World w)
-    {
-        //Basta che l'algoritmo di mapping posto-chiavi sia in grado di raggiungere tutti i posti
-        return getAvailableKeysAtPlaces(w).keySet().size() == w.getPlaces().size();
-    }
-    
-    /**
-     * Controlla se il goal è raggiungibile con le chiavi correntemente piazzate
-     * @param w
-     * @return 
-     */
-    public boolean canReachGoal (World w)
-    {
-        String goal = "";
-        
-        for (Place p : w.getPlaces())
-        {
-            if (p.isGoal())
-                goal = p.getName();
-        }
-        
-        HashMap <String, Set<String>> map = getAvailableKeysAtPlaces(w);
-        
-        return map.containsKey(goal);
     }
     
     /**
@@ -295,14 +137,14 @@ public class KeyedRandomWorldGenerator implements RandomWorldGenerator{
             }
         });
         
-        int keys = Helper.boundRnd(r, minKeys, maxKeys);
+        int keys = Helper.boundRnd(r, getMinKeys(), getMaxKeys());
         
         List<Key> keyList = new ArrayList<>();
         
         //Crea chiavi a caso
         for (int i = 0; i < keys; i++)
         {
-            Key k = new Key(ng.getUniqueRandomName(2, 4), 1 + r.nextInt(maxKeyWeight));
+            Key k = new Key(ng.getUniqueRandomName(2, 4), 1 + r.nextInt(getMaxKeyWeight()));
             res.addKey(k);
             keyList.add(k);
         }
@@ -316,7 +158,7 @@ public class KeyedRandomWorldGenerator implements RandomWorldGenerator{
             KeyedPassage kp = (KeyedPassage)p;
             
             //Lo chiude se il numero estratto è sotto alla probabilità prescelta
-            if (r.nextDouble()<keyPassageProb)
+            if (r.nextDouble()<getKeyPassageProb())
             {
                 //System.out.println("K");
                 
@@ -327,7 +169,7 @@ public class KeyedRandomWorldGenerator implements RandomWorldGenerator{
                 kp.setKey(k.getName());
                 
                 //Controlla che il goal sia ancora raggiungibile
-                if (!canReachGoal(res)){
+                if (!grc.isGoalReachable(res)){
                     //System.out.println("NC");
                     //Se non è raggiungibile, riapre il passaggio
                     kp.setKey(null);
@@ -352,6 +194,76 @@ public class KeyedRandomWorldGenerator implements RandomWorldGenerator{
     @Override
     public WorldFactory getWorldFactory() {
         return wf;
+    }
+
+    /**
+     * @return the minKeys
+     */
+    public int getMinKeys() {
+        return minKeys;
+    }
+
+    /**
+     * @param minKeys the minKeys to set
+     */
+    public void setMinKeys(int minKeys) {
+        this.minKeys = minKeys;
+    }
+
+    /**
+     * @return the maxKeys
+     */
+    public int getMaxKeys() {
+        return maxKeys;
+    }
+
+    /**
+     * @param maxKeys the maxKeys to set
+     */
+    public void setMaxKeys(int maxKeys) {
+        this.maxKeys = maxKeys;
+    }
+
+    /**
+     * @return the keyPlaceProb
+     */
+    public double getKeyPlaceProb() {
+        return keyPlaceProb;
+    }
+
+    /**
+     * @param keyPlaceProb the keyPlaceProb to set
+     */
+    public void setKeyPlaceProb(double keyPlaceProb) {
+        this.keyPlaceProb = keyPlaceProb;
+    }
+
+    /**
+     * @return the keyPassageProb
+     */
+    public double getKeyPassageProb() {
+        return keyPassageProb;
+    }
+
+    /**
+     * @param keyPassageProb the keyPassageProb to set
+     */
+    public void setKeyPassageProb(double keyPassageProb) {
+        this.keyPassageProb = keyPassageProb;
+    }
+
+    /**
+     * @return the maxKeyWeight
+     */
+    public int getMaxKeyWeight() {
+        return maxKeyWeight;
+    }
+
+    /**
+     * @param maxKeyWeight the maxKeyWeight to set
+     */
+    public void setMaxKeyWeight(int maxKeyWeight) {
+        this.maxKeyWeight = maxKeyWeight;
     }
     
     

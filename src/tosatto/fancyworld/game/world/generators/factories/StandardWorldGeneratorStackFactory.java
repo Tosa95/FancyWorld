@@ -13,6 +13,7 @@ import tosatto.fancyworld.game.world.generators.KeyedRandomWorldGenerator;
 import tosatto.fancyworld.game.world.generators.RandomWorldGenerator;
 import tosatto.fancyworld.game.world.generators.TrialedRandomWorldGenerator;
 import tosatto.fancyworld.game.world.generators.algorithms.BaseWorldTraveler;
+import tosatto.fancyworld.game.world.generators.algorithms.KeyedWorldTraveler;
 import tosatto.fancyworld.main.WorldTopologies;
 import tosatto.fancyworld.main.bundles.ParametersBundle;
 import tosatto.fancyworld.main.bundles.StandardBundleParametersNames;
@@ -23,11 +24,11 @@ import tosatto.fancyworld.main.bundles.StandardBundleParametersNames;
  */
 public class StandardWorldGeneratorStackFactory implements WorldGeneratorStackFactory{
     
-    private static int MIN_LVL = 5;
-    private static int MAX_LVL = 10;
-    private static int MIN_PLACES = 10;
-    private static int MAX_PLACES = 20;
-    private static int DIFFICULTY = 1; 
+    private static final int MIN_LVL = 5;
+    private static final int MAX_LVL = 10;
+    private static final int MIN_PLACES = 10;
+    private static final int MAX_PLACES = 20;
+    private static final int DIFFICULTY = 1; 
     
     private static double KEY_PLACE_PROBABILITY = 0.3;
     private static double KEY_PASSAGE_PROBABILITY = 1;
@@ -40,17 +41,36 @@ public class StandardWorldGeneratorStackFactory implements WorldGeneratorStackFa
     public RandomWorldGenerator create(ParametersBundle bundle, String topology) 
     {
         BaseWorldTraveler bwt = new BaseWorldTraveler();
+        KeyedWorldTraveler kwt = new KeyedWorldTraveler();
         
-        BasicRandomWorldGenerator brwg = new BasicRandomWorldGenerator(new Random(WorldTopologies.getInstance().getTopologySeed(topology))
-                   , new BundledWorldFactory(), MIN_LVL, MAX_LVL, MIN_PLACES, MAX_PLACES, DIFFICULTY, bwt, bwt);
+        BasicRandomWorldGenerator brwg = new BasicRandomWorldGenerator(
+                
+                new Random(WorldTopologies.getInstance().getTopologySeed(topology))
+                , new BundledWorldFactory(), bwt, bwt
+                
+        );
+        
+        brwg.setMinLvl(MIN_LVL);
+        brwg.setMaxLvl(MAX_LVL);
+        brwg.setMinPlaces(MIN_PLACES);
+        brwg.setMaxPlaces(MAX_PLACES);
+        brwg.setDifficulty(DIFFICULTY);
 
         int ktp = bundle.getParameter(StandardBundleParametersNames.KEY_TYPE_NUMBER);
            
-        KeyedRandomWorldGenerator krwg = new KeyedRandomWorldGenerator(brwg, bundle.getParameter(StandardBundleParametersNames.KEY_TYPE_NUMBER), bundle.getParameter(StandardBundleParametersNames.KEY_TYPE_NUMBER)+1,
-                bundle.getParameter(StandardBundleParametersNames.MAX_KEY_WEIGHT), KEY_PLACE_PROBABILITY, KEY_PASSAGE_PROBABILITY);
+        KeyedRandomWorldGenerator krwg = new KeyedRandomWorldGenerator(brwg, bwt);
+        
+        krwg.setMinKeys(ktp);
+        krwg.setMaxKeys(ktp + 1);
+        krwg.setMaxKeyWeight(bundle.getParameter(StandardBundleParametersNames.MAX_KEY_WEIGHT));
+        krwg.setKeyPlaceProb(KEY_PLACE_PROBABILITY);
+        krwg.setKeyPassageProb(KEY_PASSAGE_PROBABILITY);
 
-        TrialedRandomWorldGenerator trwg = new TrialedRandomWorldGenerator(krwg, TRIAL_PLACE_PROBABILITY, bundle.getParameter(StandardBundleParametersNames.TRIAL_TYPES_NUMBER));
+        TrialedRandomWorldGenerator trwg = new TrialedRandomWorldGenerator(krwg, bwt);
 
+        trwg.setTrialRatio(TRIAL_PLACE_PROBABILITY);
+        trwg.setTrialTypeNumber(bundle.getParameter(StandardBundleParametersNames.TRIAL_TYPES_NUMBER));
+        
         BundledRandomWorldGenerator bundrwg = new BundledRandomWorldGenerator(trwg, bundle);
         
         return bundrwg;

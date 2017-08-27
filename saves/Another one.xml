@@ -1,14 +1,12 @@
 <Game name="Another one">
    <player class="tosatto.fancyworld.game.player.PointedPlayer" name="Granli Brum" place="meqbur" points="0">
-      <keys class="java.util.ArrayList">
-         <string>mbo</string>
-      </keys>
+      <keys class="java.util.ArrayList"/>
    </player>
    <world class="tosatto.fancyworld.game.world.BundledWorld" name="thacil" start="start">
       <places>
          <entry>
             <string>meqbur</string>
-            <Place class="tosatto.fancyworld.game.world.places.TrialedPlace" name="meqbur" description="" goal="false" level="1" trial="Sequence">
+            <Place class="tosatto.fancyworld.game.world.places.TrialedPlace" name="meqbur" description="" goal="false" level="1" key="mbo" trial="Sequence">
                <passages>
                   <entry>
                      <string>south</string>

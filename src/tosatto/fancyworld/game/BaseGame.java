@@ -17,7 +17,6 @@ import tosatto.fancyworld.IO.MessageIO;
 import tosatto.fancyworld.game.checkers.WinChecker;
 import tosatto.fancyworld.game.interactions.MainInteraction;
 import tosatto.fancyworld.game.interactions.PassageInteraction;
-import tosatto.fancyworld.game.interactions.places.PlaceIntercation;
 import tosatto.fancyworld.game.world.passages.Passage;
 import tosatto.fancyworld.game.world.passages.exceptions.ClosedPassageException;
 import tosatto.fancyworld.game.world.passages.exceptions.PassageException;
@@ -26,6 +25,7 @@ import tosatto.fancyworld.game.world.places.Place;
 import tosatto.fancyworld.game.player.Player;
 import tosatto.fancyworld.game.player.PointedPlayer;
 import tosatto.fancyworld.game.world.World;
+import tosatto.fancyworld.game.interactions.places.PlaceInteraction;
 
 /**
  * 
@@ -50,7 +50,7 @@ public class BaseGame extends Game{
     
     private PassageInteraction passInt;
     
-    private PlaceIntercation placeInt;
+    private PlaceInteraction placeInt;
     
     private MainInteraction mainInt;
     
@@ -88,7 +88,7 @@ public class BaseGame extends Game{
      * @param placeInt
      * @param mainInt 
      */
-    public void setInteractions (PassageInteraction passInt, PlaceIntercation placeInt, MainInteraction mainInt)
+    public void setInteractions (PassageInteraction passInt, PlaceInteraction placeInt, MainInteraction mainInt)
     {
         this.passInt = passInt;
         this.placeInt = placeInt;

@@ -28,6 +28,12 @@ import tosatto.fancyworld.game.world.places.Place;
  */
 public class BasicRandomWorldGenerator implements RandomWorldGenerator{
     
+    private static final int DEFAULT_MIN_LVL = 5;
+    private static final int DEFAULT_MAX_LVL = 10;
+    private static final int DEFAULT_MIN_PLACES = 10;
+    private static final int DEFAULT_MAX_PLACES = 20;
+    private static final int DEFAULT_DIFFICULTY = 1; 
+    
     private static final String[] dirsOnLevel = {Directions.EST, Directions.NORTH, Directions.SOUTH, Directions.WEST};
     private static final String[] dirsUD = {Directions.UP, Directions.DOWN};
     
@@ -77,6 +83,13 @@ public class BasicRandomWorldGenerator implements RandomWorldGenerator{
         this.wcc = wcc;
     }
     
+     public BasicRandomWorldGenerator(Random r, 
+                                WorldFactory wf,
+                                PlaceConnectionChecker pcc,
+                                WorldConnectionChecker wcc)
+     {
+         this(r, wf, DEFAULT_MIN_LVL, DEFAULT_MAX_LVL, DEFAULT_MIN_PLACES, DEFAULT_MAX_PLACES, DEFAULT_DIFFICULTY, pcc, wcc);
+     }
     
     
     /**
