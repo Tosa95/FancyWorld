@@ -1,5 +1,5 @@
 <Game name="Fancy World">
-   <player class="tosatto.fancyworld.game.player.PointedPlayer" name="Granli Brum" place="start" points="10">
+   <player class="tosatto.fancyworld.game.player.PointedPlayer" name="Granli Brum" place="aemoapu" points="10">
       <keys class="java.util.ArrayList"/>
    </player>
    <world class="tosatto.fancyworld.game.world.BundledWorld" name="sirfa" start="start">
@@ -59,7 +59,7 @@
          </entry>
          <entry>
             <string>auloans</string>
-            <Place class="tosatto.fancyworld.game.world.places.TrialedPlace" name="auloans" description="" goal="false" level="1" key="sl">
+            <Place class="tosatto.fancyworld.game.world.places.TrialedPlace" name="auloans" description="" goal="false" level="1">
                <passages>
                   <entry>
                      <string>south</string>
@@ -117,7 +117,7 @@
          </entry>
          <entry>
             <string>aemoapu</string>
-            <Place class="tosatto.fancyworld.game.world.places.TrialedPlace" name="aemoapu" description="" goal="false" level="1" trial="Word">
+            <Place class="tosatto.fancyworld.game.world.places.TrialedPlace" name="aemoapu" description="" goal="false" level="1" key="sl" trial="Word">
                <passages>
                   <entry>
                      <string>south</string>

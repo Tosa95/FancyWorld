@@ -54,7 +54,7 @@ public class KeyedPlaceInteraction implements PlaceInteraction{
                 
         } else {
             
-            if (kPlayer.getKeys().size() > 0)
+            if (kPlayer.getKeys().size() > 0 && !(p.getName().equals(g.getWorld().getStartPlace())) && !p.isGoal())
             {
                 int ans = io.ask("Il luogo non ha alcuna chiave. Vuoi depositarne una?", new String[]{"si", "no"});
 
