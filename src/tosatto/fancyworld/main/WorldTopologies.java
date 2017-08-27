@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 import java.util.Set;
 import org.simpleframework.xml.ElementMap;
 import tosatto.fancyworld.game.BaseGame;
@@ -28,6 +29,8 @@ public class WorldTopologies {
     //di variazione dei parametri dei livelli sovrastanti di generazione (chiavi e prove)
     @ElementMap (name = "seeds")
     private Map<String, Long> seeds;
+    
+    private static final String RANDOM_WORLD_TOPOLOGY_NAME = "Random"; 
 
     private static WorldTopologies wt = null;
     
@@ -44,9 +47,11 @@ public class WorldTopologies {
     private WorldTopologies() {
         seeds = new HashMap<>();
         
+        seeds.put(RANDOM_WORLD_TOPOLOGY_NAME, 00000000000000L);
         seeds.put("Fancy World", 101274981236489263L);
         seeds.put("Fancy World NG", 101274981236489267L);
         seeds.put("Another one", 666666666666666666L);
+        
     }
     
     public List<String> getWorldTopologiesNames()
@@ -65,7 +70,12 @@ public class WorldTopologies {
      */
     public long getTopologySeed(String topologyName)
     {
-        return seeds.get(topologyName);
+        if (!topologyName.equals(RANDOM_WORLD_TOPOLOGY_NAME))
+            return seeds.get(topologyName);
+        
+        Random r = new Random();
+        
+        return r.nextLong();
     }
     
     public boolean topologyHasSave(String topologyName)
