@@ -26,6 +26,8 @@ import tosatto.fancyworld.game.world.factories.TrialedWorldFactory;
 import tosatto.fancyworld.game.world.generators.BasicRandomWorldGenerator;
 import tosatto.fancyworld.game.world.generators.KeyedRandomWorldGenerator;
 import tosatto.fancyworld.game.world.generators.TrialedRandomWorldGenerator;
+import tosatto.fancyworld.game.world.generators.names.BasicNameGenerator;
+import tosatto.fancyworld.game.world.generators.names.NoFoulLanguageNameGenerator;
 import tosatto.fancyworld.game.world.keys.Key;
 import tosatto.fancyworld.game.world.levels.Level;
 import tosatto.fancyworld.game.world.places.TrialedPlace;
@@ -123,5 +125,22 @@ public class Prove {
 
 //1
 
+        BasicNameGenerator bng = new BasicNameGenerator();
+        NoFoulLanguageNameGenerator nfng = new NoFoulLanguageNameGenerator(bng);
+        
+        int generated = 2000000;
+        
+        for (int i = 0; i < generated; i++)
+        {
+            nfng.getRandomName(3, 5);
+        }
+        
+        for (String s : nfng.getFiltered())
+        {
+            //System.out.println(s);
+        }
+
+        System.out.println("\n\nFiltered: " + nfng.getFiltered().size());
+        System.out.println("\n\nProbability: " + nfng.getFiltered().size()/((double)generated));
     }
 }

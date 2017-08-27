@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tosatto.fancyworld.game.world;
+package tosatto.fancyworld.game.world.generators.names;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +14,7 @@ import java.util.Random;
  *
  * @author Davide
  */
-public class NameGenerator {
+public class BasicNameGenerator implements NameGenerator{
     
     //Frequenze dei caratteri italiani
     private final static double[] freq = {10.85,1.05,4.30,3.39,11.49,1.01,1.65,1.43,10.18,0,0,5.70,
@@ -32,11 +32,11 @@ public class NameGenerator {
     
     private Random r;
 
-    public NameGenerator(Random r) {
+    public BasicNameGenerator(Random r) {
         this.r = r;
     }
 
-    public NameGenerator() {
+    public BasicNameGenerator() {
         this.r = new Random();
     }
     
@@ -172,4 +172,5 @@ public class NameGenerator {
         
         return res;
     }
+
 }

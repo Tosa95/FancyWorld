@@ -13,7 +13,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import tosatto.fancyworld.game.world.KeyedWorld;
-import tosatto.fancyworld.game.world.NameGenerator;
+import tosatto.fancyworld.game.world.generators.names.BasicNameGenerator;
 import tosatto.fancyworld.game.world.World;
 import tosatto.fancyworld.game.world.factories.KeyedWorldFactory;
 import tosatto.fancyworld.game.world.factories.WorldFactory;

@@ -10,11 +10,12 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Random;
 import java.util.logging.Logger;
-import tosatto.fancyworld.game.world.NameGenerator;
+import tosatto.fancyworld.game.world.generators.names.BasicNameGenerator;
 import tosatto.fancyworld.game.world.World;
 import tosatto.fancyworld.game.world.factories.WorldFactory;
 import tosatto.fancyworld.game.world.generators.algorithms.PlaceConnectionChecker;
 import tosatto.fancyworld.game.world.generators.algorithms.WorldConnectionChecker;
+import tosatto.fancyworld.game.world.generators.names.NameGenerator;
 import tosatto.fancyworld.game.world.levels.Level;
 import tosatto.fancyworld.game.world.passages.OpenPassage;
 import tosatto.fancyworld.game.world.passages.Passage;
@@ -59,6 +60,7 @@ public class BasicRandomWorldGenerator implements RandomWorldGenerator{
      */
     public BasicRandomWorldGenerator(Random r, 
                                 WorldFactory wf,
+                                NameGenerator ng,
                                 int minLvl, 
                                 int maxLvl, 
                                 int minPlaces, 
@@ -68,7 +70,7 @@ public class BasicRandomWorldGenerator implements RandomWorldGenerator{
                                 WorldConnectionChecker wcc) {
         
         this.r = r;
-        ng = new NameGenerator(r);
+        this.ng = ng;
         this.wf = wf;
         
         this.minLvl = minLvl;
@@ -85,10 +87,11 @@ public class BasicRandomWorldGenerator implements RandomWorldGenerator{
     
      public BasicRandomWorldGenerator(Random r, 
                                 WorldFactory wf,
+                                NameGenerator ng,
                                 PlaceConnectionChecker pcc,
                                 WorldConnectionChecker wcc)
      {
-         this(r, wf, DEFAULT_MIN_LVL, DEFAULT_MAX_LVL, DEFAULT_MIN_PLACES, DEFAULT_MAX_PLACES, DEFAULT_DIFFICULTY, pcc, wcc);
+         this(r, wf, ng, DEFAULT_MIN_LVL, DEFAULT_MAX_LVL, DEFAULT_MIN_PLACES, DEFAULT_MAX_PLACES, DEFAULT_DIFFICULTY, pcc, wcc);
      }
     
     

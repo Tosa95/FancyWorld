@@ -14,6 +14,9 @@ import tosatto.fancyworld.game.world.generators.RandomWorldGenerator;
 import tosatto.fancyworld.game.world.generators.TrialedRandomWorldGenerator;
 import tosatto.fancyworld.game.world.generators.algorithms.BaseWorldTraveler;
 import tosatto.fancyworld.game.world.generators.algorithms.KeyedWorldTraveler;
+import tosatto.fancyworld.game.world.generators.names.BasicNameGenerator;
+import tosatto.fancyworld.game.world.generators.names.NameGenerator;
+import tosatto.fancyworld.game.world.generators.names.NoFoulLanguageNameGenerator;
 import tosatto.fancyworld.main.WorldTopologies;
 import tosatto.fancyworld.main.bundles.ParametersBundle;
 import tosatto.fancyworld.main.bundles.StandardBundleParametersNames;
@@ -43,12 +46,11 @@ public class StandardWorldGeneratorStackFactory implements WorldGeneratorStackFa
         BaseWorldTraveler bwt = new BaseWorldTraveler();
         KeyedWorldTraveler kwt = new KeyedWorldTraveler();
         
-        BasicRandomWorldGenerator brwg = new BasicRandomWorldGenerator(
-                
-                new Random(WorldTopologies.getInstance().getTopologySeed(topology))
-                , new BundledWorldFactory(), bwt, bwt
-                
-        );
+        Random r = new Random(WorldTopologies.getInstance().getTopologySeed(topology));
+        
+        NameGenerator ng = new NoFoulLanguageNameGenerator(new BasicNameGenerator(r));
+        
+        BasicRandomWorldGenerator brwg = new BasicRandomWorldGenerator(r, new BundledWorldFactory(), ng, bwt, bwt);
         
         brwg.setMinLvl(MIN_LVL);
         brwg.setMaxLvl(MAX_LVL);

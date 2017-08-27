@@ -6,9 +6,10 @@
 package tosatto.fancyworld.game.world.generators;
 
 import java.util.Random;
-import tosatto.fancyworld.game.world.NameGenerator;
+import tosatto.fancyworld.game.world.generators.names.BasicNameGenerator;
 import tosatto.fancyworld.game.world.World;
 import tosatto.fancyworld.game.world.factories.WorldFactory;
+import tosatto.fancyworld.game.world.generators.names.NameGenerator;
 
 /**
  * Interfaccia che rappresenta un oggetto in grado di generare un mondo

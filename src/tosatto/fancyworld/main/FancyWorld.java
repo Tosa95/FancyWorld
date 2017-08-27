@@ -24,7 +24,7 @@ import tosatto.fancyworld.game.player.KeyedPlayer;
 import tosatto.fancyworld.game.player.Player;
 import tosatto.fancyworld.game.player.PointedPlayer;
 import tosatto.fancyworld.game.world.KeyedWorld;
-import tosatto.fancyworld.game.world.NameGenerator;
+import tosatto.fancyworld.game.world.generators.names.BasicNameGenerator;
 import tosatto.fancyworld.game.world.TrialedWorld;
 import tosatto.fancyworld.game.world.World;
 import tosatto.fancyworld.game.world.generators.BasicRandomWorldGenerator;

@@ -7,7 +7,7 @@ package tosatto.fancyworld.game.world.generators;
 
 import java.util.Random;
 import tosatto.fancyworld.game.world.BundledWorld;
-import tosatto.fancyworld.game.world.NameGenerator;
+import tosatto.fancyworld.game.world.generators.names.BasicNameGenerator;
 import tosatto.fancyworld.game.world.World;
 import tosatto.fancyworld.game.world.factories.WorldFactory;
 import tosatto.fancyworld.game.world.keys.Key;
@@ -96,7 +96,7 @@ public class BundledRandomWorldGenerator implements RandomWorldGenerator{
     }
 
     @Override
-    public NameGenerator getNameGenerator() {
+    public BasicNameGenerator getNameGenerator() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

@@ -9,7 +9,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 import tosatto.fancyworld.game.world.World;
-import tosatto.fancyworld.game.world.generators.PlaceAction;
 import tosatto.fancyworld.game.world.passages.KeyedPassage;
 import tosatto.fancyworld.game.world.passages.Passage;
 import tosatto.fancyworld.game.world.passages.exceptions.PassageException;
