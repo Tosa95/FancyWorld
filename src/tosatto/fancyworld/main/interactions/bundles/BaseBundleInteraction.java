@@ -69,7 +69,7 @@ public class BaseBundleInteraction implements BundleInteraction{
                     b.setParameter(pars.get(response), oldVal);
                     
                 } else {
-                    io.inform("Modifica effettuata!!!");
+                    io.inform("Modifica effettuata");
                 }
             }
             

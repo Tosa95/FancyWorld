@@ -37,7 +37,7 @@ public class FortuneTrialInteraction implements TrialInteraction{
                     io.inform("Complimenti, hai fortuna!");
                     return true;
                 } else {
-                    io.inform("Peccato, sembri parecchio sfortunato");
+                    io.inform("Peccato, sembri parecchio sfortunato.");
                     return false;
                 }
                 

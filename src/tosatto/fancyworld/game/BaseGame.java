@@ -171,12 +171,12 @@ public class BaseGame extends Game{
             }else{
                 io.inform("Allora non ti importa proprio nulla di me :(");
                 io.inform("Non sono stato un bravo giochino???");
-                io.inform("Vabbè allora mi dileguo. Buon proseguimanto :D");
+                io.inform("Vabbè allora mi dileguo. Buon proseguimento :D");
             }
                     
         } else {
             io.inform(String.format("Gentile avventuriero, %s era il luogo da raggiungere"
-                    + "e lo hai raggiunto con %d punti. HAI VINTO!!!", player.getPlace(), ((PointedPlayer)player).getPoints()));
+                    + " e lo hai raggiunto con %d punti. HAI VINTO!!!", player.getPlace(), ((PointedPlayer)player).getPoints()));
         }
         
         

@@ -64,7 +64,7 @@ public class UniversalTrialInteraction implements TrialInteraction{
             
             pp.applyDeltaPoints(- t.getValue());
             
-            io.inform(String.format("Purtroppo hai perso. Dato che non avevi punti a sufficienza,"
+            io.inform(String.format("Purtroppo hai perso. Dato che non avevi punti a sufficienza, "
                     + "il tuo punteggio è stato portato a 0"));
             
         }
